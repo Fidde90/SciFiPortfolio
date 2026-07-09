@@ -1,0 +1,223 @@
+﻿@page
+
+@model ReceptakutenPageModel
+@{
+}
+
+<section class="project-hero">
+    <div class="hero-img-container">
+        <img src="~/Images/receptakuten-hero.png" alt="">
+    </div>
+</section>
+
+<article>
+
+    <section class="section-full section-bg">
+        <div class="container">
+            <h2 class="text-green sci-fi-text">Om projektet</h2>
+            <p class="">
+                ReceptAkuten är en webbaserad plattform för receptdelning och automatiserad måltidsplanering.
+                Tanken bakom projektet är att göra det enklare för användare att samla sina recept på ett ställe,
+                dela dem med vänner och familj samt låta systemet generera varierade matscheman baserat på de recept som användaren själv väljer att inkludera.
+                Användare kan skapa egna recept, organisera sig i grupper och bjuda in andra medlemmar för att dela innehåll.
+                Recept kan sparas från andra användare och därefter anpassas efter egna preferenser utan att originalreceptet påverkas.
+                Systemet kan även generera inköpslistor baserat på planerade måltider, vilket minskar den manuella administrationen kring veckoplanering och matinköp.
+                Projektet utvecklades med fokus på skalbarhet, säkerhet och en tydlig separation mellan presentation, affärslogik och infrastruktur.
+            </p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="text-green sci-fi-text">Systemarkitektur</h2>
+            <p>
+                ReceptAkuten är uppbyggt som en modern klient-server-applikation där frontend, backend och databas är separerade i egna tjänster.
+                Frontenden är utvecklad i Vue.js 3 med Composition API medan backend består av ett REST API byggt med .NET 8.
+                Data lagras i PostgreSQL.
+            </p>
+            <p>
+                Samtliga delar av systemet körs i separata Docker-containrar och kommunicerar via interna nätverk.
+                Denna uppdelning gör det möjligt att utveckla,
+                uppdatera och distribuera varje tjänst oberoende av de övriga samtidigt som infrastrukturen förblir lätt att underhålla.
+            </p>
+            <p>
+                I produktionsmiljön exponeras frontenden via receptakuten.net medan API:t ligger bakom en separat subdomän på api.receptakuten.net.
+                För kvalitetssäkring och verifiering av nya funktioner finns även en stagingmiljö med egna instanser av både frontend och backend.
+                Stagingmiljön skyddas med Basic Authentication och används som sista steg innan förändringar distribueras till produktion.
+            </p>
+            <p>
+                Utvecklingsflödet följer en tydlig releaseprocess där nya funktioner utvecklas i feature-brancher
+                innan de successivt flyttas vidare genom develop-, staging- och produktionsmiljöerna.
+                Varje miljö använder egna konfigurationsfiler och miljövariabler för att säkerställa att testning kan ske utan påverkan på produktionsdata.
+            </p>
+        </div>
+    </section>
+
+    <section class="section-full section-bg">
+        <div class="container">
+            <h2 class="text-green sci-fi-text">Backendarkitektur</h2>
+            <p>
+                Backenden är utvecklad enligt principerna för Clean Architecture där ansvar och beroenden är tydligt separerade mellan olika lager.
+            </p>
+            <p>
+                API-lagret fungerar som systemets yttersta gränssnitt och ansvarar för routing,
+                autentisering, middleware, konfiguration av tjänster och mottagning av inkommande förfrågningar.
+                Controllers innehåller minimalt med logik och fungerar främst som ett lager för validering och transformering av inkommande data.
+            </p>
+            <p>
+                När en förfrågan når API:t valideras den först genom särskilda Request Models med egna regler för datavalidering.
+                Därefter omvandlas informationen till DTO-objekt som skickas vidare till applikationslagret.
+            </p>
+            <p>
+                Applikationslagret innehåller all affärslogik och är systemets kärna.
+                Här finns tjänster, DTO:er, entiteter, regler och processer som beskriver hur verksamheten fungerar.
+                Lagret är medvetet byggt utan beroenden till databaser, externa tjänster eller tekniska implementationer, vilket gör det enkelt att testa och vidareutveckla.
+            </p>
+            <p>
+                Infrastructure-lagret ansvarar för den faktiska kommunikationen med databasen och externa system.
+                Här finns repositories, Entity Framework-konfigurationer, filhantering och integrationer mot externa tjänster såsom Azure Communication Services.
+                Genom att använda interfaces mellan lagren kan implementationer bytas ut utan att affärslogiken påverkas.
+            </p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="text-green sci-fi-text">Databas och datamodell</h2>
+            <p>
+                Databasen är utvecklad enligt en Code First-strategi med Entity Framework Core.
+                Datamodellen definieras i kod och migreras därefter automatiskt till PostgreSQL genom migrations.
+            </p>
+            <p>
+                Databasen innehåller ett flertal relationer mellan användare, grupper, recept, matscheman och inköpslistor.
+                Denna struktur gör det möjligt att hantera både personliga receptsamlingar och gruppbaserade funktioner på ett konsekvent sätt.
+            </p>
+            <p>
+                För att förbättra användarupplevelsen redan från start används seedning av data.
+                Exempelrecept och grundläggande enheter för ingredienshantering skapas automatiskt när systemet initialiseras.
+            </p>
+        </div>
+    </section>
+
+    <section class="container section-full section-bg">
+        <div class="container">
+            <h2 class="text-green sci-fi-text">Frontend</h2>
+            <p>
+                Frontenden är utvecklad i Vue.js 3 med Composition API och bygger på en komponentbaserad
+                arkitektur där återanvändbarhet och tydlig ansvarsfördelning har varit centrala designprinciper.
+            </p>
+            <p>
+                Applikationen består av ett stort antal specialiserade komponenter för recept, ingredienshantering,
+                gruppadministration, matscheman, formulär och dialogrutor.
+                Kommunikation mellan komponenter sker genom props, emitters och gemensamma eventflöden,
+                vilket möjliggör en tydlig separation mellan presentation och affärslogik.
+            </p>
+            <p>
+                Navigeringen hanteras med Vue Router där olika layouts används beroende på användarens autentiseringsstatus.
+                Publika sidor såsom inloggning och registrering använder en separat layout från de delar av applikationen som kräver inloggning.
+            </p>
+            <p>
+                För att förbättra användarupplevelsen lagras utvald data lokalt i klienten för att minska mängden upprepade API-anrop.
+                Detta bidrar till snabbare laddningstider och en mer responsiv användarupplevelse.
+            </p>
+            <p>
+                Klienten innehåller även stöd för automatisk konvertering av bildformat såsom HEIC innan uppladdning,
+                vilket säkerställer kompatibilitet mellan olika enheter och webbläsare.
+            </p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="text-green sci-fi-text">Säkerhet</h2>
+            <p>
+                Säkerhet har varit en central del av projektets design.
+            </p>
+            <p>
+                Autentisering sker genom ASP.NET Identity tillsammans med JWT-baserad autentisering.
+                Access tokens och refresh tokens lagras i HttpOnly-cookies för att minska risken för exponering via klientskript.
+            </p>
+            <p>Systemet använder flera säkerhetslager för att skydda API:t, bland annat:</p>
+            <ul class="striped-list">
+                <li>JWT Authentication</li>
+                <li>Refresh Tokens</li>
+                <li>CSRF-skydd</li>
+                <li>Rate Limiting</li>
+                <li>Inputvalidering</li>
+                <li>Roll- och behörighetskontroller</li>
+            </ul>
+            <p>
+                Utöver klientbaserade begränsningar verifieras samtliga rättigheter även på serversidan för att säkerställa att
+                obehöriga användare inte kan kringgå systemets regler genom manipulerade anrop.
+            </p>
+            <p>
+                För att aktivera nya konton krävs e-postverifiering och samma mekanism används vid återställning av lösenord.
+            </p>
+        </div>
+    </section>
+
+    <section class="section-full section-bg">
+        <div class="container">
+            <h2 class="text-green sci-fi-text">Realtidsfunktioner</h2>
+            <p>
+                För funktioner som kräver omedelbar återkoppling används Server-Sent Events (SSE).
+                Ett exempel är gruppinbjudningar där mottagaren får uppdateringar
+                direkt från servern utan att klienten behöver skicka återkommande förfrågningar.
+            </p>
+            <p>
+                Detta ger snabbare återkoppling samtidigt som belastningen på API:t minskar jämfört med traditionell polling.
+            </p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="text-green sci-fi-text">Bildhantering</h2>
+            <p>
+                Användaruppladdade bilder bearbetas på serversidan med hjälp av ImageMagick via Magick.NET.
+            </p>
+            <p>
+                Vid uppladdning genomförs konvertering och optimering av bilder för att minska lagringsutrymme och förbättra laddningstider.
+                Bilderna lagras därefter på servern och kopplas till respektive recept.
+            </p>
+        </div>
+    </section>
+
+    <section class="section-full section-bg">
+        <div class="container">
+            <h2 class="text-green sci-fi-text">Automatisering och bakgrundsjobb</h2>
+            <p>
+                Systemet använder Quartz.NET för schemalagda bakgrundsjobb som körs oberoende av användaraktivitet.
+            </p>
+            <p>Dessa jobb används bland annat för att:</p>
+            <ul class="striped-list">
+                <li>Hantera avslutade matscheman</li>
+                <li>Rensa utgångna refresh tokens</li>
+                <li>Identifiera inaktiva användare</li>
+                <li>Ta bort konton som aldrig aktiverats</li>
+            </ul>
+            <p>
+                Genom att flytta denna typ av arbete till separata processer kan API:t fokusera
+                på användarrelaterade förfrågningar samtidigt som återkommande underhåll sker automatiskt.
+            </p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="text-green sci-fi-text">Loggning och felhantering</h2>
+            <p>
+                För övervakning och felsökning används Serilog med stöd för både konsolloggning och filbaserad loggning.
+            </p>
+            <p>
+                Systemet använder en central Global Exception Handler som fångar upp oväntade fel och returnerar konsekventa felmeddelanden till klienten.
+                Detta minskar mängden duplicerad felhantering i applikationen och förenklar felsökning.
+            </p>
+            <p>
+                I särskilda situationer där återhämtning är möjlig används riktade try/catch-block för att hantera specifika undantag,
+                exempelvis vid filhantering och borttagning av resurser från servern.
+            </p>
+        </div>
+    </section>
+
+</article>

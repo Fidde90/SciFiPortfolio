@@ -1,0 +1,73 @@
+﻿.right-wall,
+.left-wall {
+    position: fixed;
+    top: -80px;
+    width: 10px;
+    height: 120vh;
+    z-index: 99999;
+    animation: pulse 2s infinite ease-in-out;
+    /*      background:
+    repeating-linear-gradient(
+        to right,
+        transparent 0 48px,
+        #00ffff 48px 50px
+    ),
+    repeating-linear-gradient(
+        to bottom,
+        transparent 0 48px,
+        #ff00ff 48px 50px
+    ),
+    linear-gradient(
+        to bottom,
+        #050510,
+        #0d1025,
+        #050510
+    );  */
+    background: repeating-linear-gradient( to right, transparent 23px 48px, rgba(0,255,255,0.8) 48px 50px ), repeating-linear-gradient( to bottom, transparent 15px 48px, rgba(0,255,255,0.8) 48px 50px ), linear-gradient( to bottom, #020617, #0f172a, var(--color-primary-900) );
+    box-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, inset 0 0 20px rgba(0, 255, 255, 0.3);
+    filter: drop-shadow(0 0 8px #00ffff) drop-shadow(0 0 16px #00ffff);
+}
+
+.right-wall {
+    right: 0;
+    transform: perspective(5cm) rotateY(-20deg);
+}
+
+.left-wall {
+    left: 0;
+    transform: perspective(5cm) rotateY(20deg);
+}
+
+@keyframes pulse {
+    0%, 100% {
+        filter: brightness(1);
+    }
+
+    50% {
+        filter: brightness(1.5);
+    }
+}
+
+@media (min-width:500px) {
+    .right-wall, .left-wall {
+        width: 23px;
+    }
+}
+
+@media (min-width:768px) {
+    .right-wall, .left-wall {
+        width: 48px;
+    }
+}
+
+@media (min-width:992px) {
+    .right-wall, .left-wall {
+        width: 50px;
+    }
+}
+
+@media (min-width:1400px) {
+    .right-wall, .left-wall {
+        width: 75px;
+    }
+}

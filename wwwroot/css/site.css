@@ -1,0 +1,51 @@
+@import "./Themes/index.css";
+@import "./Misc/index.css";
+@import "./Navbars/index.css";
+@import "./Spacing/index.css";
+@import "./Typography/index.css";
+@import "./Colors/index.css";
+@import "./Sections/index.css";
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    font-size: var(--text-lg);
+    line-height: 1.5;
+    font-family: "Poppins", sans-serif;
+    min-height: 100vh;
+}
+
+body {
+    -webkit-font-smoothing: antialiased;
+    color: var(--color-text);
+    background-color: black;
+}
+
+.wrapper {
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+}
+
+header {
+}
+
+footer {
+    height: fit-content;
+    padding: 20px;
+    border: 1px solid var(--color-primary);
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+    background-color: var(--color-bg-secondary);
+}
+
+
+

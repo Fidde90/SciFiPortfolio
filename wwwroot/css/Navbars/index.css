@@ -1,0 +1,29 @@
+﻿@import "./desktop-nav.css";
+@import "./mobile-nav.css";
+
+.nav-bars {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 99999;
+}
+
+.dropdown-link {
+    text-decoration: none;
+    font-size: var(--text-m);
+    color: var(--color-text);
+    font-weight: var(--fw-bold);
+    display: block;
+}
+
+@media (min-width:992px) {
+    .desktop {
+        height: 50px;
+        display: flex;
+    }
+
+    .mobile {
+        display: none;
+    }
+}

@@ -1,0 +1,110 @@
+.hero {
+    position: relative;
+    margin-top: 90px;
+    margin-bottom:50px;
+    overflow: hidden;
+    min-height: 320px;
+    max-height: 530px;
+}
+
+.hero-text {
+    text-align: center;
+    padding-bottom: 40px;
+    margin-bottom: 140px;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.hero-text h1{
+    font-size: clamp(2rem, 6vw, 4rem);
+}
+
+.carousel {
+    position: absolute;
+    left:-1px;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+}
+
+.carousel-img {
+    width: 100px;
+    height: auto;
+}
+
+.purple-border {
+    border: 2px solid var(--color-purple-600);
+    border-radius: 50px;
+}
+
+.carousel-group {
+    width:fit-content;
+    display: flex;
+    gap: 70px;
+    padding-right: 70px;
+    will-change: transform;
+    animation: scrolling 15s linear infinite;
+}
+
+.carousel::before,
+.carousel::after {
+    content: "";
+    position: absolute;
+    width: 50px;
+    height: 100%;
+    z-index: 10;
+}
+
+.carousel::before {
+    left: 0;
+    background: linear-gradient(to right,
+            #000,
+            transparent);
+}
+
+.carousel::after {
+    right: -2px;
+    background: linear-gradient(to left,
+            #000,
+            transparent);
+}
+
+@keyframes scrolling {
+    0% {
+        transform: translateX(0)
+    }
+
+    100% {
+        transform: translateX(-100%)
+    }
+}
+
+
+.project-hero {
+    margin-top: 50px;
+    width: 100%;
+    background: rgba(0, 0, 0, .9);
+    overflow: hidden;
+}
+
+    .project-hero .hero-img-container {
+        width: 100%;
+    }
+
+        .project-hero .hero-img-container img {
+            display: block;
+            width: 100%;
+            height: auto;
+            margin: 0 auto;
+            object-position: bottom;
+        }
+
+@media (min-width: 992px) {
+    .project-hero {
+        max-height: 600px;
+    }
+
+        .project-hero .hero-img-container img {
+            max-height: 600px;
+            object-fit: contain;
+        }
+}

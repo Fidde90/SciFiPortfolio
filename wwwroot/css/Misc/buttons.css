@@ -1,0 +1,20 @@
+﻿.button-primary {
+    padding: 10px;
+    background: var(--gradient-primary);
+    color: white;
+    border: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+}
+
+.button-primary:active {
+    transform: scale(0.98);
+}
+
+.button-accent {
+    padding: 10px;
+    background: var(--gradient-accent);
+    color: white;
+    border: none;
+    border-radius: var(--radius-sm);
+}

@@ -1,0 +1,47 @@
+:root{
+    --fw-thin: 100;
+    --fw-extra-light: 200;
+    --fw-light: 300;
+    --fw-regular: 400;
+    --fw-medium: 500;
+    --fw-semi-bold: 600;
+    --fw-bold: 700;
+    --fw-extra-bold: 800;
+    --fw-black: 900;
+}
+
+.fw-thin{
+    font-weight: var(--fw-thin);
+}
+
+.fw-extra-light{
+    font-weight: var(--fw-extra-light);
+}
+
+.fw-light{
+    font-weight: var(--fw-light);
+}
+
+.fw-regular{
+    font-weight: var(--fw-regular);
+}
+
+.fw-medium{
+    font-weight: var(--fw-medium);
+}
+
+.fw-semi-bold{
+    font-weight: var(--fw-semi-bold);
+}
+
+.fw-bold{
+    font-weight: var(--fw-bold);
+}
+
+.fw-extra-bold{
+    font-weight: var(--fw-extra-bold);
+}
+
+.fw-black{
+    font-weight: var(--fw-black);
+}

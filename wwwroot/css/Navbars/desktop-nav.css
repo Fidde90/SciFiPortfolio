@@ -1,0 +1,89 @@
+﻿.desktop {
+    background-color: var(--color-bg);
+    display: none;
+    border-top: none;
+}
+
+.desktop-nav-items {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.nav-shadow {
+    height: 50px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    box-shadow: 0px -10px 32px 1px #00ffff;
+}
+
+.nav-item {
+    position: relative;
+}
+
+.nav-item:hover i {
+    transform: Rotate(180deg);
+}
+
+.nav-item-header i {
+    transition: ease-in-out 0.2s;
+}
+
+.nav-item-header {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    cursor: pointer;
+}
+
+.nav-item-header a {
+    font-weight: var(--fw-bold);
+}
+
+.nav-item::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 100%;
+    z-index: 99999;
+    width: 100%;
+    height: 20px;
+}
+
+.nav-dropdown {
+    background-color: var(--color-bg);
+    position: absolute;
+    top: calc(100% + 14.5px);
+    left: -10px;
+    z-index: 99999;
+    padding-inline: 10px;
+    padding: 10px 0px 10px 5px;
+    border: 1px solid var(--blue-color);
+    border-top: none;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    display: none;
+    min-width: 150px;
+}
+
+.nav-dropdown a {
+    display: block;
+    padding: 10px;
+}
+
+.nav-dropdown a:hover {
+    display: block;
+    background-color: var(--color-surface-hover);
+    border-radius: 10px;
+}
+
+.nav-item:hover .nav-dropdown {
+    display: block;
+}
+
+.nav-item:hover .nav-item-header {
+    background-color: var(--color-surface);
+    border-radius: 10px;
+}

@@ -1,0 +1,80 @@
+﻿/*=============== DARK THEME ================= */
+:root {
+    /*BASE*/
+    --color-bg: #0d0d0d;
+    --color-bg-secondary: #151515;
+    --color-surface: #1b1b1b;
+    --color-surface-secondary: #222222;
+    --color-surface-hover: #2a2a2a;
+    --color-surface-active: #323232;
+
+    /*TEXT*/
+    --color-text: #f5f7fa;
+    --color-text-muted: #b4bac5;
+    --color-text-soft: #8d95a3;
+    --color-text-inverted: #111111;
+
+    /*PRIMARY (MINT) */
+    --color-primary-900: #0f5f4a;
+    --color-primary-800: #12735a;
+    --color-primary-700: #169976;
+    --color-primary-600: #1dcd9f;
+    --color-primary-500: #2ee6b4;
+    --color-primary-400: #67f0ca;
+    --color-primary-300: #9cf6dd;
+    --color-primary: var(--color-primary-600);
+    --color-primary-hover: var(--color-primary-500);
+    --color-primary-active: var(--color-primary-700);
+    --color-primary-soft: rgba(29, 205, 159, 0.12);
+    --color-primary-soft-hover: rgba(29, 205, 159, 0.18);
+
+    /*PURPLE ACCENT*/
+    --color-purple-900: #371b58;
+    --color-purple-800: #4c3575;
+    --color-purple-700: #5b4b8a;
+    --color-purple-600: #7858a6;
+    --color-purple-500: #9c7ec7;
+    --color-purple-400: #b69ad9;
+    --color-accent: var(--color-purple-600);
+    --color-accent-hover: var(--color-purple-500);
+    --color-accent-active: var(--color-purple-700);
+    --color-accent-soft: rgba(120, 88, 166, 0.14);
+    --color-accent-soft-hover: rgba(120, 88, 166, 0.22);
+
+    /*BORDERS */
+    --color-border: #313131;
+    --color-border-soft: #252525;
+    --color-border-strong: #474747;
+    --color-border-primary: #1dcd9f;
+    --color-border-accent: #7858a6;
+    --border-sm: 1px solid var(--color-border);
+    --border-md: 1px solid var(--color-border-strong);
+    --border-primary: 1px solid var(--color-border-primary);
+    --border-accent: 1px solid var(--color-border-accent);
+
+    /*STATUS*/
+    --color-success: #22c55e;
+    --color-warning: #f59e0b;
+    --color-danger: #ef4444;
+    --color-info: #38bdf8;
+
+    /*SHADOWS*/
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.25);
+    --shadow-md: 0 8px 20px rgba(0, 0, 0, 0.35);
+    --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.45);
+    --shadow-primary: 0 0 25px rgba(29, 205, 159, 0.18);
+    --shadow-accent: 0 0 30px rgba(120, 88, 166, 0.22);
+
+    /*RADIUS*/
+    --radius-xs: 6px;
+    --radius-sm: 10px;
+    --radius-md: 16px;
+    --radius-lg: 24px;
+    --radius-xl: 32px;
+
+    /*GRADIENTS*/
+    --gradient-primary: linear-gradient(135deg,#1dcd9f 0%,#7858a6 50%,#169976 100%);
+    --gradient-accent: linear-gradient(135deg,#371b58 0%,#7858a6 80%, transparent 80%);
+    --gradient-hero: linear-gradient(135deg,#1dcd9f 0%,#7858a6 100%);
+    --gradient-surface: linear-gradient(135deg, rgba(39, 36, 36, 0.1) 0%, rgba(22, 22, 22) 75%, transparent 75%);
+}

@@ -1,6 +1,128 @@
 ﻿@page
+
 @model IndexModel
 @{
    
 }
 
+<section class="hero container">
+    <div class="mb-4 hero-text">
+        <h1 class="mb-2">Fredrik Bengtsson</h1>
+        <h1>Fullstack .Net utvecklare</h1>
+    </div>
+
+    <div class="mt-10">
+        <div class="carousel">
+            <div class="carousel-group">
+                <img class="carousel-img" src="~/Images/vue.svg" />
+                <img class="carousel-img" src="~/Images/javascript.svg" />
+                <img class="carousel-img purple-border" src="~/Images/net.svg" />
+                <img class="carousel-img" src="~/Images/csharp.svg" />
+                <img class="carousel-img" src="~/Images/azure.svg" />
+                <img class="carousel-img" src="~/Images/api.svg" />
+                <img class="carousel-img" src="~/Images/docker.svg" />
+                <img class="carousel-img" src="~/Images/nginx.svg" />
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="section-full section-bg">
+    <div class="container">
+        <p>
+            Hej! Jag är en .NET Fullstack-utvecklare med ett särskilt intresse för backendutveckling. Jag
+            tycker
+            om att bygga API:er, designa databaser och skapa robusta system som är skalbara, säkra och enkla
+            att
+            underhålla.
+        </p>
+        <br />
+
+        <p>
+            Även om backend är där jag känner mig mest hemma har jag också erfarenhet av frontendutveckling
+            med
+            Vue.js, JavaScript, HTML och CSS. Det gör att jag kan ta ansvar för hela utvecklingsprocessen –
+            från
+            databas och API till användargränssnitt och användarupplevelse.
+        </p>
+        <br />
+
+        <p>
+            Jag arbetar regelbundet med Docker för containerisering, Nginx för webbserver- och
+            proxyhantering
+            samt Ubuntu Server för drift och deployment. Kombinationen av utveckling och infrastruktur ger
+            mig
+            en helhetsförståelse för hur moderna webbapplikationer byggs, distribueras och underhålls i
+            produktion.
+        </p>
+
+        <br />
+        <p>
+            Jag drivs av att lösa problem, lära mig nya tekniker och utveckla lösningar som skapar verkligt
+            värde. Oavsett om det handlar om att optimera prestanda i ett API, bygga nya funktioner eller
+            sätta
+            upp en stabil produktionsmiljö strävar jag alltid efter att leverera kod av hög kvalitet.
+        </p>
+
+        <br />
+        <p>
+
+            När jag inte utvecklar utforskar jag gärna nya tekniker och verktyg för att fortsätta utvecklas
+            som
+            utvecklare och hålla mig uppdaterad inom branschen.
+        </p>
+    </div>
+</section>
+
+<div class="section-space"></div>
+
+<section class="project-cards container">
+    <div class="card">
+        <img src="~/Images/receptakuten.png" />
+        <div class="card-content">
+            <h3 class="mb-1 text-white">SPA Applikation</h3>
+            <h4 class="tags pt-1 fw-medium">
+                <span class="tag">.Net API</span>
+                <span class="tag">Vue.js</span>
+                <span class="tag">PostgreSql</span>
+                <span class="tag">Identity</span>
+            </h4>
+            <div class="card-links">
+                <a href="https://receptakuten.net" target="_blank" class="link text-center">
+                    Testa den här <i class="fa-solid fa-arrow-right text-xs ml-1"></i>
+                </a>
+                <a asp-page="/Projects/ReceptakutenPage" class="link card-button mt-2">Läs mer om appen</a>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <img src="~/Images/server.png" />
+        <div class="card-content">
+            <h3 class="mb-1 text-white">Vps hosting</h3>
+            <h4 class="tags pt-1 fw-medium">
+                <span class="tag">NginX</span>
+                <span class="tag">Ubuntu Server</span>
+                <span class="tag">Docker</span>
+                <span class="tag">Hostinger</span>
+            </h4>
+            <div class="card-links">
+                <a asp-page="Projects/ServerPage" class="link card-button mt-2">Läs mer</a>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <img src="~/Images/portimg.jpeg" />
+        <div class="card-content">
+            <h3>Sci-fi portfolio</h3>
+            <h4 class="tags pt-1 fw-medium">
+                <span class="tag">Razor pages</span>
+                <span class="tag">Vanilla javascript</span>
+                <span class="tag">SSR</span>
+            </h4>
+            <div class="card-links">
+                <a href="./next-page.html" class="link card-button mt-2">Läs mer om appen</a>
+            </div>
+        </div>
+    </div>
+</section>

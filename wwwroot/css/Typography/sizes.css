@@ -1,0 +1,42 @@
+:root{
+    --text-xs: 10px;
+    --text-s: 12px;
+    --text-m: 14px;
+    --text-lg: 16px;
+    --text-xl: 24px;
+    --text-xxl: 32px;
+    --text-mega:35px;
+    --text-ultra: 60px;
+}
+
+.text-xs{
+    font-size: var(--text-xs);
+}
+
+.text-s{
+    font-size: var(--text-s);
+}
+
+.text-m{
+    font-size: var(--text-m);
+}
+
+.text-lg{
+    font-size: var(--text-lg);
+}
+
+.text-xl{
+    font-size: var(--text-xl);
+}
+
+.text-xxl{
+    font-size: var(--text-xxl);
+}
+
+.text-mega{
+    font-size: var(--text-mega);
+}
+
+.text-ultra{
+    font-size: var(--text-ultra);
+}

@@ -1,4 +1,52 @@
-﻿// Please see documentation at https://learn.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿const canvas = document.getElementById("space");
+const ctx = canvas.getContext("2d");
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+drawStars();
 
-// Write your JavaScript code.
+const mobileBtn = document.querySelector('.mobile-nav-btn');
+const mobileLinks = document.querySelector('.mobile-links');
+const mobileOverlay = document.querySelector('.mobile-overlay');
+
+window.addEventListener('resize', () => {
+    if (window.innerWidth > 768) {
+        mobileLinks.classList.remove('active');
+        mobileOverlay.classList.remove('active');
+    }
+
+    redrawStars();
+});
+
+window.addEventListener('load', () => {
+    const carousel = document.querySelector('.carousel');
+    const carouselGroup = document.querySelector('.carousel-group');
+    carousel.innerHTML += carousel.innerHTML;
+});
+
+mobileBtn.addEventListener('click', () => {
+    mobileLinks.classList.toggle('active');
+    mobileOverlay.classList.toggle('active');
+});
+
+mobileOverlay.addEventListener('click', () => {
+    mobileLinks.classList.remove('active');
+    mobileOverlay.classList.remove('active');
+})
+
+function drawStars() {
+    for (let i = 0; i < 80; i++) {
+        const x = Math.random() * canvas.width;
+        const y = Math.random() * canvas.height;
+
+        ctx.fillStyle = "white";
+        ctx.beginPath();
+        ctx.arc(x, y, Math.random() * 2, 0, Math.PI * 2);
+        ctx.fill();
+    }
+}
+
+function redrawStars() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    drawStars();
+}

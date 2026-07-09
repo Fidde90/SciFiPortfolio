@@ -3,19 +3,30 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Portfolio för Fredrik Bengtsson, .NET-utvecklare med fokus på ASP.NET Core, C#, Docker och moderna webbapplikationer.">
     <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+          integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <script defer src="~/js/site.js" asp-append-version="true"></script>
     <script type="importmap"></script>
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/SciFiPortfolio.styles.css" asp-append-version="true" />
 </head>
 <body>
-    <canvas id="space"></canvas>
+    <partial name="_SpacePartial.cshtml" />
+    <partial name="_SpacewallsPartial.cshtml" />
+
     <div class="nav-shadow"></div>
-
     <div class="wrapper">
+        
         <header>
+            <partial name="_HeaderPartial.cshtml" />
         </header>
-
+      
         <div class="">
             <main role="main" class="">
                 @RenderBody()
@@ -26,7 +37,6 @@
         </footer>
     </div>
 
-    <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

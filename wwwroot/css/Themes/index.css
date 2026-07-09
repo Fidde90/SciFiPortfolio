@@ -1,0 +1,10 @@
+﻿@import "./light.css";
+@import "./dark.css";
+
+.section-bg {
+    background-color: var(--color-bg-secondary);
+}
+
+.dark-bg {
+    background-color: var(--color-bg);
+}

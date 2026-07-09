@@ -1,0 +1,20 @@
+.primary-text{
+    color:var(--color-text);
+}
+
+.text-purple{
+    color:var( --color-purple-600);
+}
+
+.text-green{
+    color:var(--color-primary-600);
+}
+
+.text-blue{
+    color:var(--color-info);
+}
+
+.text-white{
+    color:var(--color-text);
+}
+
