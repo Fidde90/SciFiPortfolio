@@ -1,4 +1,3 @@
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace SciFiPortfolio.Pages
@@ -7,7 +6,7 @@ namespace SciFiPortfolio.Pages
     {
         public void OnGet()
         {
-
+            ViewData["Title"] = "Fredrik Bengtsson | .NET Developer Portfolio";
         }
     }
 }
