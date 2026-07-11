@@ -1,0 +1,25 @@
+﻿@model ProjectCard
+@{
+}
+
+<div class="card">
+    <img src="~/@Model.Image.ImageUrl" alt="@Model.Image.AltText" />
+    <div class="card-content">
+        <h3 class="mb-1 text-white">@Model.Title</h3>
+        <h4 class="tags pt-1 fw-medium">
+            @foreach (var tag in Model.Tags)
+            {
+                <span class="tag">@tag.TagText</span>
+            }
+        </h4>
+        <div class="card-links">
+            <a href="@Model.Link.LinkUrl" target="_blank" class="link text-center"> @Model.Link.LinkText
+                @if (Model.Link.Icon is not null)
+                {
+                   <i class="@Model.Link.Icon.IconText text-xs ml-1"></i>
+                }           
+            </a>
+            <a asp-page="@Model.LinkButton.LinkUrl" class="link card-button mt-2">@Model.LinkButton.LinkText</a>
+        </div>
+    </div>
+</div>

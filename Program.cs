@@ -1,3 +1,8 @@
+using SciFiPortfolio.Interfaces.Repositories;
+using SciFiPortfolio.Interfaces.Services;
+using SciFiPortfolio.Repositories;
+using SciFiPortfolio.Services;
+
 namespace SciFiPortfolio
 {
     public class Program
@@ -7,6 +12,17 @@ namespace SciFiPortfolio
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
+
+            builder.Services.AddScoped<IContentSectionRepository, ContentSectionRepository>();
+            builder.Services.AddScoped<IContentSectionService, ContentSectionService>();
+            
+            builder.Services.AddScoped<IImageRepository, ImageRepository>();
+            builder.Services.AddScoped<IImageService, ImageService>();
+            
+            builder.Services.AddScoped<IProjectRepository, ProjectRepository>();
+            builder.Services.AddScoped<IProjectService, ProjectService>();
+
+
             builder.Services.AddRazorPages();
 
             var app = builder.Build();
