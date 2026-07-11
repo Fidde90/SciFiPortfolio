@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SciFiPortfolio.Data.Context;
 
@@ -10,9 +11,11 @@ using SciFiPortfolio.Data.Context;
 namespace SciFiPortfolio.Data.Migrations
 {
     [DbContext(typeof(SciFiContext))]
-    partial class SciFiContextModelSnapshot : ModelSnapshot
+    [Migration("20260711215441_AddPageEntity")]
+    partial class AddPageEntity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "10.0.9");
