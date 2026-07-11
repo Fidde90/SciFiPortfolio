@@ -1,3 +1,5 @@
+using Microsoft.EntityFrameworkCore;
+using SciFiPortfolio.Data.Context;
 using SciFiPortfolio.Interfaces.Repositories;
 using SciFiPortfolio.Interfaces.Services;
 using SciFiPortfolio.Repositories;
@@ -12,6 +14,13 @@ namespace SciFiPortfolio
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
+            string connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? 
+                throw new InvalidOperationException("Connection string" + "'DefaultConnection' not found.");
+
+            builder.Services.AddDbContext<SciFiContext>((op) =>
+            {
+                op.UseSqlite(connectionString);
+            });
 
             builder.Services.AddScoped<IContentSectionRepository, ContentSectionRepository>();
             builder.Services.AddScoped<IContentSectionService, ContentSectionService>();
