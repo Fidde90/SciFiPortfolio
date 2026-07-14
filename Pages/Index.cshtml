@@ -7,7 +7,7 @@
     var contentSections = Model.Vm.ContentSections;
 }
 
-<section class="hero container">
+@* <section class="hero container">
     <div class="mb-4 hero-text">
         <h1 class="mb-2">Fredrik Bengtsson</h1>
         <h1>Fullstack .Net utvecklare</h1>
@@ -29,7 +29,7 @@
 {
     @switch (section)
     {
-        case TextContentSection textSection:
+        case TextSection textSection:
             {
                 <section class="section-full @(textSection.BackgroundColor ? "section-bg" : "")">
                     <div class="container">
@@ -63,8 +63,8 @@
 <section class="project-cards container">
     @foreach (var card in cards)
     {
-        <partial name="Shared/_ProjectCardPartial.cshtml" model="card" />
+        <partial name="Shared/ComponentPartials/_ProjectCardPartial.cshtml" model="card" />
     }
-</section>
+</section>  *@
 
 <div class="section-space"></div>

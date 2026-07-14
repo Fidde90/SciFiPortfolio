@@ -26,7 +26,10 @@ namespace SciFiPortfolio.Pages
 
             Vm.ProjectCards = await _projectService.GetProjectCards();
             Vm.ContentSections = await _contentSectionService.GetContentSections("index");
-            Vm.TechIconsSlider = await _imageService.GetTechIcons();         
+            Vm.TechIconsSlider = await _imageService.GetTechIcons();
+
+
+          
         }
     }
 }

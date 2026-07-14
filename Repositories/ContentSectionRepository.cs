@@ -1,18 +1,26 @@
-﻿using SciFiPortfolio.Interfaces.Repositories;
+﻿using SciFiPortfolio.Data.Context;
+using SciFiPortfolio.Interfaces.Repositories;
 using SciFiPortfolio.Models;
 
 namespace SciFiPortfolio.Repositories
 {
     public class ContentSectionRepository : IContentSectionRepository
     {
+
+        private readonly SciFiContext _context;
+
+        public ContentSectionRepository(SciFiContext context)
+        {
+            _context = context;
+        }
+
         public async Task<List<ContentSection>> GetAllSections(string page)
         {
-
             if (page == "index")
             {
                 List<ContentSection> content = new()
                 {
-                    new TextContentSection()
+                    new TextSection()
                     {
                         Paragraphs =
                         {

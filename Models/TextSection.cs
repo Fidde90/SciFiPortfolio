@@ -1,6 +1,6 @@
 ﻿namespace SciFiPortfolio.Models
 {
-    public class TextContentSection : ContentSection
+    public class TextSection : ContentSection
     {
         public List<Paragraph> Paragraphs { get; set; } = [];
     }

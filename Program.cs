@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using SciFiPortfolio.Data.Context;
+using SciFiPortfolio.Data.Seeders;
+using SciFiPortfolio.Interfaces;
 using SciFiPortfolio.Interfaces.Repositories;
 using SciFiPortfolio.Interfaces.Services;
 using SciFiPortfolio.Repositories;
@@ -9,7 +11,7 @@ namespace SciFiPortfolio
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
 
@@ -31,18 +33,31 @@ namespace SciFiPortfolio
             builder.Services.AddScoped<IProjectRepository, ProjectRepository>();
             builder.Services.AddScoped<IProjectService, ProjectService>();
 
+            builder.Services.AddScoped<ISeeder, PageSeeder>();
+            builder.Services.AddScoped<DbSeeder>();
 
             builder.Services.AddRazorPages();
 
             var app = builder.Build();
 
-            // Configure the HTTP request pipeline.
-            if (!app.Environment.IsDevelopment())
+
+            using (var scope = app.Services.CreateScope())
             {
-                app.UseExceptionHandler("/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-                app.UseHsts();
+                var context = scope.ServiceProvider.GetRequiredService<SciFiContext>();
+                await context.Database.MigrateAsync();
+
+                var seeder = scope.ServiceProvider.GetRequiredService<DbSeeder>();
+                await seeder.SeedAsync();
             }
+
+
+                // Configure the HTTP request pipeline.
+                if (!app.Environment.IsDevelopment())
+                {
+                    app.UseExceptionHandler("/Error");
+                    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+                    app.UseHsts();
+                }
 
             app.UseHttpsRedirection();
 

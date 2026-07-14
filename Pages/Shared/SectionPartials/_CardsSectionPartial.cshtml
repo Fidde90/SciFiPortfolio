@@ -1,0 +1,19 @@
+﻿@model CardSection
+@{
+}
+<section class="@(Model.BackgroundColor ? "section-bg" : "")">
+    <div class="project-cards container">
+        @if (!string.IsNullOrWhiteSpace(Model.Heading))
+        {
+            <h2 class="text-green sci-fi-text">@Model.Heading</h2>
+        }
+        @foreach (var card in Model.Cards)
+        {
+            <partial name="Shared/ComponentPartials/_ProjectCardPartial.cshtml" model="card" />
+        }
+    </div>
+    @if (Model.SpaceBottm)
+    {
+        <div class="section-space"></div>
+    }
+</section>
