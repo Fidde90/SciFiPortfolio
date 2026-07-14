@@ -1,6 +1,7 @@
 ﻿using SciFiPortfolio.Data.Context;
 using SciFiPortfolio.Interfaces.Repositories;
 using SciFiPortfolio.Models;
+using SciFiPortfolio.Models.ContentSections;
 
 namespace SciFiPortfolio.Repositories
 {

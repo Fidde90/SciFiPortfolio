@@ -1,5 +1,7 @@
 ﻿@model TextSection
+
 @{
+
 }
 
 <section class="section-full @(Model.BackgroundColor ? "section-bg" : "")">
@@ -18,9 +20,9 @@
                 @para.Text
             </p>
         }
-    </div>
-    @if (Model.SpaceBottm)
-    {
-        <div class="section-space"></div>
-    }
+    </div>  
 </section>
+@if (Model.SpaceBottm)
+{
+    <div class="section-space"></div>
+}

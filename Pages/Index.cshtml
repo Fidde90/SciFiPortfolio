@@ -2,12 +2,11 @@
 
 @model IndexModel
 @{
-    var cards = Model.Vm.ProjectCards;
-    var icons = Model.Vm.TechIconsSlider;
-    var contentSections = Model.Vm.ContentSections;
+    var page = Model.Vm.Page;
+    var icons = Model.Vm.TechIconsSlider ?? [];
 }
 
-@* <section class="hero container">
+<section class="hero container">
     <div class="mb-4 hero-text">
         <h1 class="mb-2">Fredrik Bengtsson</h1>
         <h1>Fullstack .Net utvecklare</h1>
@@ -25,46 +24,28 @@
     </div>
 </section>
 
-@foreach (var section in contentSections)
+@foreach (var section in page.Sections)
 {
     @switch (section)
     {
         case TextSection textSection:
-            {
-                <section class="section-full @(textSection.BackgroundColor ? "section-bg" : "")">
-                    <div class="container">
+        {
+            <partial name="Shared/SectionPartials/_TextSectionPartial.cshtml" model="section"/>
+            break;
+        }
 
-                        @foreach (var para in textSection.Paragraphs)
-                        {
-                            <p>
-                                @para.Text
-                            </p>
-                        }
-
-                    </div>
-                </section>
-
-                @if (textSection.SpaceBottm)
-                {
-                    <div class="section-space"></div>
-                }
-
-                break;
-            }
+        case CardSection cardSection:
+        {
+                <partial name="Shared/SectionPartials/_CardSectionPartial.cshtml" model="section" />
+            break;
+        }
 
         default:
-            {
-                <p>inget att visa</p>
-                break;
-            }
+        {
+            <p>inget att visa</p>
+            break;
+        }
     }
 }
-
-<section class="project-cards container">
-    @foreach (var card in cards)
-    {
-        <partial name="Shared/ComponentPartials/_ProjectCardPartial.cshtml" model="card" />
-    }
-</section>  *@
 
 <div class="section-space"></div>

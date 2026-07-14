@@ -1,6 +1,6 @@
 ﻿using SciFiPortfolio.Data.Context;
 using SciFiPortfolio.Entities;
-using SciFiPortfolio.Models;
+using SciFiPortfolio.Models.ContentSections;
 using Microsoft.EntityFrameworkCore;
 using SciFiPortfolio.Interfaces;
 
@@ -42,8 +42,8 @@ namespace SciFiPortfolio.Data.Seeders
                                 new(){ Text = "Jag arbetar regelbundet med Docker för containerisering, Nginx för webbserver- och proxyhantering samt Ubuntu Server för drift och deployment. Kombinationen av utveckling och infrastruktur ger mig en helhetsförståelse för hur moderna webbapplikationer byggs, distribueras och underhålls i produktion." },
                                 new(){ Text = "Jag drivs av att lösa problem, lära mig nya tekniker och utveckla lösningar som skapar verkligt värde. Oavsett om det handlar om att optimera prestanda i ett API, bygga nya funktioner eller sätta upp en stabil produktionsmiljö strävar jag alltid efter att leverera kod av hög kvalitet." },
                                 new(){ Text = "När jag inte utvecklar utforskar jag gärna nya tekniker och verktyg för att fortsätta utvecklas som utvecklare och hålla mig uppdaterad inom branschen." }
-                            }
-
+                            },
+                            BackgroundColor = true
                         },
                         new CardSection()
                         {

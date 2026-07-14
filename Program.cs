@@ -33,6 +33,9 @@ namespace SciFiPortfolio
             builder.Services.AddScoped<IProjectRepository, ProjectRepository>();
             builder.Services.AddScoped<IProjectService, ProjectService>();
 
+            builder.Services.AddScoped<IPageRepository, PageRepository>();
+            builder.Services.AddScoped<IPageService, PageService>();
+
             builder.Services.AddScoped<ISeeder, PageSeeder>();
             builder.Services.AddScoped<DbSeeder>();
 

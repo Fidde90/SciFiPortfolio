@@ -1,2 +1,41 @@
-﻿@{
+﻿@model ImageCenterSection
+
+@{
+    var paraTop = Model.ParagraphsTop;
+    var images = Model.Images;
+    var paraBottom = Model.ParagraphsBottom;
+}
+
+<section class="section-full @(Model.BackgroundColor ? "section-bg" : "")">
+    @if (!string.IsNullOrWhiteSpace(Model.Heading))
+    {
+        <h2 class="text-green sci-fi-text">@Model.Heading</h2>
+    }
+    <div class="container">
+        @if (!string.IsNullOrWhiteSpace(Model.SubHeading))
+        {
+            <h3 class="text-green sci-fi-text">@Model.SubHeading</h3>
+        }
+
+        @foreach (var para in paraTop)
+        {
+            
+            <p>@para.Text</p>
+        }
+
+        @foreach (var image in images)
+        {
+            <img src="~/@image.ImageUrl" alt="@image.AltText" />
+        }
+        @foreach (var para in paraBottom)
+        {
+
+            <p>@para.Text</p>
+        }
+
+    </div>
+</section>
+@if (Model.SpaceBottm)
+{
+    <div class="section-space"></div>
 }

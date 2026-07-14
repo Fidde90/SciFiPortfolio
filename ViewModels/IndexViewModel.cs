@@ -6,9 +6,6 @@ namespace SciFiPortfolio.ViewModels
     {
         public IReadOnlyList<Image> TechIconsSlider { get; set; } = [];
 
-        public IReadOnlyList<ContentSection> ContentSections { get; set; } = [];
-
-        public IReadOnlyList<ProjectCard> ProjectCards { get; set; } = [];
-
+        public Page Page { get; set; } = null!;
     }
 }

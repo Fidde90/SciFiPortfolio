@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SciFiPortfolio.Entities;
-using SciFiPortfolio.Models;
+using SciFiPortfolio.Models.ContentSections;
 using System.Text.Json;
 
 namespace SciFiPortfolio.Data.Context

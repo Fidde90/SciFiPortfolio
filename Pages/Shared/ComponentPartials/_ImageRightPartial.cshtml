@@ -1,0 +1,15 @@
+﻿@model ImageWithPositionSection
+@{
+}
+
+<div class="d-flex">
+    <div>
+        @foreach (var para in Model.Paragraphs)
+        {
+            <p>@para.Text</p>
+        }
+    </div>
+    <div>
+        <img src="~/@Model.Image.ImageUrl" alt="@Model.Image.AltText" />
+    </div>
+</div>

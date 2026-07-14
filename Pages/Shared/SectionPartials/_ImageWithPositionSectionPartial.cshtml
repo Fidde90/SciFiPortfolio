@@ -1,2 +1,37 @@
-﻿@{
+﻿@model ImageWithPositionSection
+
+@{
+    var imagePosition = Model.ImagePosition;
+}
+
+<section class="section-full @(Model.BackgroundColor ? "section-bg" : "")">
+    @if (!string.IsNullOrWhiteSpace(Model.Heading))
+    {
+        <h2 class="text-green sci-fi-text">@Model.Heading</h2>
+    }
+    <div class="container">
+        @if (!string.IsNullOrWhiteSpace(Model.SubHeading))
+        {
+            <h3 class="text-green sci-fi-text">@Model.SubHeading</h3>
+        }
+        @switch (imagePosition)
+        {
+            case ImagePosition.Top:
+                <partial name="/Pages/Shared/ComponentPartials/_ImageTopPartial.cshtml" />
+                break;
+            case ImagePosition.Right:
+                <partial name="/Pages/Shared/ComponentPartials/_ImageRightPartial.cshtml" />
+                break;
+            case ImagePosition.Bottom:
+                <partial name="/Pages/Shared/ComponentPartials/_ImageBottomPartial.cshtml" />
+                break;
+            case ImagePosition.Left:
+                <partial name="/Pages/Shared/ComponentPartials/_ImageLeftPartial.cshtml" />
+                break;
+        }
+    </div>
+</section>
+@if (Model.SpaceBottm)
+{
+    <div class="section-space"></div>
 }

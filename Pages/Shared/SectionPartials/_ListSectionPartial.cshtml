@@ -1,2 +1,26 @@
-﻿@{
+﻿@model ListSection
+
+@{
+    var listItems = Model.ListItems;
+}
+
+<section class="section-full @(Model.BackgroundColor ? "section-bg" : "")">
+    <h3 class="text-green sci-fi-text">Teknikstack</h3>
+    @if (!string.IsNullOrWhiteSpace(Model.SubHeading))
+    {
+        <h3 class="text-green sci-fi-text">@Model.SubHeading</h3>
+    }
+    <div class="container">
+        <ul class="striped-list">
+            @foreach(var li in listItems)
+            {
+                <li>@li.Text <i class="@li.Icon?.IconText"></i></li>                 
+            }
+          
+        </ul>
+    </div>
+</section>
+@if (Model.SpaceBottm)
+{
+    <div class="section-space"></div>
 }

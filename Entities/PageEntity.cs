@@ -1,5 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using SciFiPortfolio.Models;
+using SciFiPortfolio.Models.ContentSections;
 
 namespace SciFiPortfolio.Entities
 {

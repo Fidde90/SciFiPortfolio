@@ -1,6 +1,6 @@
 ﻿using SciFiPortfolio.Interfaces.Repositories;
 using SciFiPortfolio.Interfaces.Services;
-using SciFiPortfolio.Models;
+using SciFiPortfolio.Models.ContentSections;
 
 namespace SciFiPortfolio.Services
 {

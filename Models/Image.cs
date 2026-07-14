@@ -4,6 +4,6 @@
     {
         public string ImageUrl { get; set; } = null!;
 
-        public string? AltText { get; set; }
+        public string AltText { get; set; } = "";
     }
 }

@@ -1,4 +1,4 @@
-﻿using SciFiPortfolio.Models;
+﻿using SciFiPortfolio.Models.ContentSections;
 
 namespace SciFiPortfolio.Interfaces.Services
 {

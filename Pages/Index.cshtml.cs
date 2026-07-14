@@ -8,28 +8,23 @@ namespace SciFiPortfolio.Pages
     {
         public IndexViewModel Vm { get; set; } = new();
 
-        private readonly IProjectService _projectService;
         private readonly IImageService _imageService;
-        private readonly IContentSectionService _contentSectionService;
+        private readonly IPageService _pageService;
 
-
-        public IndexModel(IProjectService projectService, IImageService imageService, IContentSectionService contentSectionService)
+        public IndexModel(IImageService imageService, IPageService pageService)
         {
-            _contentSectionService = contentSectionService;
             _imageService = imageService;
-            _projectService = projectService;
+            _pageService = pageService;
         }
 
         public async Task OnGet()
         {
             ViewData["Title"] = "Fredrik Bengtsson | .NET Developer Portfolio";
 
-            Vm.ProjectCards = await _projectService.GetProjectCards();
-            Vm.ContentSections = await _contentSectionService.GetContentSections("index");
+            string slug = Request.Path;
+
             Vm.TechIconsSlider = await _imageService.GetTechIcons();
-
-
-          
+            Vm.Page = await _pageService.GetPageAsync(slug);
         }
     }
 }

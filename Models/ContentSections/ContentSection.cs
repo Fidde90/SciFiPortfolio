@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace SciFiPortfolio.Models
+namespace SciFiPortfolio.Models.ContentSections
 {
     [JsonDerivedType(typeof(TextSection), "text-section")]
     [JsonDerivedType(typeof(ImageCenterSection), "image-center-section")]
@@ -8,7 +8,6 @@ namespace SciFiPortfolio.Models
     [JsonDerivedType(typeof(ImageSection), "image-section")]
     [JsonDerivedType(typeof(ListSection), "list-section")]
     [JsonDerivedType(typeof(CardSection), "card-section")]
-
     public abstract class ContentSection
     {
         public string? Heading { get; set; }

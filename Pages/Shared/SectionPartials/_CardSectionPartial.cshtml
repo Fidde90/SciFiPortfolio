@@ -9,11 +9,11 @@
         }
         @foreach (var card in Model.Cards)
         {
-            <partial name="Shared/ComponentPartials/_ProjectCardPartial.cshtml" model="card" />
+            <partial name="/Pages/Shared/ComponentPartials/_ProjectCardPartial.cshtml" model="card" />
         }
     </div>
-    @if (Model.SpaceBottm)
-    {
-        <div class="section-space"></div>
-    }
 </section>
+@if (Model.SpaceBottm)
+{
+    <div class="section-space"></div>
+}

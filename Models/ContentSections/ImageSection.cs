@@ -1,4 +1,4 @@
-﻿namespace SciFiPortfolio.Models
+﻿namespace SciFiPortfolio.Models.ContentSections
 {
     public class ImageSection : ContentSection
     {
