@@ -1,0 +1,11 @@
+﻿@page
+@model SciFiPortfolio.Pages.testModel
+@{
+    var sections = Model.Vm.Sections;
+}
+
+<partial name="/Pages/Shared/SectionPartials/_HeroSectionPartial.cshtml" model="sections[0]"/>
+
+<partial name="/Pages/Shared/SectionPartials/_CarouselSectionPartial.cshtml" model="sections[1]" />
+<partial name="/Pages/Shared/SectionPartials/_TextSectionPartial.cshtml" model="sections[2]" />
+<partial name="/Pages/Shared/SectionPartials/_TextSectionPartial.cshtml" model="sections[3]" />

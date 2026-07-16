@@ -1,0 +1,23 @@
+﻿@model CarouselSection
+
+@{
+    var images = Model.Images;
+}
+
+@if (images.Any())
+{
+    <section class="slider-container container @(Model.BackgroundColor ? "section-bg" : "")">
+        <div class="carousel">
+            <div class="carousel-group">
+                @foreach (var image in images)
+                {
+                    <img class="carousel-img" src="~/@image.ImageUrl" alt="@image.AltText" />
+                }
+            </div>
+        </div>
+    </section>
+    @if (Model.SpaceBottm)
+    {
+        <div class="section-space"></div>
+    }
+}

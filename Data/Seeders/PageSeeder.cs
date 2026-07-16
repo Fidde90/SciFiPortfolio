@@ -22,7 +22,7 @@ namespace SciFiPortfolio.Data.Seeders
 
         private async Task SeedPagesAsync()
         {
-            if(!await _context.Pages.AnyAsync(page => page.Slug == "/"))
+            if (!await _context.Pages.AnyAsync(page => page.Slug == "/"))
             {
                 var indexPage = new PageEntity
                 {
@@ -33,6 +33,26 @@ namespace SciFiPortfolio.Data.Seeders
                 {
                     Sections =
                     {
+                        new HeroSection
+                        {
+                            Heading = "Fredrik Bengtsson",
+                            SubHeading = "Fullstack .Net Utvecklare",
+                            SpaceBottm = true
+                        },
+                        new CarouselSection
+                        {
+                            Images =
+                            {
+                                new(){ ImageUrl="Images/vue.svg", AltText= "vue icon"},
+                                new(){ ImageUrl="Images/javascript.svg", AltText= "javascript icon"},
+                                new(){ ImageUrl="Images/net.svg", AltText= ".net icon"},
+                                new(){ ImageUrl="Images/csharp.svg", AltText= "c# icon"},
+                                new(){ ImageUrl="Images/azure.svg", AltText= "azure icon"},
+                                new(){ ImageUrl="Images/api.svg", AltText= "api icon"},
+                                new(){ ImageUrl="Images/docker.svg", AltText= "docker icon"},
+                                new(){ ImageUrl="Images/nginx.svg", AltText= "nginX icon"}
+                            },
+                        },
                         new TextSection()
                         {
                             Paragraphs =

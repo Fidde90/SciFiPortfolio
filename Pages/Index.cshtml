@@ -6,28 +6,20 @@
     var icons = Model.Vm.TechIconsSlider ?? [];
 }
 
-<section class="hero container">
-    <div class="mb-4 hero-text">
-        <h1 class="mb-2">Fredrik Bengtsson</h1>
-        <h1>Fullstack .Net utvecklare</h1>
-    </div>
-
-    <div class="mt-10">
-        <div class="carousel">
-            <div class="carousel-group">
-                @foreach (var icon in icons)
-                {
-                    <img class="carousel-img" src="~/@icon.ImageUrl" alt="@icon.AltText" />
-                }
-            </div>
-        </div>
-    </div>
-</section>
-
 @foreach (var section in page.Sections)
 {
     @switch (section)
     {
+        case HeroSection heroSection:
+            {
+                <partial name="Shared/SectionPartials/_HeroSectionPartial.cshtml" model="section" />
+                break;
+            }
+        case CarouselSection:
+            {
+                <partial name="Shared/SectionPartials/_CarouselSectionPartial.cshtml" model="section" />
+                break;
+            }
         case TextSection textSection:
         {
             <partial name="Shared/SectionPartials/_TextSectionPartial.cshtml" model="section"/>
@@ -36,7 +28,7 @@
 
         case CardSection cardSection:
         {
-                <partial name="Shared/SectionPartials/_CardSectionPartial.cshtml" model="section" />
+            <partial name="Shared/SectionPartials/_CardSectionPartial.cshtml" model="section" />
             break;
         }
 

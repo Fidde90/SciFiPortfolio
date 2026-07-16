@@ -8,6 +8,8 @@ namespace SciFiPortfolio.Models.ContentSections
     [JsonDerivedType(typeof(ImageSection), "image-section")]
     [JsonDerivedType(typeof(ListSection), "list-section")]
     [JsonDerivedType(typeof(CardSection), "card-section")]
+    [JsonDerivedType(typeof(HeroSection), "hero-section")]
+    [JsonDerivedType(typeof(CarouselSection),"carousel-section")]
     public abstract class ContentSection
     {
         public string? Heading { get; set; }

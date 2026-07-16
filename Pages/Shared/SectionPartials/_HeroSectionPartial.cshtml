@@ -1,0 +1,28 @@
+﻿@model HeroSection
+
+@{
+
+}
+<section class="@(Model.BackgroundColor ? "section-bg" : "")">
+        @if (Model.Image is not null)
+        {
+            <div class="image-hero">              
+                <div class="hero-img-container">
+                    <img src="~/@Model.Image.ImageUrl" alt="@Model.Image.AltText">
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="text-hero container">
+                <div class="hero-text">
+                    <h1 class="mb-2">@Model.Heading</h1>
+                    <h1>@Model.SubHeading</h1>
+                </div>
+            </div>          
+        }
+</section> 
+@if (Model.SpaceBottm)
+{
+    <div class="section-space"></div>
+}
