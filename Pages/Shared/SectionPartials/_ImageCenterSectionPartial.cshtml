@@ -2,7 +2,8 @@
 
 @{
     var paraTop = Model.ParagraphsTop;
-    var images = Model.Images;
+    var desktopImages = Model.DesktopImages;
+    var mobileImages = Model.MobileImages;
     var paraBottom = Model.ParagraphsBottom;
 }
 
@@ -23,9 +24,13 @@
             <p>@para.Text</p>
         }
 
-        @foreach (var image in images)
+        @foreach (var image in desktopImages)
         {
-            <img src="~/@image.ImageUrl" alt="@image.AltText" />
+            <img class="desktop-img" src="~/@image.ImageUrl" alt="@image.AltText" />
+        }
+        @foreach (var image in mobileImages)
+        {
+            <img class="mobile-img" src="~/@image.ImageUrl" alt="@image.AltText" />
         }
         @foreach (var para in paraBottom)
         {

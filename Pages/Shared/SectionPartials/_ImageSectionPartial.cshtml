@@ -1,24 +1,31 @@
 ﻿@model ImageSection
 
 @{
-    var images = Model.Images ?? [];
+    var desktopImages = Model.DesktopImages;
+    var mobileImages = Model.MobileImages;
 }
 
 <section class="section-full @(Model.BackgroundColor ? "section-bg" : "")">
-    @if (!string.IsNullOrWhiteSpace(Model.Heading))
-    {
-        <h2 class="text-green sci-fi-text">@Model.Heading</h2>
-    }
     <div class="container">
-        @foreach (var image in images)
+        @if (!string.IsNullOrWhiteSpace(Model.Heading))
         {
-            @if (!string.IsNullOrWhiteSpace(Model.SubHeading))
-            {
-                <h3 class="text-green sci-fi-text">@Model.SubHeading</h3>
-            }
-            <img src="~/@image.ImageUrl" alt="@image.AltText" />
+            <h2 class="text-green sci-fi-text">@Model.Heading</h2>
         }
-    </div>
+        @if (!string.IsNullOrWhiteSpace(Model.SubHeading))
+        {
+            <h3 class="text-green sci-fi-text">@Model.SubHeading</h3>
+        }
+        <div class="text-center">
+            @foreach (var image in desktopImages)
+            {
+                <img class="desktop-img" src="~/@image.ImageUrl" alt="@image.AltText" />
+            }
+            @foreach (var image in mobileImages)
+            {
+                <img class="mobile-img" src="~/@image.ImageUrl" alt="@image.AltText" />
+            }
+        </div>
+    </div>  
 </section>
 @if (Model.SpaceBottm)
 {

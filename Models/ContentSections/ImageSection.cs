@@ -2,6 +2,7 @@
 {
     public class ImageSection : ContentSection
     {
-        public List<Image>? Images { get; set; }
+        public List<Image> DesktopImages { get; set; } = [];
+        public List<Image> MobileImages { get; set; } = [];
     }
 }

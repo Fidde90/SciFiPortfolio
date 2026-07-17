@@ -2,6 +2,6 @@
 {
     public class Icon
     {
-        public string? IconText { get; set; }
+        public string IconText { get; set; } = "";
     }
 }

@@ -1,0 +1,35 @@
+﻿@model ImageWithPositionSection
+@{
+    bool IsTopPosition = Model.ImagePosition.ToString() == "Top";
+}
+
+@if (IsTopPosition)
+{
+    <div class="d-flex-column">
+        <div>
+            <img class="image-position-y" src="~/@Model.Image.ImageUrl" alt="@Model.Image.AltText" />
+        </div>
+        <div>
+            @foreach (var para in Model.Paragraphs)
+            {
+                <p>@para.Text</p>
+            }
+        </div>
+    </div>
+}
+else
+{
+    <div class="d-flex-column">
+        <div>
+            @foreach (var para in Model.Paragraphs)
+            {
+                <p>@para.Text</p>
+            }
+        </div>
+        <div>
+            <img class="image-position-y" src="~/@Model.Image.ImageUrl" alt="@Model.Image.AltText" />
+        </div>
+    </div>
+}
+
+

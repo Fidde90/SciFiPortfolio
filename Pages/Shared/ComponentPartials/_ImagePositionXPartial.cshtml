@@ -1,0 +1,12 @@
+﻿@model ImageWithPositionSection
+@{
+    var imageClass = Model.ImagePosition.ToString() == "Right" ? "image-postion-right" : "image-postion-left";
+}
+
+<div class="text-position-x">
+    <img class="@imageClass" src="~/@Model.Image.ImageUrl" alt="@Model.Image.AltText" />
+    @foreach (var para in Model.Paragraphs)
+    {
+        <p>@para.Text</p>
+    }
+</div>
