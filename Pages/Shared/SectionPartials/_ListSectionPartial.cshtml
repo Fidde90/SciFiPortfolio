@@ -2,16 +2,23 @@
 
 @{
     var listItems = Model.ListItems;
+    var paragraphs = Model.Paragraphs;
 }
 
-<section class="section-full @(Model.BackgroundColor ? "section-bg" : "")">
+<section class="section-full @(Model.BackgroundColor ? "section-bg pt-3 pb-3" : "")">
     <div class="container">
         <h3 class="text-green sci-fi-text">@Model.Heading</h3>
+        @if (paragraphs is not null && paragraphs.Any())
+        {
+            @foreach (var p in paragraphs)
+            {
+                <p>@p.Text</p>
+            }
+        }
         @if (!string.IsNullOrWhiteSpace(Model.SubHeading))
         {
             <h3 class="text-green sci-fi-text">@Model.SubHeading</h3>
         }
-
         <ul class="striped-list pt-1 pb-1">
             @foreach (var li in listItems)
             {

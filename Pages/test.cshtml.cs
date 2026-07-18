@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using SciFiPortfolio.Enums;
 using SciFiPortfolio.Models.ContentSections;
 using SciFiPortfolio.ViewModels;
 
@@ -13,21 +14,17 @@ namespace SciFiPortfolio.Pages
         {
             var sections = new List<ContentSection>()
             {
-              new ListSection
-              {
-                  Heading = "en heading",
-                  SubHeading ="en subis",
-                  BackgroundColor = true,
-                  ListItems = {
-                      new(){Text="Ubuntu Server (minimal installation)", Icon = new(){ IconText = "" } },
-                      new(){Text="Docker & Docker Compose", Icon = new(){ IconText = "" }},
-                      new(){Text="Nginx Reverse Proxy", Icon = new(){ IconText = "" }},
-                      new(){Text="PostgreSQL", Icon = new(){ IconText = "" }},
-                      new(){Text="Certbot (Let´s Encrypt)", Icon = new(){ IconText = "" }},
-                      new(){Text="Ubuntu Server (minimal installation)", Icon = new(){ IconText = "" }},
-                      new(){Text="Docker & Docker Compose", Icon = new(){ IconText = "" }},
-                  }
-              }
+               new ImageWithPositionSection
+                {
+                    Heading = "Infrastrukturdesign",
+                    Paragraphs =
+                    {
+                        new(){ Text = "Servern är uppbyggd enligt en lagerindelad arkitektur där Nginx körs direkt på värdmaskinen och fungerar som central ingresspunkt för all inkommande trafik." },
+                    },
+                    DesktopImage = { ImageUrl = "images/infra2.png"},
+                    MobileImage = { ImageUrl="images/infrastrukturdesign.png" },
+                    ImagePosition = ImagePosition.Bottom
+                },
             };
 
             Vm.Sections.AddRange(sections);

@@ -1,13 +1,18 @@
 ﻿@model ImageWithPositionSection
 @{
     bool IsTopPosition = Model.ImagePosition.ToString() == "Top";
+    bool mobileImage = !string.IsNullOrWhiteSpace(Model.MobileImage.ImageUrl);
 }
 
 @if (IsTopPosition)
 {
     <div class="d-flex-column">
         <div>
-            <img class="image-position-y" src="~/@Model.Image.ImageUrl" alt="@Model.Image.AltText" />
+            <img class="image-position-y @(mobileImage ? "desktop-img" : "") border-white" src="~/@Model.DesktopImage.ImageUrl" alt="@Model.DesktopImage.AltText" />
+            @if (mobileImage)
+            {
+                <img class="image-position-y mobile-img border-white" src="~/@Model.MobileImage.ImageUrl" alt="@Model.MobileImage.AltText" />
+            }
         </div>
         <div>
             @foreach (var para in Model.Paragraphs)
@@ -27,7 +32,11 @@ else
             }
         </div>
         <div>
-            <img class="image-position-y" src="~/@Model.Image.ImageUrl" alt="@Model.Image.AltText" />
+            <img class="image-position-y @(mobileImage ? "desktop-img" : "") border-white" src="~/@Model.DesktopImage.ImageUrl" alt="@Model.DesktopImage.AltText" />
+            @if (mobileImage)
+            {
+                <img class="image-position-y mobile-img border-white" src="~/@Model.MobileImage.ImageUrl" alt="@Model.MobileImage.AltText" />
+            }
         </div>
     </div>
 }

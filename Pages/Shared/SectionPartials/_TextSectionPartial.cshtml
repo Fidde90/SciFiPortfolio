@@ -4,7 +4,7 @@
 
 }
 
-<section class="section-full  @(Model.BackgroundColor ? "section-bg" : "")" style="padding:0;">
+<section class="section-full @(Model.BackgroundColor ? "section-bg pt-3 pb-3" : "")" >
     <div class="container">
     @if (!string.IsNullOrWhiteSpace(Model.Heading))
     {
@@ -27,9 +27,3 @@
 {
     <div class="section-space"></div>
 }
-
-<style>
-    p{
-        margin:0;
-    }
-</style>

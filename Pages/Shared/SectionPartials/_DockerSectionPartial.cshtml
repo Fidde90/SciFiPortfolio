@@ -1,0 +1,41 @@
+﻿@model DockerSection
+
+@{
+
+}
+
+<section class="section-full @(Model.BackgroundColor ? "section-bg pt-2 pb-2" : "")">
+    <div class="container">
+        @if (!string.IsNullOrWhiteSpace(Model.Heading))
+        {
+            <h2 class="text-green sci-fi-text">@Model.Heading</h2>
+        }
+        <div class="containers">
+            <div class="container-1">
+                <div class="small-box"></div>
+                <div class="big-box">
+                    <p>
+                        @Model.LeftParagraph.Text
+                    </p>
+                </div>
+                <div class="small-box"></div>
+            </div>
+
+            <div class="laser"></div>
+
+            <div class="container-2">
+                <div class="small-box"></div>
+                <div class="big-box">
+                    <p>
+                        @Model.RightParagraph.Text
+                    </p>
+                </div>
+                <div class="small-box"></div>
+            </div>
+        </div>
+    </div>
+</section>
+@if (Model.SpaceBottm)
+{
+    <div class="section-space"></div>
+}
