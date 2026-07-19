@@ -1,4 +1,5 @@
 @import "./text-colors.css";
+@import "./section-backgrounds.css";
 
 .border-white{
     border:1px solid var(--color-text);

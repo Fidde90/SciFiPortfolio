@@ -5,7 +5,7 @@
     var paragraphs = Model.Paragraphs;
 }
 
-<section class="section-full @(Model.BackgroundColor ? "section-bg pt-3 pb-3" : "")">
+<section class="section-full @(!string.IsNullOrWhiteSpace(Model.BackgroundColor) ? $"{Model.BackgroundColor} pt-3 pb-3" : "")">
     <div class="container">
         <h3 class="text-green sci-fi-text">@Model.Heading</h3>
         @if (paragraphs is not null && paragraphs.Any())

@@ -32,7 +32,7 @@ namespace SciFiPortfolio.Repositories
                             new(){ Text = "När jag inte utvecklar utforskar jag gärna nya tekniker och verktyg för att fortsätta utvecklas som utvecklare och hålla mig uppdaterad inom branschen." }
                         },
                         SpaceBottm = true,
-                        BackgroundColor = true
+                        BackgroundColor = ""
                     }
                 };
 

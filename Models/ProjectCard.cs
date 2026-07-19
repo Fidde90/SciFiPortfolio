@@ -6,9 +6,9 @@
 
         public Image Image { get; set; } = new();
 
-        public LinkButton LinkButton { get; set; } = new();
+        public HyperLink Hyperlink { get; set; } = new();
 
-        public Link Link { get; set; } = new();
+        public AppLink AppLink { get; set; } = new();
 
         public List<Tag> Tags { get; set; } = [];
     }

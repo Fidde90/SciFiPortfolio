@@ -7,7 +7,7 @@
     var paraBottom = Model.ParagraphsBottom;
 }
 
-<section class="section-full @(Model.BackgroundColor ? "section-bg pt-3 pb-3" : "")">
+<section class="section-full @(!string.IsNullOrWhiteSpace(Model.BackgroundColor) ? $"{Model.BackgroundColor} pt-3 pb-3" : "")">
     @if (!string.IsNullOrWhiteSpace(Model.Heading))
     {
         <h2 class="text-green sci-fi-text">@Model.Heading</h2>

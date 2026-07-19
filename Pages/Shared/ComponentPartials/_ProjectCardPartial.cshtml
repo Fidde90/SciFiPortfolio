@@ -13,13 +13,13 @@
             }
         </h4>
         <div class="card-links">
-            <a href="@Model.Link.LinkUrl" target="_blank" class="link text-center"> @Model.Link.LinkText
-                @if (Model.Link.Icon is not null)
+            <a href="@Model.Hyperlink.LinkUrl" target="_blank" class="link text-center"> @Model.Hyperlink.LinkText
+                @if (Model.Hyperlink.Icon is not null)
                 {
-                   <i class="@Model.Link.Icon.IconText text-xs ml-1"></i>
+                   <i class="@Model.Hyperlink.Icon.IconText text-xs ml-1"></i>
                 }           
             </a>
-            <a asp-page="@Model.LinkButton.LinkUrl" class="link card-button mt-2">@Model.LinkButton.LinkText</a>
+            <a asp-page="@Model.AppLink.RouteValues.Url" asp-route-slug="@Model.AppLink.RouteValues.Slug" class="link card-button mt-2">@Model.AppLink.LinkText</a>
         </div>
     </div>
 </div>

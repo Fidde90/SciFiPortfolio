@@ -20,6 +20,6 @@ namespace SciFiPortfolio.Models.ContentSections
 
         public bool SpaceBottm { get; set; } = true;
 
-        public bool BackgroundColor { get; set; } = false;
+        public string BackgroundColor { get; set; } = "";
     }
 }

@@ -1,7 +1,7 @@
 ﻿@model CardSection
 @{
 }
-<section class="section-full @(Model.BackgroundColor ? "section-bg pt-3 pb-3" : "")">
+<section class="section-full @(!string.IsNullOrWhiteSpace(Model.BackgroundColor) ? $"{Model.BackgroundColor} pt-3 pb-3" : "")">
     <div class="project-cards container">
         @if (!string.IsNullOrWhiteSpace(Model.Heading))
         {

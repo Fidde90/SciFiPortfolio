@@ -4,7 +4,7 @@
 
 }
 
-<section class="section-full @(Model.BackgroundColor ? "section-bg pt-2 pb-2" : "")">
+<section class="section-full @(!string.IsNullOrWhiteSpace(Model.BackgroundColor) ? $"{Model.BackgroundColor} pt-3 pb-3" : "")">
     <div class="container">
         @if (!string.IsNullOrWhiteSpace(Model.Heading))
         {

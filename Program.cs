@@ -36,10 +36,18 @@ namespace SciFiPortfolio
             builder.Services.AddScoped<IPageRepository, PageRepository>();
             builder.Services.AddScoped<IPageService, PageService>();
 
+            builder.Services.AddScoped<IRendererService, RendererService>();
+
             builder.Services.AddScoped<ISeeder, PageSeeder>();
             builder.Services.AddScoped<DbSeeder>();
 
             builder.Services.AddRazorPages();
+
+            builder.Services.Configure<RouteOptions>(options =>
+            {
+                options.LowercaseQueryStrings = true;
+                options.LowercaseUrls = true;
+            });
 
             var app = builder.Build();
 

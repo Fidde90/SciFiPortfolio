@@ -10,10 +10,12 @@ namespace SciFiPortfolio.Data.Seeders
     public class PageSeeder : ISeeder
     {
         private readonly SciFiContext _context;
+        private readonly ILogger<PageSeeder> _logger;
 
-        public PageSeeder(SciFiContext context)
+        public PageSeeder(SciFiContext context, ILogger<PageSeeder> logger)
         {
             _context = context;
+            _logger = logger;
         }
 
         public async Task SeedAsync()
@@ -23,12 +25,12 @@ namespace SciFiPortfolio.Data.Seeders
 
         private async Task SeedPagesAsync()
         {
-            if (!await _context.Pages.AnyAsync(page => page.Slug == "/"))
+            if (!await _context.Pages.AnyAsync(page => page.Slug == "index"))
             {
                 var indexPage = new PageEntity
                 {
-                    Title = "",
-                    Slug = "/",
+                    Title = "Home",
+                    Slug = "index",
                     Published = true,
                     PageContent =
                 {
@@ -64,7 +66,7 @@ namespace SciFiPortfolio.Data.Seeders
                                 new(){ Text = "Jag drivs av att lösa problem, lära mig nya tekniker och utveckla lösningar som skapar verkligt värde. Oavsett om det handlar om att optimera prestanda i ett API, bygga nya funktioner eller sätta upp en stabil produktionsmiljö strävar jag alltid efter att leverera kod av hög kvalitet." },
                                 new(){ Text = "När jag inte utvecklar utforskar jag gärna nya tekniker och verktyg för att fortsätta utvecklas som utvecklare och hålla mig uppdaterad inom branschen." }
                             },
-                            BackgroundColor = true
+                             BackgroundColor = "section-bg",
                         },
                         new CardSection()
                         {
@@ -74,8 +76,8 @@ namespace SciFiPortfolio.Data.Seeders
                                 {
                                     Title = "SPA Applikation",
                                     Image = { ImageUrl = "Images/receptakuten.png", AltText = "receptakuten image"},
-                                    Link = { LinkText= "Testa den här", LinkUrl="https://receptakuten.net", Icon = new(){ IconText = "fa-solid fa-arrow-right" } },
-                                    LinkButton = { LinkText="Läs mer om appen", LinkUrl="/Projects/ReceptakutenPage" },
+                                    Hyperlink = { LinkText= "Testa den här", LinkUrl="https://receptakuten.net", Icon = new(){ IconText = "fa-solid fa-arrow-right" } },
+                                    AppLink = { LinkText="Läs mer om appen", RouteValues = { Url = "/Projects/Receptakuten", Slug = "receptakuten" } },
                                     Tags = {
                                         new(){ TagText= ".Net API" },
                                         new(){ TagText = "Vue.js" },
@@ -87,7 +89,7 @@ namespace SciFiPortfolio.Data.Seeders
                                 {
                                     Title = "Vps hosting",
                                     Image = { ImageUrl = "Images/server.png", AltText = "image of a server"},
-                                    LinkButton = { LinkText="Läs mer", LinkUrl="Projects/ServerPage" },
+                                    AppLink = { LinkText="Läs mer", RouteValues = {Url = "Projects/Hosting", Slug ="vps-hosting" }},
                                     Tags = {
                                         new(){ TagText= "NginX" },
                                         new(){ TagText = "Ubuntu Server" },
@@ -99,7 +101,7 @@ namespace SciFiPortfolio.Data.Seeders
                                 {
                                     Title = "Sci-fi portfolio",
                                     Image = { ImageUrl = "Images/portimg.jpeg", AltText = "a sci-fi image"},
-                                    LinkButton = { LinkText="Läs mer", LinkUrl="/" },
+                                    AppLink = { LinkText="Läs mer", RouteValues = { Url ="/", Slug="sci-fi-portfolio" }},
                                     Tags = {
                                         new(){ TagText= "Razor pages" },
                                         new(){ TagText = "Vanilla javascript" },
@@ -114,6 +116,7 @@ namespace SciFiPortfolio.Data.Seeders
 
                 _context.Pages.Add(indexPage);
                 await _context.SaveChangesAsync();
+                _logger.LogInformation(":::::: Index page Seeded ::::::");
             }
 
             if (!await _context.Pages.AnyAsync(page => page.Slug == "vps-hosting"))
@@ -148,7 +151,7 @@ namespace SciFiPortfolio.Data.Seeders
                                 new(){Text="Certbot (Let´s Encrypt)", Icon = new(){ IconText = "" }},
                                 new(){Text="VPS-hosting via Hostinger)", Icon = new(){ IconText = "" }},
                             },
-                            BackgroundColor = true,
+                            BackgroundColor = "section-bg",
                         },
                         new ImageWithPositionSection
                         {
@@ -174,7 +177,7 @@ namespace SciFiPortfolio.Data.Seeders
                                 "Istället routas inkommande trafik till rätt container baserat på domän och konfiguration. Lösningen ger en " +
                                 "flexibel grund för att hosta flera tjänster på samma server samtidigt som säkerhet, underhållbarhet och skalbarhet bibehålls." }
                             },
-                            BackgroundColor = true
+                            BackgroundColor = "section-bg",
                         },
                         new TextSection()
                         {
@@ -201,8 +204,9 @@ namespace SciFiPortfolio.Data.Seeders
                             RightParagraph = { Text= "För att skapa en stabil och lättadministrerad driftmiljö är plattformen uppbyggd kring Docker." +
                             "Varje applikation körs i sin egen isolerade container tillsammans med en dedikerad PostgreSQL-databas. Genom att separera tjänsterna " +
                             "från varandra minimeras risken att ett problem i en applikation påverkar övriga system på servern."},
-                            BackgroundColor = true,
-                            SpaceBottm = true
+                       
+                            SpaceBottm = true,
+                            BackgroundColor = "section-bg",
                         },
                         new TextSection()
                         {
@@ -232,8 +236,8 @@ namespace SciFiPortfolio.Data.Seeders
                                 "oberoende av varandra. Resultatet är en flexibel och skalbar plattform som kan växa i takt med nya behov utan att kräva större " +
                                 "förändringar i den underliggande infrastrukturen." },
                             },
-                            BackgroundColor = true,
-                            SpaceBottm = false
+                            BackgroundColor = "section-bg",
+                            SpaceBottm = false,
                         },
                     }
                 }
@@ -241,6 +245,8 @@ namespace SciFiPortfolio.Data.Seeders
 
                 _context.Pages.Add(serverPage);
                 await _context.SaveChangesAsync();
+
+                _logger.LogInformation(":::::: Hosting page Seeded ::::::");
             }
         }
     }

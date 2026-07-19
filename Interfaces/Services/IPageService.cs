@@ -4,6 +4,6 @@ namespace SciFiPortfolio.Interfaces.Services
 {
     public interface IPageService
     {
-         Task<Page> GetPageAsync(string slug);
+        Task<Page> GetPageAsync(string slug);
     }
 }
