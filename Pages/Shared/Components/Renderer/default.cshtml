@@ -1,0 +1,14 @@
+﻿@model List<SectionPartialModel>
+@{
+
+}
+
+@if (Model is not null && Model.Any())
+{
+    <article>
+        @foreach (var section in Model)
+        {
+           <partial name="@(section.PartialName)" model="@(section.Section)" />
+        }
+    </article>
+}
