@@ -1,12 +1,29 @@
-﻿@* @model ImageWithPositionSection
+﻿@model ImageWithPositionSection
 @{
     var imageClass = Model.ImagePosition.ToString() == "Right" ? "image-postion-right" : "image-postion-left";
+    bool mobileImage = !string.IsNullOrWhiteSpace(Model.MobileImage.ImageUrl);
 }
 
 <div class="text-position-x">
-    <img class="@imageClass" src="~/@Model.Image.ImageUrl" alt="@Model.Image.AltText" />
+    <img class="@imageClass" src="~/@Model.DesktopImage.ImageUrl" alt="@Model.DesktopImage.AltText" />
     @foreach (var para in Model.Paragraphs)
     {
         <p>@para.Text</p>
-    }
+    } 
+</div>
+
+@* <div class="d-flex-column">
+    <div>
+        <img class="image-position-y @(mobileImage ? "desktop-img" : "") border-white" src="~/@Model.DesktopImage.ImageUrl" alt="@Model.DesktopImage.AltText" />
+        @if (mobileImage)
+        {
+            <img class="image-position-y mobile-img border-white" src="~/@Model.MobileImage.ImageUrl" alt="@Model.MobileImage.AltText" />
+        }
+    </div>
+    <div>
+        @foreach (var para in Model.Paragraphs)
+        {
+            <p>@para.Text</p>
+        }
+    </div>
 </div> *@

@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SciFiPortfolio.Interfaces.Services;
-using SciFiPortfolio.Models;
 using SciFiPortfolio.Models.ContentSections;
 
 namespace SciFiPortfolio.ViewComponents

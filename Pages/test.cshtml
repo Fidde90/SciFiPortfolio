@@ -1,8 +1,18 @@
 ﻿@page
-@model SciFiPortfolio.Pages.testModel
+@model SciFiPortfolio.Pages.TestModel
 @{
     var sections = Model.Vm.Sections;
 }
 
-<partial name="/Pages/Shared/SectionPartials/_ImageWithPositionSectionPartial.cshtml" model="sections[0]" />
+@* @if (Model.Vm.Hero is not null)
+{
+    <partial name="/Pages/Shared/SectionPartials/_HeroSectionPartial.cshtml" model="Model.Vm.Hero" />
+} *@
+
+@* @if (Model.Vm.ShowTitle)
+{
+    <h1 class="text-center text-mega main-title gradient-text sci-fi-text">@(Model.Vm.Page.Title)</h1>
+} *@
+<div class="section-space"></div>
+<vc:renderer sections="sections" />
 

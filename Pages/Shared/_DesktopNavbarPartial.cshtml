@@ -1,5 +1,15 @@
 ﻿<nav class="desktop">
     <div class="desktop-nav-items container">
+
+        <environment include="Development">
+            <div class="nav-item">
+                <div class="nav-item-header">
+                    <a asp-page="test" class="dropdown-link">Test Partial</a>
+                    <i class="primary-text fa-solid fa-caret-down"></i>
+                </div>
+            </div>
+        </environment>
+      
         <div class="nav-item">
             <div class="nav-item-header">
                 <a class="dropdown-link" href="./next-page.html">Projekt</a>

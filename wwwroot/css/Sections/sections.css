@@ -3,10 +3,11 @@
     padding:30px 0px;
 }
 
-.section-full{
-    max-width:100%;
-    width:100%;
+.section-full {
+    max-width: 100%;
+    width: 100%;
     height: fit-content;
+    display: flow-root;
 }
 
 .section-space {
@@ -43,30 +44,30 @@
 
 .image-postion-right{
     float: right;
-    width: 100%;
     height: auto;
+    max-width:100%;
     margin: 0 0 10px 20px;
 }
 
 .image-postion-left {
     float: left;
-    width: 100%;
     height: auto;
+    max-width: 100%;
     margin: 0 20px 10px 0;
 }
 
 .image-position-y {
-    width: 100%;
+    max-width: 100%;
     height: auto;
 }
 
 @media (min-width:768px) {
     .image-postion-right {
-        max-width: 500px;
+        max-width: 495px;
     }
 
     .image-postion-left {
-        max-width: 500px;
+        max-width: 495px;
     }
 }
 

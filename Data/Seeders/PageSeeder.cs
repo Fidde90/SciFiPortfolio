@@ -53,7 +53,8 @@ namespace SciFiPortfolio.Data.Seeders
                                 new(){ ImageUrl="Images/azure.svg", AltText= "azure icon"},
                                 new(){ ImageUrl="Images/api.svg", AltText= "api icon"},
                                 new(){ ImageUrl="Images/docker.svg", AltText= "docker icon"},
-                                new(){ ImageUrl="Images/nginx.svg", AltText= "nginX icon"}
+                                new(){ ImageUrl="Images/nginx.svg", AltText= "nginX icon"},
+                                new(){ ImageUrl="Images/postgres-ub.png", AltText= "postgresql icon"},
                             },
                         },
                         new TextSection()
@@ -161,8 +162,8 @@ namespace SciFiPortfolio.Data.Seeders
                                 new(){ Text = "Servern är uppbyggd enligt en lagerindelad arkitektur där Nginx körs direkt på " +
                                 "värdmaskinen och fungerar som central ingresspunkt för all inkommande trafik." },
                             },
-                            DesktopImage = { ImageUrl = "images/infra2.png"},
-                            MobileImage = { ImageUrl = "images/infrastrukturdesign.png" },
+                            DesktopImage = { ImageUrl = "images/infra-desktop.png"},
+                            MobileImage = { ImageUrl = "images/infra-mobile.png" },
                             ImagePosition = ImagePosition.Bottom
                         },
                         new TextSection()
@@ -241,6 +242,69 @@ namespace SciFiPortfolio.Data.Seeders
                         },
                     }
                 }
+                };
+
+                _context.Pages.Add(serverPage);
+                await _context.SaveChangesAsync();
+
+                _logger.LogInformation(":::::: Hosting page Seeded ::::::");
+            }
+
+            if (!await _context.Pages.AnyAsync(page => page.Slug == "receptakuten"))
+            {
+                var serverPage = new PageEntity
+                {
+                    Title = "Receptakuten",
+                    Slug = "receptakuten",
+                    Published = true,
+                    PageContent =
+                    {
+                        Sections =
+                        {
+                            new HeroSection
+                            {
+                                Heading = "Receptakuten",
+                                SubHeading = "",
+                                SpaceBottm = true
+                            },
+                            new ImageWithPositionSection
+                            {
+                                Heading = "Om projektet",
+                                Paragraphs =
+                                {
+                                    new()
+                                    { Text = "ReceptAkuten är en webbapp där användare kan skapa, spara och dela recept samt få hjälp med att planera sina måltider." +
+                                        "Målet med projektet är att göra det enklare att hålla ordning på sina recept och minska tiden som läggs på att planera veckans mat."
+                                    },
+                                    new()
+                                    { Text = "Användare kan skapa egna recept, spara recept från andra användare och anpassa kopior av recept efter egna önskemål utan att ändra originalet." +
+                                        "Det finns även möjlighet att skapa grupper där användare kan dela recept och innehåll med exempelvis familj eller vänner."
+                                    },
+                                        new()
+                                    { Text = "Systemet kan använda användarens valda recept för att skapa måltidsplaner och generera inköpslistor baserat på de planerade måltiderna." +
+                                        "Projektet har utvecklats med fokus på en tydlig struktur där presentation, affärslogik och datalagring är separerade för att göra systemet" +
+                                        "enklare att vidareutveckla och underhålla."
+                                    },
+                                },
+                                DesktopImage = { ImageUrl = "images/recept-dashboard.png"},
+                                ImagePosition = ImagePosition.Right,
+                                BackgroundColor = "section-bg",
+
+                            },
+
+
+
+
+
+
+
+
+
+
+
+
+                        }
+                    }
                 };
 
                 _context.Pages.Add(serverPage);

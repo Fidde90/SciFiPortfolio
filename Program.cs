@@ -16,8 +16,7 @@ namespace SciFiPortfolio
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-            string connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? 
-                throw new InvalidOperationException("Connection string" + "'DefaultConnection' not found.");
+            string connectionString = "Data Source=app.db";
 
             builder.Services.AddDbContext<SciFiContext>((op) =>
             {

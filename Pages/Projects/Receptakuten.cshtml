@@ -16,13 +16,17 @@
         <div class="container">
             <h2 class="text-green sci-fi-text">Om projektet</h2>
             <p class="">
-                ReceptAkuten är en webbaserad plattform för receptdelning och automatiserad måltidsplanering.
-                Tanken bakom projektet är att göra det enklare för användare att samla sina recept på ett ställe,
-                dela dem med vänner och familj samt låta systemet generera varierade matscheman baserat på de recept som användaren själv väljer att inkludera.
-                Användare kan skapa egna recept, organisera sig i grupper och bjuda in andra medlemmar för att dela innehåll.
-                Recept kan sparas från andra användare och därefter anpassas efter egna preferenser utan att originalreceptet påverkas.
-                Systemet kan även generera inköpslistor baserat på planerade måltider, vilket minskar den manuella administrationen kring veckoplanering och matinköp.
-                Projektet utvecklades med fokus på skalbarhet, säkerhet och en tydlig separation mellan presentation, affärslogik och infrastruktur.
+                ReceptAkuten är en webbapp där användare kan skapa, spara och dela recept samt få hjälp med att planera sina måltider. 
+                Målet med projektet är att göra det enklare att hålla ordning på sina recept och minska tiden som läggs på att planera veckans mat.
+            </p>
+            <p class="">
+                Användare kan skapa egna recept, spara recept från andra användare och anpassa kopior av recept efter egna önskemål utan att ändra originalet. 
+                Det finns även möjlighet att skapa grupper där användare kan dela recept och innehåll med exempelvis familj eller vänner.
+            </p>
+            <p class="">
+                Systemet kan använda användarens valda recept för att skapa måltidsplaner och generera inköpslistor baserat på de planerade måltiderna. 
+                Projektet har utvecklats med fokus på en tydlig struktur där presentation, affärslogik och datalagring är separerade för att göra systemet 
+                enklare att vidareutveckla och underhålla.
             </p>
         </div>
     </section>
@@ -31,25 +35,26 @@
         <div class="container">
             <h2 class="text-green sci-fi-text">Systemarkitektur</h2>
             <p>
-                ReceptAkuten är uppbyggt som en modern klient-server-applikation där frontend, backend och databas är separerade i egna tjänster.
-                Frontenden är utvecklad i Vue.js 3 med Composition API medan backend består av ett REST API byggt med .NET 8.
-                Data lagras i PostgreSQL.
+                ReceptAkuten är uppbyggt som en klient-server-applikation där frontend, backend och databas är separerade från varandra. 
+                Frontenden är utvecklad i Vue.js 3 med Composition API och kommunicerar med ett REST API byggt i .NET 8. 
+                Systemets data lagras i en PostgreSQL-databas.
             </p>
             <p>
-                Samtliga delar av systemet körs i separata Docker-containrar och kommunicerar via interna nätverk.
-                Denna uppdelning gör det möjligt att utveckla,
-                uppdatera och distribuera varje tjänst oberoende av de övriga samtidigt som infrastrukturen förblir lätt att underhålla.
+                De olika delarna körs i separata Docker-containrar, vilket gör det enklare att utveckla och uppdatera 
+                varje del utan att påverka resten av systemet. 
+                Containrarna kommunicerar med varandra via interna nätverk och hanteras som separata tjänster.
             </p>
             <p>
-                I produktionsmiljön exponeras frontenden via receptakuten.net medan API:t ligger bakom en separat subdomän på api.receptakuten.net.
-                För kvalitetssäkring och verifiering av nya funktioner finns även en stagingmiljö med egna instanser av både frontend och backend.
-                Stagingmiljön skyddas med Basic Authentication och används som sista steg innan förändringar distribueras till produktion.
+                I produktionsmiljön är frontenden tillgänglig via receptakuten.net och backend-API körs på en separat subdomän, 
+                api.receptakuten.net. För att kunna testa nya funktioner innan de släpps finns även en separat stagingmiljö med 
+                egna instanser av frontend och backend. Denna miljö är skyddad med Basic Authentication och används för att kontrollera 
+                att förändringar fungerar innan de distribueras till produktion.
             </p>
             <p>
-                Utvecklingsflödet följer en tydlig releaseprocess där nya funktioner utvecklas i feature-brancher
-                innan de successivt flyttas vidare genom develop-, staging- och produktionsmiljöerna.
-                Varje miljö använder egna konfigurationsfiler och miljövariabler för att säkerställa att testning kan ske utan påverkan på produktionsdata.
-            </p>
+                Utvecklingen sker genom att nya funktioner först skapas i egna feature-brancher och sedan flyttas vidare genom 
+                olika miljöer innan de når produktion. Varje miljö har egna inställningar och miljövariabler för att separera 
+                testmiljön från produktionsmiljön och undvika påverkan på riktig användardata.
+            </p>         
         </div>
     </section>
 
@@ -80,6 +85,17 @@
             </p>
         </div>
     </section>
+
+
+
+
+
+
+
+
+
+
+
 
     <section class="section">
         <div class="container">
@@ -141,7 +157,7 @@
             <ul class="striped-list">
                 <li>JWT Authentication</li>
                 <li>Refresh Tokens</li>
-                <li>CSRF-skydd</li>
+                <li>CSRF-skydd (XXS ?)</li>
                 <li>Rate Limiting</li>
                 <li>Inputvalidering</li>
                 <li>Roll- och behörighetskontroller</li>
@@ -151,7 +167,7 @@
                 obehöriga användare inte kan kringgå systemets regler genom manipulerade anrop.
             </p>
             <p>
-                För att aktivera nya konton krävs e-postverifiering och samma mekanism används vid återställning av lösenord.
+                För att aktivera nya konton krävs e-postverifiering och samma mekanism används vid glömt lösenord.
             </p>
         </div>
     </section>
