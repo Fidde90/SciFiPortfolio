@@ -40,7 +40,7 @@ namespace SciFiPortfolio.Data.Seeders
                         {
                             Heading = "Fredrik Bengtsson",
                             SubHeading = "Fullstack .Net Utvecklare",
-                            SpaceBottm = true
+                            SpaceBottom = true
                         },
                         new CarouselSection
                         {
@@ -134,7 +134,7 @@ namespace SciFiPortfolio.Data.Seeders
                         new HeroSection
                         {
                             Image = new(){ ImageUrl = "Images/server.png"},
-                            SpaceBottm = false
+                            SpaceBottom = false
                         },
 
                         new ListSection
@@ -206,7 +206,7 @@ namespace SciFiPortfolio.Data.Seeders
                             "Varje applikation körs i sin egen isolerade container tillsammans med en dedikerad PostgreSQL-databas. Genom att separera tjänsterna " +
                             "från varandra minimeras risken att ett problem i en applikation påverkar övriga system på servern."},
                        
-                            SpaceBottm = true,
+                            SpaceBottom = true,
                             BackgroundColor = "section-bg",
                         },
                         new TextSection()
@@ -238,7 +238,7 @@ namespace SciFiPortfolio.Data.Seeders
                                 "förändringar i den underliggande infrastrukturen." },
                             },
                             BackgroundColor = "section-bg",
-                            SpaceBottm = false,
+                            SpaceBottom = false,
                         },
                     }
                 }
@@ -265,7 +265,7 @@ namespace SciFiPortfolio.Data.Seeders
                             {
                                 Heading = "Receptakuten",
                                 SubHeading = "",
-                                SpaceBottm = true
+                                SpaceBottom = true
                             },
                             new ImageWithPositionSection
                             {

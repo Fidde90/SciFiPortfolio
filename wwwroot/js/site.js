@@ -20,7 +20,10 @@ window.addEventListener('resize', () => {
 window.addEventListener('load', () => {
     const carousel = document.querySelector('.carousel');
     const carouselGroup = document.querySelector('.carousel-group');
-    carousel.innerHTML += carousel.innerHTML;
+
+    if (carousel) {
+        carousel.innerHTML += carousel.innerHTML;
+    }
 });
 
 mobileBtn.addEventListener('click', () => {

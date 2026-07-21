@@ -7,8 +7,8 @@
 @if (IsTopPosition)
 {
     <div class="d-flex-column">
-        <div>
-            <img class="image-position-y @(mobileImage ? "desktop-img" : "") border-white" src="~/@Model.DesktopImage.ImageUrl" alt="@Model.DesktopImage.AltText" />
+        <div class="text-center">
+            <img class="image-position-y @(mobileImage ? "desktop-img" : "")" src="~/@Model.DesktopImage.ImageUrl" alt="@Model.DesktopImage.AltText" />
             @if (mobileImage)
             {
                 <img class="image-position-y mobile-img border-white" src="~/@Model.MobileImage.ImageUrl" alt="@Model.MobileImage.AltText" />

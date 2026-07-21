@@ -11,6 +11,7 @@ namespace SciFiPortfolio.Models.ContentSections
     [JsonDerivedType(typeof(HeroSection), "hero-section")]
     [JsonDerivedType(typeof(CarouselSection),"carousel-section")]
     [JsonDerivedType(typeof(DockerSection), "docker-section")]
+    [JsonDerivedType(typeof(FlexSection), "flex-section")]
 
     public abstract class ContentSection
     {
@@ -18,8 +19,10 @@ namespace SciFiPortfolio.Models.ContentSections
 
         public string? SubHeading { get; set; }
 
-        public bool SpaceBottm { get; set; } = true;
+        public bool SpaceBottom { get; set; } = true;
 
         public string BackgroundColor { get; set; } = "";
+
+        public bool Paddings { get; set; } = true;
     }
 }

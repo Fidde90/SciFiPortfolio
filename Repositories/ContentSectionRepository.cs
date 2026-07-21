@@ -31,7 +31,7 @@ namespace SciFiPortfolio.Repositories
                             new(){ Text = "Jag drivs av att lösa problem, lära mig nya tekniker och utveckla lösningar som skapar verkligt värde. Oavsett om det handlar om att optimera prestanda i ett API, bygga nya funktioner eller sätta upp en stabil produktionsmiljö strävar jag alltid efter att leverera kod av hög kvalitet." },
                             new(){ Text = "När jag inte utvecklar utforskar jag gärna nya tekniker och verktyg för att fortsätta utvecklas som utvecklare och hålla mig uppdaterad inom branschen." }
                         },
-                        SpaceBottm = true,
+                        SpaceBottom = true,
                         BackgroundColor = ""
                     }
                 };

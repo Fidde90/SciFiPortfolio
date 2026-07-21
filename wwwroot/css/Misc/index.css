@@ -33,7 +33,7 @@
 
 .d-flex-column {
     display: flex;
-    gap: 20px;
+    gap: 10px;
     flex-direction:column;
 }
 /*-------------------------------------------------------*/

@@ -1,0 +1,61 @@
+﻿@model FlexSection
+
+@{
+    var imagesRight = Model.ImagesRight;
+    var imagesLeft = Model.ImagesLeft;
+    var paragraphsRight = Model.ParagraphsRight;
+    var paragraphsLeft = Model.ParagraphsLeft;
+}
+
+<section class="section-full @(!string.IsNullOrWhiteSpace(Model.BackgroundColor) ? $"{Model.BackgroundColor}" : "") @(Model.Paddings ? "pt-3 pb-3" : "")">
+    <div class="container">
+        @if (!string.IsNullOrWhiteSpace(Model.Heading))
+        {
+            <h2 class="text-green sci-fi-text">@Model.Heading</h2>
+        }
+        @if (!string.IsNullOrWhiteSpace(Model.SubHeading))
+        {
+            <h3 class="text-green sci-fi-text">@Model.SubHeading</h3>
+        }
+
+        <div class="flex-section">
+            <div class="flex-section-box">
+                @if (paragraphsLeft is not null && paragraphsLeft.Any())
+                {
+                    foreach (var p in paragraphsLeft)
+                    {
+                        <p>@p.Text</p>
+                    }
+                }         
+                @if (imagesLeft is not null && imagesLeft.Any())
+                {
+                    foreach (var img in imagesLeft)
+                    {
+                        <img class="flex-section-img" src="@img.ImageUrl" alt="@img.AltText" />
+                    }
+                }
+            </div> 
+
+            <div class ="flex-section-box">
+                @if (paragraphsRight is not null && paragraphsRight.Any())
+                {
+                    foreach (var p in paragraphsRight)
+                    {
+                        <p>@p.Text</p>
+                    }
+                }         
+                @if (imagesRight is not null && imagesRight.Any())
+                {
+                    foreach (var img in imagesRight)
+                    {
+                        <img class="flex-section-img" src="@img.ImageUrl" alt="@img.AltText" />
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</section>
+@if (Model.SpaceBottom)
+{
+    <div class="section-space"></div>
+}

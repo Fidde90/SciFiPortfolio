@@ -4,6 +4,7 @@
     var sections = Model.Vm.Sections;
 }
 
+
 @* @if (Model.Vm.Hero is not null)
 {
     <partial name="/Pages/Shared/SectionPartials/_HeroSectionPartial.cshtml" model="Model.Vm.Hero" />
@@ -13,6 +14,7 @@
 {
     <h1 class="text-center text-mega main-title gradient-text sci-fi-text">@(Model.Vm.Page.Title)</h1>
 } *@
+<div class="section-space"></div>
 <div class="section-space"></div>
 <vc:renderer sections="sections" />
 

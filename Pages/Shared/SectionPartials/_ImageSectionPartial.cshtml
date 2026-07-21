@@ -5,7 +5,7 @@
     var mobileImages = Model.MobileImages;
 }
 
-<section class="section-full @(!string.IsNullOrWhiteSpace(Model.BackgroundColor) ? $"{Model.BackgroundColor} pt-3 pb-3" : "")">
+<section class="section-full @(!string.IsNullOrWhiteSpace(Model.BackgroundColor) ? $"{Model.BackgroundColor}" : "") @(Model.Paddings ? "pt-3 pb-3" : "")">
     <div class="container">
         @if (!string.IsNullOrWhiteSpace(Model.Heading))
         {
@@ -18,16 +18,19 @@
         <div class="text-center">
             @foreach (var image in desktopImages)
             {
-                <img class="desktop-img" src="~/@image.ImageUrl" alt="@image.AltText" />
+                <img class="@(mobileImages.Any() ? "desktop-img" : "regular-img")" src="~/@image.ImageUrl" alt="@image.AltText" />
             }
-            @foreach (var image in mobileImages)
+            @if (mobileImages.Any())
             {
-                <img class="mobile-img" src="~/@image.ImageUrl" alt="@image.AltText" />
+                @foreach (var image in mobileImages)
+                {
+                    <img class="mobile-img" src="~/@image.ImageUrl" alt="@image.AltText" />
+                }
             }
         </div>
     </div>  
 </section>
-@if (Model.SpaceBottm)
+@if (Model.SpaceBottom)
 {
     <div class="section-space"></div>
 }
