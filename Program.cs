@@ -16,12 +16,10 @@ namespace SciFiPortfolio
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-            string connectionString = "Data Source=app.db";
 
-            builder.Services.AddDbContext<SciFiContext>((op) =>
-            {
-                op.UseSqlite(connectionString);
-            });
+            builder.Services.AddDbContext<SciFiContext>(options =>
+                options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")
+            ));
 
             builder.Services.AddScoped<IContentSectionRepository, ContentSectionRepository>();
             builder.Services.AddScoped<IContentSectionService, ContentSectionService>();

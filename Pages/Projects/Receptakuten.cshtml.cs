@@ -29,6 +29,7 @@ namespace SciFiPortfolio.Pages.Projects
             Vm.Hero = PageHelper.GetHeroSection(page);
             page.Sections = PageHelper.FilterHero(page);
             Vm.Page = page;
+            Vm.ShowTitle = false;
         }
     }
 }

@@ -1,12 +1,19 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using SciFiPortfolio.Models.ContentSections;
 
 namespace SciFiPortfolio.Entities
 {
     public class PageEntity
     {
         [Key]
-        public int Id { get; set; }
+        public string Id { get; set; } = Guid.NewGuid().ToString(); 
+
+        public string? ParentPageId { get; set; }
+
+        public PageEntity? ParentPage { get; set; }
+
+        public PageContentEntity? PageContent { get; set; }
+
+        public ICollection<PageEntity> ChildPages { get; set; } = [];
 
         [MaxLength(100)]
         public string? Title { get; set; }
@@ -15,9 +22,6 @@ namespace SciFiPortfolio.Entities
         public string Slug { get; set; } = null!;
 
         public bool Published { get; set; } = false;
-
-        [Required]
-        public JsonPageContent PageContent { get; set; } = new();
 
         public DateTime? PublishedDate { get; set; }
 

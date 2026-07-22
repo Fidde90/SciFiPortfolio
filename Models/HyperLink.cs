@@ -6,6 +6,6 @@
 
         public string LinkUrl { get; set; } = "/";
 
-        public Icon? Icon { get; set; }
+        public string? IconName { get; set; }
     }
 }

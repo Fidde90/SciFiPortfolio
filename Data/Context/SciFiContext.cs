@@ -9,17 +9,46 @@ namespace SciFiPortfolio.Data.Context
     {
         public DbSet<PageEntity> Pages { get; set; }
 
+        public DbSet<PageContentEntity> PageContents { get; set; }
+
+        public DbSet<ProjectCardEntity> ProjectCards { get; set; }
+
+        public DbSet<TagEntity> Tags { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<PageEntity>()
-                .Property(x => x.PageContent)
+            modelBuilder.Entity<PageContentEntity>()
+                .Property(x => x.Content)
+                .HasColumnType("jsonb")
                 .HasConversion(
-                    v => JsonSerializer.Serialize(v, JsonSerializerOptions.Default),
-                    v => JsonSerializer.Deserialize<JsonPageContent>(
-                            v,
-                            JsonSerializerOptions.Default
-                            ) ?? new JsonPageContent()
-                    );
+                    content => JsonSerializer.Serialize(content, JsonSerializerOptions.Default),
+                    json => JsonSerializer.Deserialize<JsonPageContent>(
+                        json,
+                        JsonSerializerOptions.Default
+                    ) ?? new()
+                );
+
+            modelBuilder.Entity<ProjectCardEntity>(card =>
+            {
+                card.OwnsOne(card => card.Hyperlink);
+                card.OwnsOne(c => c.AppLink);
+            });
+
+            modelBuilder.Entity<PageEntity>()
+                .HasOne(p => p.ParentPage)
+                .WithMany(p => p.ChildPages)
+                .HasForeignKey(p => p.ParentPageId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<PageContentEntity>()
+                .HasOne(pc => pc.Page)
+                .WithOne(p => p.PageContent)
+                .HasForeignKey<PageContentEntity>(pc => pc.PageId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<TagEntity>()
+                .HasIndex(x => x.Name)
+                .IsUnique();
         }
     }
 }

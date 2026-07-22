@@ -4,6 +4,6 @@
     {
         public string? Text { get; set; }
 
-        public Icon? Icon { get; set; }
+        public string? IconName { get; set; }
     }
 }

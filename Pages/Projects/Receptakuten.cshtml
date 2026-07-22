@@ -4,7 +4,22 @@
 @{
 }
 
-<section class="project-hero">
+@if (Model.Vm is not null && Model.Vm.Page is not null)
+{
+    @if (Model.Vm.Hero is not null)
+    {
+        <partial name="/Pages/Shared/SectionPartials/_HeroSectionPartial.cshtml" model="Model.Vm.Hero" />
+    }
+
+    @if (Model.Vm.ShowTitle)
+    {
+        <h1 class="text-center text-mega main-title gradient-text sci-fi-text">@(Model.Vm.Page.Title)</h1>
+    }
+
+    <vc:Renderer sections="Model.Vm.Page.Sections" />
+}
+
+@* <section class="project-hero">
     <div class="hero-img-container">
         <img src="~/Images/receptakuten-hero.png" alt="">
     </div>
@@ -225,4 +240,4 @@
         </div>
     </section>
 
-</article>
+</article> *@

@@ -4,8 +4,12 @@
     {
         public string LinkText { get; set; } = "";
 
-        public RouteValues RouteValues { get; set; } = new();
+        public string LinkUrl { get; set; } = "";
 
-        public Icon? Icon {  get; set; }
+        public string? PageSlug { get; set; }
+
+        public string? PageId { get; set; }
+ 
+        public string? IconName {  get; set; }
     }
 }
