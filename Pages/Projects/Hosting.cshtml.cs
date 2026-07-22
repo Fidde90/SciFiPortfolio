@@ -18,7 +18,7 @@ namespace SciFiPortfolio.Pages.Projects
         }
 
 
-        public async Task OnGetAsync([FromQuery] string slug)
+        public async Task OnGetAsync([FromRoute] string slug)
         {
             ViewData["Title"] = "Vps - Hosting";
 

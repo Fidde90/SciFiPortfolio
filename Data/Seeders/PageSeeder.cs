@@ -25,12 +25,12 @@ namespace SciFiPortfolio.Data.Seeders
 
         private async Task SeedPagesAsync()
         {
-            if (!await _context.Pages.AnyAsync(page => page.Slug == "index"))
+            if (!await _context.Pages.AnyAsync(page => page.Slug == "/"))
             {
                 var indexPage = new PageEntity
                 {
                     Title = "Home",
-                    Slug = "index",
+                    Slug = "/",
                     Published = true,
                     PageContent =
                 {

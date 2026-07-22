@@ -392,7 +392,6 @@ namespace SciFiPortfolio.Pages
             };
 
             Vm.Sections.AddRange(sections);
-
         }
     }
 }

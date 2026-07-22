@@ -17,7 +17,7 @@ namespace SciFiPortfolio.Pages
             _pageService = pageService;
         }
 
-        public async Task OnGet([FromQuery] string slug = "index")
+        public async Task OnGet([FromRoute] string slug = "/")
         {
             ViewData["Title"] = "Fredrik Bengtsson | .NET Developer Portfolio";
 
