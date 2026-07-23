@@ -28,8 +28,7 @@ namespace SciFiPortfolio.Repositories
             return await _context.ProjectCards
                 .Include(p => p.Tags)
                 .Where(p => cardIds.Contains(p.Id))
-                .ToListAsync();
-                
+                .ToListAsync();     
         }
     }
 }

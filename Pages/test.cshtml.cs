@@ -21,13 +21,6 @@ namespace SciFiPortfolio.Pages
 
             var sections = new List<ContentSection>()
             {
-                //new HeroSection
-                //{
-                //    Image = new() { ImageUrl = "images/recept-bil-ub.png"  },
-                //    Heading = "",
-                //    SubHeading = "",
-                //    SpaceBottom = true
-                //},
                new ImageWithPositionSection
                 {
                     Heading = "",

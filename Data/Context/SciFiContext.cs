@@ -38,7 +38,7 @@ namespace SciFiPortfolio.Data.Context
                 .HasOne(p => p.ParentPage)
                 .WithMany(p => p.ChildPages)
                 .HasForeignKey(p => p.ParentPageId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<PageContentEntity>()
                 .HasOne(pc => pc.Page)

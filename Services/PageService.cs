@@ -1,4 +1,5 @@
-﻿using SciFiPortfolio.Interfaces.Repositories;
+﻿using SciFiPortfolio.Entities;
+using SciFiPortfolio.Interfaces.Repositories;
 using SciFiPortfolio.Interfaces.Services;
 using SciFiPortfolio.Models;
 using SciFiPortfolio.Models.ContentSections;
@@ -14,7 +15,7 @@ namespace SciFiPortfolio.Services
             _pageRepo = pageRepo;
         }
 
-        public async Task<Page> GetPageAsync(string slug)
+        public async Task<Page?> GetPageAsync(string slug)
         {
             if (string.IsNullOrWhiteSpace(slug))
                 return null!;
@@ -26,29 +27,19 @@ namespace SciFiPortfolio.Services
 
             var pageContentSections = dbPage.PageContent?.Content.Sections;
 
-            if (pageContentSections is null || !pageContentSections.Any())
-                return null!;
-
-            var cardSection = pageContentSections.OfType<CardSection>().FirstOrDefault();
-
-            if(cardSection is not null)
+            if (pageContentSections is not null && pageContentSections.Any())
             {
-                var cardIds = cardSection.CardIds;
-                var cards = await GetProjectCardsAsync(cardIds);
-                cardSection.Cards = cards;
+                var cardSection = pageContentSections.OfType<CardSection>().FirstOrDefault();
+
+                if (cardSection is not null)
+                {
+                    var cardIds = cardSection.CardIds;
+                    var cards = await GetProjectCardsAsync(cardIds);
+                    cardSection.Cards = cards;
+                }
             }
 
-            var page = new Page
-            {
-                Id = dbPage.Id,
-                Title = dbPage.Title,
-                Slug = dbPage.Slug,
-                Published = dbPage.Published,
-                Sections = pageContentSections,
-                PublishedDate = dbPage.PublishedDate ?? DateTime.MinValue,
-                CreatedAt = dbPage.CreatedAt,
-                UpdatedAt = dbPage.UpdatedAt,
-            };
+            var page = ToPageModel(dbPage);
 
             return page;
         }
@@ -101,6 +92,55 @@ namespace SciFiPortfolio.Services
             }
 
             return cards;
+        }
+
+        public List<Page> ToPageModels(IEnumerable<PageEntity> entities)
+        {
+            if (entities is null || !entities.Any())
+                return [];
+
+            var returnList = new List<Page>();
+
+            foreach (var p in entities)
+            {
+                var page = new Page
+                {
+                    Id = p.Id,
+                    Title = p.Title,
+                    Slug = p.Slug,
+                    Published = p.Published,
+                    Sections = p.PageContent?.Content.Sections ?? [],
+                    ChildPages = ToPageModels(p.ChildPages.ToList()),
+                    PublishedDate = p.PublishedDate ?? DateTime.MinValue,
+                    CreatedAt = p.CreatedAt,
+                    UpdatedAt = p.UpdatedAt,
+                };
+
+                returnList.Add(page);
+            }
+           
+            return returnList;
+        }
+
+        public Page? ToPageModel(PageEntity entity)
+        {
+            if (entity is null)
+                return null;
+
+            var page = new Page
+            {
+                Id = entity.Id,
+                Title = entity.Title,
+                Slug = entity.Slug,
+                Published = entity.Published,
+                Sections = entity.PageContent?.Content.Sections ?? [],
+                ChildPages = ToPageModels(entity.ChildPages),
+                PublishedDate = entity.PublishedDate ?? DateTime.MinValue,
+                CreatedAt = entity.CreatedAt,
+                UpdatedAt = entity.UpdatedAt,
+            };
+
+            return page;
         }
     }
 }

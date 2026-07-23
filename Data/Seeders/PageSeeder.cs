@@ -4,7 +4,6 @@ using SciFiPortfolio.Entities;
 using SciFiPortfolio.Enums;
 using SciFiPortfolio.Interfaces;
 using SciFiPortfolio.Models.ContentSections;
-using static System.Collections.Specialized.BitVector32;
 
 namespace SciFiPortfolio.Data.Seeders
 {
@@ -26,9 +25,18 @@ namespace SciFiPortfolio.Data.Seeders
 
         private async Task SeedPagesAsync()
         {
-            if (!await _context.Pages.AnyAsync(page => page.Slug == "/"))
+            var index = await _context.Pages.FirstOrDefaultAsync(x => x.Slug == "/");
+            var sciFiPort = await _context.Pages.FirstOrDefaultAsync(x => x.Slug == "sci-fi-portfolio");
+            var vpsHosting = await _context.Pages.FirstOrDefaultAsync(x => x.Slug == "vps-hosting");
+            var receptakuten = await _context.Pages.FirstOrDefaultAsync(x => x.Slug == "receptakuten");
+            var receptaktenFrontend = await _context.Pages.FirstOrDefaultAsync(x => x.Slug == "receptakuten-frontend");
+            var receptaktenBackend = await _context.Pages.FirstOrDefaultAsync(x => x.Slug == "receptakuten-backend");
+
+            #region Create Page Meta
+
+            if (index is null)
             {
-                var Index = new PageEntity
+                index = new PageEntity
                 {
                     Title = "Home",
                     Slug = "/",
@@ -36,15 +44,15 @@ namespace SciFiPortfolio.Data.Seeders
                     PublishedDate = DateTime.UtcNow
                 };
 
-                _context.Pages.Add(Index);
+                _context.Pages.Add(index);
                 await _context.SaveChangesAsync();
 
                 _logger.LogInformation(":::::: Index Page Seeded ::::::");
             }
 
-            if (!await _context.Pages.AnyAsync(page => page.Slug == "vps-hosting"))
+            if (vpsHosting is null)
             {
-                var server = new PageEntity
+                vpsHosting = new PageEntity
                 {
                     Title = "Serverarkitektur",
                     Slug = "vps-hosting",
@@ -52,15 +60,15 @@ namespace SciFiPortfolio.Data.Seeders
                     PublishedDate = DateTime.UtcNow
                 };
 
-                _context.Pages.Add(server);
+                _context.Pages.Add(vpsHosting);
                 await _context.SaveChangesAsync();
 
                 _logger.LogInformation(":::::: Vps Page Seeded ::::::");
             }
 
-            if (!await _context.Pages.AnyAsync(page => page.Slug == "receptakuten"))
+            if (receptakuten is null)
             {
-                var receptakutenPage = new PageEntity
+                receptakuten = new PageEntity
                 {
                     Title = "Receptakuten",
                     Slug = "receptakuten",
@@ -68,15 +76,51 @@ namespace SciFiPortfolio.Data.Seeders
                     PublishedDate = DateTime.UtcNow
                 };
 
-                _context.Pages.Add(receptakutenPage);
+                _context.Pages.Add(receptakuten);
                 await _context.SaveChangesAsync();
 
                 _logger.LogInformation(":::::: Receptakuten Page Seeded ::::::");
             }
 
-            if (!await _context.Pages.AnyAsync(page => page.Slug == "sci-fi-portfolio"))
+            if(receptakuten is not null)
             {
-                var sciFi = new PageEntity
+                if(receptaktenFrontend is null)
+                {
+                    receptaktenFrontend = new PageEntity
+                    {
+                        Title = "Frontend",
+                        Slug = "receptakuten-frontend",
+                        Published = true,
+                        PublishedDate = DateTime.UtcNow,
+                        ParentPageId = receptakuten.Id
+                    };
+
+                    _context.Pages.Add(receptaktenFrontend);
+                    await _context.SaveChangesAsync();
+                    _logger.LogInformation(":::::: Receptakuten Child Page - FrontEnd Seeded ::::::");
+                }
+
+                if (receptaktenBackend is null)
+                {
+
+                    receptaktenBackend = new PageEntity
+                    {
+                        Title = "Backend",
+                        Slug = "receptakuten-backend",
+                        Published = true,
+                        PublishedDate = DateTime.UtcNow,
+                        ParentPageId = receptakuten.Id
+                    };
+
+                    _context.Pages.Add(receptaktenBackend);
+                    await _context.SaveChangesAsync();
+                    _logger.LogInformation(":::::: Receptakuten Child Page - BackEnd Seeded ::::::");
+                }
+            }
+
+            if (sciFiPort is null)
+            {
+                sciFiPort = new PageEntity
                 {
                     Title = "Sci-fi Portfolio",
                     Slug = "sci-fi-portfolio",
@@ -84,14 +128,15 @@ namespace SciFiPortfolio.Data.Seeders
                     PublishedDate = DateTime.UtcNow
                 };
 
-                _context.Pages.Add(sciFi);
+                _context.Pages.Add(sciFiPort);
                 await _context.SaveChangesAsync();
 
                 _logger.LogInformation(":::::: Sci-fi Page Seeded ::::::");
             }
 
-            var pagesLookUp = await _context.Pages
-                .ToDictionaryAsync(x => x.Slug);
+            #endregion
+
+            #region Tags, Cards, Lookups
 
             var tags = new List<TagEntity>()
             {
@@ -134,7 +179,7 @@ namespace SciFiPortfolio.Data.Seeders
                     ImageUrl = "Images/receptakuten.png",
                     ImageAltText = "receptakuten image",
                     Hyperlink = { LinkText= "Testa den här", LinkUrl="https://receptakuten.net", IconName = "fa-solid fa-arrow-right" },
-                    AppLink = { LinkText= "Läs mer om appen", LinkUrl = "/Projects/Receptakuten", PageSlug = "receptakuten", PageId = pagesLookUp["receptakuten"].Id },
+                    AppLink = { LinkText= "Läs mer om appen", LinkUrl = "/Projects/Receptakuten", PageSlug = "receptakuten", PageId = receptakuten.Id },
                     Tags = {
                         tagLookup[".net-api"],
                         tagLookup["vue-js"],
@@ -148,7 +193,7 @@ namespace SciFiPortfolio.Data.Seeders
                     UniqueName = "vps-hosting",
                     ImageUrl = "Images/server.png",
                     ImageAltText = "image of a server",
-                    AppLink = { LinkText="Läs mer", LinkUrl = "Projects/Hosting", PageSlug ="vps-hosting", PageId = pagesLookUp["vps-hosting"].Id },
+                    AppLink = { LinkText="Läs mer", LinkUrl = "Projects/Hosting", PageSlug ="vps-hosting", PageId = vpsHosting.Id },
                     Tags = {
                         tagLookup["nginx"],
                         tagLookup["ubuntu-server"],
@@ -162,7 +207,7 @@ namespace SciFiPortfolio.Data.Seeders
                     UniqueName = "sci-fi-portfolio",
                     ImageUrl = "Images/portimg.jpeg",
                     ImageAltText = "a sci-fi image",
-                    AppLink = { LinkText="Läs mer", LinkUrl ="/", PageSlug="sci-fi-portfolio", PageId = pagesLookUp["sci-fi-portfolio"].Id },
+                    AppLink = { LinkText="Läs mer", LinkUrl ="/", PageSlug="sci-fi-portfolio", PageId = sciFiPort.Id },
                     Tags = {
                         tagLookup["razor-pages"],
                         tagLookup["vanilla-javascript"],
@@ -188,9 +233,11 @@ namespace SciFiPortfolio.Data.Seeders
             var cardLookup = await _context.ProjectCards
                 .ToDictionaryAsync(x => x.UniqueName);
 
-            var index = pagesLookUp["/"];
+            #endregion
 
-            if (index is not null && await _context.Pages.AnyAsync(page => page.Slug == index.Slug))
+            #region Add Sections
+
+            if (index is not null)
             {
                 var content = await _context.PageContents.FirstOrDefaultAsync(x => x.PageId == index.Id);
 
@@ -255,9 +302,7 @@ namespace SciFiPortfolio.Data.Seeders
                 }
             }
 
-            var vpsHosting = pagesLookUp["vps-hosting"];
-
-            if (vpsHosting is not null && await _context.Pages.AnyAsync(page => page.Slug == vpsHosting.Slug))
+            if (vpsHosting is not null)
             {
                 var content = await _context.PageContents.FirstOrDefaultAsync(x => x.PageId == vpsHosting.Id);
 
@@ -388,11 +433,9 @@ namespace SciFiPortfolio.Data.Seeders
 
                     _logger.LogInformation(":::::: Vps Hosting PageContent Seeded ::::::");
                 }
-            };
+            }
 
-            var receptakuten = pagesLookUp["receptakuten"];
-
-            if (receptakuten is not null && await _context.Pages.AnyAsync(page => page.Slug == receptakuten.Slug))
+            if (receptakuten is not null)
             {
                 var content = await _context.PageContents.FirstOrDefaultAsync(x => x.PageId == receptakuten.Id);
 
@@ -404,8 +447,8 @@ namespace SciFiPortfolio.Data.Seeders
                         Content =
                         {
                              Sections =
-                                {
-                                    new ImageWithPositionSection
+                                {   
+                                    new TextSection
                                     {
                                         Heading = "",
                                         Paragraphs =
@@ -424,10 +467,7 @@ namespace SciFiPortfolio.Data.Seeders
                                                 "enklare att vidareutveckla och underhålla."
                                             },
                                         },
-                                        DesktopImage = { ImageUrl = "images/recept-bil-ub.png"},
-                                        ImagePosition = ImagePosition.Top,
                                         BackgroundColor = "",
-
                                     },
                                     new ImageCenterSection
                                     {
@@ -466,275 +506,33 @@ namespace SciFiPortfolio.Data.Seeders
                                         BackgroundColor = "section-bg",
 
                                     },
-                                    new ImageWithPositionSection
-                                    {
-                                        Heading = "Backend",
-                                        Paragraphs =
-                                        {
-                                            new()
-                                            {
-                                                Text = "Backenden är utvecklad enligt principerna för Clean Architecture i tankarna men följer inte fullt ut men försöker hålla ansvar och beroenden tydliga och " +
-                                                "separerade mellan olika lager (Bytte namn från Meal Menu till Receptakuten när projektet närmade sig sitt slut)."
-                                            },
-                                        },
-                                        DesktopImage = { ImageUrl = "images/receptakuten-layers.png"},
-                                        ImagePosition = ImagePosition.Bottom,
-                                        BackgroundColor = "",
-                                        SpaceBottom = false,
-                                        Paddings = false,
+                                   
+                                
+                                }
+                        }
+                    };
 
-                                    },
-                                    new ImageCenterSection
-                                    {
-                                        ParagraphsTop =
-                                        {
-                                            new()
-                                            {
-                                                Text = "API-lagret fungerar som systemets yttersta gränssnitt och ansvarar för routing, autentisering, " +
-                                                "middleware, konfiguration av tjänster och mottagning av inkommande förfrågningar. Controllers innehåller " +
-                                                "minimalt med logik och fungerar främst som ett lager för validering och transformering av inkommande data."
-                                            },
+                    _context.PageContents.Add(receptakutenPageContent);
+                    await _context.SaveChangesAsync();
 
-                                            new()
-                                            {
-                                                Text = "När en förfrågan når API:t valideras den först genom särskilda Request Models med egna regler " +
-                                                "för datavalidering. Därefter omvandlas informationen till DTO-objekt som skickas vidare till applikationslagret."
-                                            },
-                                        },
-                                        DesktopImages = { new() { ImageUrl = "images/ControllerDtoMapping.png" } },
-                                        ParagraphsBottom =
-                                        {
-                                            new()
-                                            {
-                                                Text = "Applikationslagret innehåller all affärslogik och är systemets kärna." +
-                                                "Här finns tjänster, DTO:er, entiteter, regler och processer som beskriver hur verksamheten fungerar." +
-                                                "Lagret är medvetet byggt utan beroenden till databaser, externa tjänster eller tekniska implementationer, " +
-                                                "vilket gör det enkelt att testa och vidareutveckla."
-                                            },
-                                            new()
-                                            {
-                                                Text = "Infrastructure-lagret ansvarar för den faktiska kommunikationen med databasen och externa system. " +
-                                                "Här finns repositories, Entity Framework-konfigurationer, filhantering och integrationer mot externa tjänster såsom Azure Communication Services. " +
-                                                "Genom att använda interfaces mellan lagren kan implementationer bytas ut utan att affärslogiken påverkas."
-                                            },
-                                        },
-                                        BackgroundColor = "",
-                                        SpaceBottom = false,
-                                        Paddings = false,
-                                    },
-                                    new ImageCenterSection
-                                    {
-                                        SubHeading = "Databas och datamodell",
-                                        ParagraphsTop =
-                                        {
-                                                new()
-                                            {
-                                                Text = "Databasen är utvecklad enligt en Code First-strategi med Entity Framework Core. Datamodellen definieras " +
-                                                "i kod och migreras därefter automatiskt till PostgreSQL genom migrations. "
-                                            },
-                                                new()
-                                            {
-                                                Text = "Databasen innehåller ett flertal relationer mellan användare, grupper, recept, matscheman och inköpslistor. " +
-                                                "Denna struktur gör det möjligt att hantera både personliga receptsamlingar och gruppbaserade funktioner på ett konsekvent sätt. Ett exempel på relationer nedan:"
-                                            },
-                                        },
-                                        ParagraphsBottom =
-                                        {
-                                            new()
-                                            {
-                                                Text = "För att förbättra användarupplevelsen redan från start används seedning av data. " +
-                                                "Exempelrecept och grundläggande enheter för ingredienshantering skapas automatiskt när systemet initialiseras."
-                                            }
-                                        },
-                                        DesktopImages = { new() { ImageUrl = "images/recept-diagram.png" } },
-                                        BackgroundColor = "",
-                                        SpaceBottom = false,
-                                        Paddings = true,
+                    _logger.LogInformation(":::::: Receptakuten PageContent Seeded ::::::");
+                }
+            }
 
-                                    },
-                                    new ListSection
-                                    {
-                                        SubHeading = "Säkerhet",
-                                        Paragraphs =
-                                        [
-                                            new()
-                                            {
-                                                Text = "Säkerhet har varit en central del av projektets design."
-                                            },
-                                            new()
-                                            {
-                                                Text = "Autentisering sker genom ASP.NET Identity tillsammans med JWT-baserad autentisering. " +
-                                                "Access tokens och refresh tokens lagras i HttpOnly-cookies för att minska risken för exponering via klientskript."
-                                            },
-                                            new()
-                                            {
-                                                Text = "Autentisering sker genom ASP.NET Identity tillsammans med JWT-baserad autentisering. " +
-                                                "Access tokens och refresh tokens lagras i HttpOnly-cookies för att minska risken för exponering via klientskript."
-                                            },
-                                            new()
-                                            {
-                                                Text = "Systemet använder flera säkerhetslager för att skydda API:t, bland annat:"
-                                            }
-                                        ],
-                                        ListItems =
-                                        {
-                                            new() { Text = "JWT Authentication" },
-                                            new() { Text = "Refresh Tokens" },
-                                            new() { Text = "CSRF-skydd (XXS ?)" },
-                                            new() { Text = "Rate Limiting" },
-                                            new() { Text = "Inputvalidering" },
-                                            new() { Text = "Roll- och behörighetskontroller" },
-                                        },
-                                        SpaceBottom = false,
-                                        Paddings = false,
+            if (receptakuten is not null && receptaktenFrontend is not null)
+            {
+                var content = await _context.PageContents.FirstOrDefaultAsync(x => x.PageId == receptaktenFrontend.Id);
 
-                                    },
-                                    new TextSection
-                                    {
-                                        Paragraphs =
-                                        {
-                                            new()
-                                            {
-                                                Text= "Utöver klientbaserade begränsningar verifieras samtliga rättigheter även på serversidan för att " +
-                                                "säkerställa att obehöriga användare inte kan kringgå systemets regler genom manipulerade anrop."
-                                            },
-                                            new()
-                                            {
-                                                Text= "För att aktivera nya konton krävs e-postverifiering och samma mekanism används vid glömt lösenord."
-                                            }
-                                        },
-                                        Paddings = false,
-                                        SpaceBottom = false,
-
-                                    },
-                                    new ImageWithPositionSection
-                                    {
-                                        SubHeading = "Realtidsfunktioner",
-                                        Paragraphs =
-                                        {
-                                            new()
-                                            {
-                                                Text = "För funktioner som kräver omedelbar återkoppling används Server-Sent Events (SSE). " +
-                                                "Ett exempel är gruppinbjudningar där mottagaren får uppdateringar direkt från servern utan att " +
-                                                "klienten behöver skicka återkommande förfrågningar.",
-                                            },
-                                            new()
-                                            {
-                                                Text = "Detta ger snabbare återkoppling samtidigt som belastningen på API:t minskar jämfört med traditionell polling.",
-                                            }
-                                        },
-                                        DesktopImage = { ImageUrl = "images/inbjudning.png" },
-                                        ImagePosition = ImagePosition.Bottom,
-                                        BackgroundColor = "",
-                                        SpaceBottom = false,
-                                        Paddings = true,
-
-                                    },
-                                    new ImageCenterSection
-                                    {
-                                        SubHeading = "Bildhantering",
-                                        ParagraphsTop =
-                                        {
-                                            new()
-                                            {
-                                                Text="Användaruppladdade bilder bearbetas på serversidan med hjälp av ImageMagick via Magick.NET. Där kontroll av accepterade bildtypr kontrolleras, storlek osv"
-                                            },
-
-                                        },
-                                        DesktopImages = {new() { ImageUrl= "images/allowed-images.png" } },
-                                        ParagraphsBottom =
-                                        {
-                                            new()
-                                            {
-                                                Text="Vid uppladdning genomförs konvertering och storlek/kvallitets optimering för att minska lagringsutrymme och förbättra laddningstider. " +
-                                                "Bilderna lagras därefter på servern och kopplas till respektive recept. Nedan kan man se att Clean Code mönster följs med flera små metoder " +
-                                                "används för att ge klarare förståelse när man läser koden, detta upprepas över hela projektet."
-                                            },
-                                        },
-                                        BackgroundColor = "",
-                                        SpaceBottom = false,
-                                        Paddings = false,
-                                    },
-                                    new ImageSection
-                                    {
-                                        DesktopImages =
-                                        {
-                                            new() { ImageUrl = "images/save-image.png"}
-                                        },
-                                        BackgroundColor = "",
-                                        Paddings = false
-                                    },
-                                    new ListSection
-                                    {
-                                        SubHeading = "Automatisering och bakgrundsjobb",
-                                        Paragraphs =
-                                        [
-                                            new() { Text = "Systemet använder Quartz.NET för schemalagda bakgrundsjobb som körs oberoende av användaraktivitet." },
-                                            new() { Text = "Dessa jobb används bland annat för att:" }
-                                        ],
-                                        ListItems =
-                                        {
-                                            new() { Text = "Hantera avslutade matscheman" },
-                                            new() { Text = "Rensa utgångna refresh tokens" },
-                                            new() { Text = "Identifiera inaktiva användare" },
-                                            new() { Text = "Ta bort konton som aldrig aktiverats" },
-                                        },
-                                        SpaceBottom = true,
-                                        Paddings = false,
-                                    },
-                                    new TextSection
-                                    {
-                                        Paragraphs =
-                                        {
-                                            new() { Text = "Dessa jobb configureras med hjälp av nycklar och triggers där man sedan anger när de ska köras, Här kan ni se ett exempel på ett av dess jobb: " },
-                                        },
-                                        Paddings = false,
-                                        SpaceBottom = false,
-                                    },
-                                    new FlexSection
-                                    {
-                                        ImagesLeft = [ new () { ImageUrl = "images/quartz-conf-2.png" } ],
-                                        ImagesRight = [ new () { ImageUrl = "images/quartz-job-ex-3.png" } ],
-                                        SpaceBottom = false,
-                                        Paddings = false
-                                    },
-                                    new TextSection
-                                    {
-                                        Paragraphs =
-                                        {
-                                            new()
-                                            {
-                                                Text= "Genom att flytta denna typ av arbete till separata processer kan API:t fokusera" +
-                                                " på användarrelaterade förfrågningar samtidigt som återkommande underhåll sker automatiskt."
-                                            },
-                                        },
-                                        Paddings = false,
-                                        SpaceBottom = false,
-                                    },
-                                    new TextSection
-                                    {
-                                        SubHeading = "Loggning och felhantering",
-                                        Paragraphs =
-                                        {
-                                            new()
-                                            {
-                                                Text= "För övervakning och felsökning används Serilog med stöd för både konsolloggning och filbaserad loggning."
-                                            },
-                                            new()
-                                            {
-                                                Text= " Systemet använder en central Global Exception Handler som fångar upp oväntade fel och returnerar konsekventa felmeddelanden till klienten. " +
-                                                "Detta minskar mängden duplicerad felhantering i applikationen och förenklar felsökning."
-                                            },
-                                            new()
-                                            {
-                                                Text= "I särskilda situationer där återhämtning är möjlig används riktade try/catch-block för att hantera specifika undantag," +
-                                                "exempelvis vid filhantering och borttagning av resurser från servern."
-                                            },
-                                        },
-                                        Paddings = true,
-                                        SpaceBottom = true,
-                                    },
-                                    new TextSection
+                if (content is null)
+                {
+                    var receptakutenFrontendContent = new PageContentEntity
+                    {
+                        PageId = receptaktenFrontend.Id,
+                        Content =
+                        {
+                            Sections =
+                            {
+                                  new TextSection
                                     {
                                         Heading = "Frontend",
                                         Paragraphs =
@@ -766,16 +564,309 @@ namespace SciFiPortfolio.Data.Seeders
                                         },
                                         BackgroundColor = "section-bg"
                                     },
-                                }
+                            }
                         }
                     };
 
-                    _context.PageContents.Add(receptakutenPageContent);
+                    _context.PageContents.Add(receptakutenFrontendContent);
                     await _context.SaveChangesAsync();
 
-                    _logger.LogInformation(":::::: Receptakuten PageContent Seeded ::::::");
+                    _logger.LogInformation(":::::: Receptakuten Frontend PageContent Seeded ::::::");
                 }
             }
+
+            if (receptakuten is not null && receptaktenBackend is not null)
+            {
+                var content = await _context.PageContents.FirstOrDefaultAsync(x => x.PageId == receptaktenBackend.Id);
+
+                if (content is null)
+                {
+                    var receptakutenBackendContent = new PageContentEntity
+                    {
+                        PageId = receptaktenBackend.Id,
+                        Content =
+                        {
+                            Sections =
+                            {
+                                new ImageWithPositionSection
+                                {
+                                    Heading = "Backend",
+                                    Paragraphs =
+                                    {
+                                        new()
+                                        {
+                                            Text = "Backenden är utvecklad enligt principerna för Clean Architecture i tankarna men följer inte fullt ut men försöker hålla ansvar och beroenden tydliga och " +
+                                            "separerade mellan olika lager (Bytte namn från Meal Menu till Receptakuten när projektet närmade sig sitt slut)."
+                                        },
+                                    },
+                                    DesktopImage = { ImageUrl = "images/receptakuten-layers.png"},
+                                    ImagePosition = ImagePosition.Bottom,
+                                    BackgroundColor = "",
+                                    SpaceBottom = false,
+                                    Paddings = false,
+
+                                },
+                                new ImageCenterSection
+                                {
+                                    ParagraphsTop =
+                                    {
+                                        new()
+                                        {
+                                            Text = "API-lagret fungerar som systemets yttersta gränssnitt och ansvarar för routing, autentisering, " +
+                                            "middleware, konfiguration av tjänster och mottagning av inkommande förfrågningar. Controllers innehåller " +
+                                            "minimalt med logik och fungerar främst som ett lager för validering och transformering av inkommande data."
+                                        },
+
+                                        new()
+                                        {
+                                            Text = "När en förfrågan når API:t valideras den först genom särskilda Request Models med egna regler " +
+                                            "för datavalidering. Därefter omvandlas informationen till DTO-objekt som skickas vidare till applikationslagret."
+                                        },
+                                    },
+                                    DesktopImages = { new() { ImageUrl = "images/ControllerDtoMapping.png" } },
+                                    ParagraphsBottom =
+                                    {
+                                        new()
+                                        {
+                                            Text = "Applikationslagret innehåller all affärslogik och är systemets kärna." +
+                                            "Här finns tjänster, DTO:er, entiteter, regler och processer som beskriver hur verksamheten fungerar." +
+                                            "Lagret är medvetet byggt utan beroenden till databaser, externa tjänster eller tekniska implementationer, " +
+                                            "vilket gör det enkelt att testa och vidareutveckla."
+                                        },
+                                        new()
+                                        {
+                                            Text = "Infrastructure-lagret ansvarar för den faktiska kommunikationen med databasen och externa system. " +
+                                            "Här finns repositories, Entity Framework-konfigurationer, filhantering och integrationer mot externa tjänster såsom Azure Communication Services. " +
+                                            "Genom att använda interfaces mellan lagren kan implementationer bytas ut utan att affärslogiken påverkas."
+                                        },
+                                    },
+                                    BackgroundColor = "",
+                                    SpaceBottom = false,
+                                    Paddings = false,
+                                },
+                                new ImageCenterSection
+                                {
+                                    SubHeading = "Databas och datamodell",
+                                    ParagraphsTop =
+                                    {
+                                            new()
+                                        {
+                                            Text = "Databasen är utvecklad enligt en Code First-strategi med Entity Framework Core. Datamodellen definieras " +
+                                            "i kod och migreras därefter automatiskt till PostgreSQL genom migrations. "
+                                        },
+                                            new()
+                                        {
+                                            Text = "Databasen innehåller ett flertal relationer mellan användare, grupper, recept, matscheman och inköpslistor. " +
+                                            "Denna struktur gör det möjligt att hantera både personliga receptsamlingar och gruppbaserade funktioner på ett konsekvent sätt. Ett exempel på relationer nedan:"
+                                        },
+                                    },
+                                    ParagraphsBottom =
+                                    {
+                                        new()
+                                        {
+                                            Text = "För att förbättra användarupplevelsen redan från start används seedning av data. " +
+                                            "Exempelrecept och grundläggande enheter för ingredienshantering skapas automatiskt när systemet initialiseras."
+                                        }
+                                    },
+                                    DesktopImages = { new() { ImageUrl = "images/recept-diagram.png" } },
+                                    BackgroundColor = "",
+                                    SpaceBottom = false,
+                                    Paddings = true,
+
+                                },
+                                new ListSection
+                                {
+                                    SubHeading = "Säkerhet",
+                                    Paragraphs =
+                                    [
+                                        new()
+                                        {
+                                            Text = "Säkerhet har varit en central del av projektets design."
+                                        },
+                                        new()
+                                        {
+                                            Text = "Autentisering sker genom ASP.NET Identity tillsammans med JWT-baserad autentisering. " +
+                                            "Access tokens och refresh tokens lagras i HttpOnly-cookies för att minska risken för exponering via klientskript."
+                                        },
+                                        new()
+                                        {
+                                            Text = "Autentisering sker genom ASP.NET Identity tillsammans med JWT-baserad autentisering. " +
+                                            "Access tokens och refresh tokens lagras i HttpOnly-cookies för att minska risken för exponering via klientskript."
+                                        },
+                                        new()
+                                        {
+                                            Text = "Systemet använder flera säkerhetslager för att skydda API:t, bland annat:"
+                                        }
+                                    ],
+                                    ListItems =
+                                    {
+                                        new() { Text = "JWT Authentication" },
+                                        new() { Text = "Refresh Tokens" },
+                                        new() { Text = "CSRF-skydd (XXS ?)" },
+                                        new() { Text = "Rate Limiting" },
+                                        new() { Text = "Inputvalidering" },
+                                        new() { Text = "Roll- och behörighetskontroller" },
+                                    },
+                                    SpaceBottom = false,
+                                    Paddings = false,
+                                },
+                                new TextSection
+                                {
+                                    Paragraphs =
+                                    {
+                                        new()
+                                        {
+                                            Text= "Utöver klientbaserade begränsningar verifieras samtliga rättigheter även på serversidan för att " +
+                                            "säkerställa att obehöriga användare inte kan kringgå systemets regler genom manipulerade anrop."
+                                        },
+                                        new()
+                                        {
+                                            Text= "För att aktivera nya konton krävs e-postverifiering och samma mekanism används vid glömt lösenord."
+                                        }
+                                    },
+                                    Paddings = false,
+                                    SpaceBottom = false,
+
+                                },
+                                new ImageWithPositionSection
+                                {
+                                    SubHeading = "Realtidsfunktioner",
+                                    Paragraphs =
+                                    {
+                                        new()
+                                        {
+                                            Text = "För funktioner som kräver omedelbar återkoppling används Server-Sent Events (SSE). " +
+                                            "Ett exempel är gruppinbjudningar där mottagaren får uppdateringar direkt från servern utan att " +
+                                            "klienten behöver skicka återkommande förfrågningar.",
+                                        },
+                                        new()
+                                        {
+                                            Text = "Detta ger snabbare återkoppling samtidigt som belastningen på API:t minskar jämfört med traditionell polling.",
+                                        }
+                                    },
+                                    DesktopImage = { ImageUrl = "images/inbjudning.png" },
+                                    ImagePosition = ImagePosition.Bottom,
+                                    BackgroundColor = "",
+                                    SpaceBottom = false,
+                                    Paddings = true,
+
+                                },
+                                new ImageCenterSection
+                                {
+                                    SubHeading = "Bildhantering",
+                                    ParagraphsTop =
+                                    {
+                                        new()
+                                        {
+                                            Text="Användaruppladdade bilder bearbetas på serversidan med hjälp av ImageMagick via Magick.NET. Där kontroll av accepterade bildtypr kontrolleras, storlek osv"
+                                        },
+
+                                    },
+                                    DesktopImages = {new() { ImageUrl= "images/allowed-images.png" } },
+                                    ParagraphsBottom =
+                                    {
+                                        new()
+                                        {
+                                            Text="Vid uppladdning genomförs konvertering och storlek/kvallitets optimering för att minska lagringsutrymme och förbättra laddningstider. " +
+                                            "Bilderna lagras därefter på servern och kopplas till respektive recept. Nedan kan man se att Clean Code mönster följs med flera små metoder " +
+                                            "används för att ge klarare förståelse när man läser koden, detta upprepas över hela projektet."
+                                        },
+                                    },
+                                    BackgroundColor = "",
+                                    SpaceBottom = false,
+                                    Paddings = false,
+                                },
+                                new ImageSection
+                                {
+                                    DesktopImages =
+                                    {
+                                        new() { ImageUrl = "images/save-image.png"}
+                                    },
+                                    BackgroundColor = "",
+                                    Paddings = false
+                                },
+                                new ListSection
+                                {
+                                    SubHeading = "Automatisering och bakgrundsjobb",
+                                    Paragraphs =
+                                    [
+                                        new() { Text = "Systemet använder Quartz.NET för schemalagda bakgrundsjobb som körs oberoende av användaraktivitet." },
+                                        new() { Text = "Dessa jobb används bland annat för att:" }
+                                    ],
+                                    ListItems =
+                                    {
+                                        new() { Text = "Hantera avslutade matscheman" },
+                                        new() { Text = "Rensa utgångna refresh tokens" },
+                                        new() { Text = "Identifiera inaktiva användare" },
+                                        new() { Text = "Ta bort konton som aldrig aktiverats" },
+                                    },
+                                    SpaceBottom = true,
+                                    Paddings = false,
+                                },
+                                new TextSection
+                                {
+                                    Paragraphs =
+                                    {
+                                        new() { Text = "Dessa jobb configureras med hjälp av nycklar och triggers där man sedan anger när de ska köras, Här kan ni se ett exempel på ett av dess jobb: " },
+                                    },
+                                    Paddings = false,
+                                    SpaceBottom = false,
+                                },
+                                new FlexSection
+                                {
+                                    ImagesLeft = [ new () { ImageUrl = "images/quartz-conf-2.png" } ],
+                                    ImagesRight = [ new () { ImageUrl = "images/quartz-job-ex-3.png" } ],
+                                    SpaceBottom = false,
+                                    Paddings = false
+                                },
+                                new TextSection
+                                {
+                                    Paragraphs =
+                                    {
+                                        new()
+                                        {
+                                            Text= "Genom att flytta denna typ av arbete till separata processer kan API:t fokusera" +
+                                            " på användarrelaterade förfrågningar samtidigt som återkommande underhåll sker automatiskt."
+                                        },
+                                    },
+                                    Paddings = false,
+                                    SpaceBottom = false,
+                                },
+                                new TextSection
+                                {
+                                    SubHeading = "Loggning och felhantering",
+                                    Paragraphs =
+                                    {
+                                        new()
+                                        {
+                                            Text= "För övervakning och felsökning används Serilog med stöd för både konsolloggning och filbaserad loggning."
+                                        },
+                                        new()
+                                        {
+                                            Text= " Systemet använder en central Global Exception Handler som fångar upp oväntade fel och returnerar konsekventa felmeddelanden till klienten. " +
+                                            "Detta minskar mängden duplicerad felhantering i applikationen och förenklar felsökning."
+                                        },
+                                        new()
+                                        {
+                                            Text= "I särskilda situationer där återhämtning är möjlig används riktade try/catch-block för att hantera specifika undantag," +
+                                            "exempelvis vid filhantering och borttagning av resurser från servern."
+                                        },
+                                    },
+                                    Paddings = true,
+                                    SpaceBottom = true,
+                                },
+                            }
+                        }
+                    };
+
+                    _context.PageContents.Add(receptakutenBackendContent);
+                    await _context.SaveChangesAsync();
+
+                    _logger.LogInformation(":::::: Receptakuten Backend PageContent Seeded ::::::");
+                }    
+            }
+
+            #endregion
         }  
     }
 }

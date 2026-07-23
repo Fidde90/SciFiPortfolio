@@ -3,7 +3,6 @@ using SciFiPortfolio.Interfaces.Services;
 using SciFiPortfolio.Models;
 using SciFiPortfolio.Models.ContentSections;
 using SciFiPortfolio.ViewComponents;
-using static System.Collections.Specialized.BitVector32;
 
 namespace SciFiPortfolio.Services
 {

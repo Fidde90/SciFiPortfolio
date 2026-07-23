@@ -14,6 +14,8 @@ namespace SciFiPortfolio.Models
 
         public List<ContentSection> Sections { get; set; } = [];
 
+        public List<Page> ChildPages { get; set; } = [];
+
         public DateTime PublishedDate { get; set; }
 
         public DateTime CreatedAt { get; set; }
