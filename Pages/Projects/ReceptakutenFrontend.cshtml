@@ -1,10 +1,10 @@
-﻿@page
+﻿@page "/projects/{slug}"
 
 @model ReceptakutenFrontendModel
 @{
-
+    var hej = "";
 }
-
+<h1>hej</h1>
 @if (Model.Vm is not null && Model.Vm.Page is not null)
 {
     @if (Model.Vm.Hero is not null)

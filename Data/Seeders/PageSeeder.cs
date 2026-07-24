@@ -169,17 +169,17 @@ namespace SciFiPortfolio.Data.Seeders
 
             var tagLookup = await _context.Tags
                 .ToDictionaryAsync(x => x.Name);
-
+            
             var cards = new List<ProjectCardEntity>()
             {
                 new()
                 {
                     Title = "SPA Applikation",
                     UniqueName = "receptakuten",
-                    ImageUrl = "Images/receptakuten.png",
+                    ImageUrl = "images/recept-bil-ub.png",
                     ImageAltText = "receptakuten image",
                     Hyperlink = { LinkText= "Testa den här", LinkUrl="https://receptakuten.net", IconName = "fa-solid fa-arrow-right" },
-                    AppLink = { LinkText= "Läs mer om appen", LinkUrl = "/Projects/Receptakuten", PageSlug = "receptakuten", PageId = receptakuten.Id },
+                    AppLink = { LinkText= "Läs mer om appen", LinkUrl = "/Projects/Receptakuten", PageSlug = "receptakuten", PageId = receptakuten?.Id },
                     Tags = {
                         tagLookup[".net-api"],
                         tagLookup["vue-js"],
@@ -191,7 +191,7 @@ namespace SciFiPortfolio.Data.Seeders
                 {
                     Title = "Vps hosting",
                     UniqueName = "vps-hosting",
-                    ImageUrl = "Images/server.png",
+                    ImageUrl = "images/server.png",
                     ImageAltText = "image of a server",
                     AppLink = { LinkText="Läs mer", LinkUrl = "Projects/Hosting", PageSlug ="vps-hosting", PageId = vpsHosting.Id },
                     Tags = {
@@ -205,7 +205,7 @@ namespace SciFiPortfolio.Data.Seeders
                 {
                     Title = "Sci-fi portfolio",
                     UniqueName = "sci-fi-portfolio",
-                    ImageUrl = "Images/portimg.jpeg",
+                    ImageUrl = "images/portimg.jpeg",
                     ImageAltText = "a sci-fi image",
                     AppLink = { LinkText="Läs mer", LinkUrl ="/", PageSlug="sci-fi-portfolio", PageId = sciFiPort.Id },
                     Tags = {
@@ -260,15 +260,15 @@ namespace SciFiPortfolio.Data.Seeders
                                 {
                                     Images =
                                     {
-                                        new(){ ImageUrl="Images/vue.svg", AltText= "vue icon"},
-                                        new(){ ImageUrl="Images/javascript.svg", AltText= "javascript icon"},
-                                        new(){ ImageUrl="Images/net.svg", AltText= ".net icon"},
-                                        new(){ ImageUrl="Images/csharp.svg", AltText= "c# icon"},
-                                        new(){ ImageUrl="Images/azure.svg", AltText= "azure icon"},
-                                        new(){ ImageUrl="Images/api.svg", AltText= "api icon"},
-                                        new(){ ImageUrl="Images/docker.svg", AltText= "docker icon"},
-                                        new(){ ImageUrl="Images/nginx.svg", AltText= "nginX icon"},
-                                        new(){ ImageUrl="Images/postgres-ub.png", AltText= "postgresql icon"},
+                                        new(){ ImageUrl="images/vue.svg", AltText= "vue icon"},
+                                        new(){ ImageUrl="images/javascript.svg", AltText= "javascript icon"},
+                                        new(){ ImageUrl="images/net.svg", AltText= ".net icon"},
+                                        new(){ ImageUrl="images/csharp.svg", AltText= "c# icon"},
+                                        new(){ ImageUrl="images/azure.svg", AltText= "azure icon"},
+                                        new(){ ImageUrl="images/api.svg", AltText= "api icon"},
+                                        new(){ ImageUrl="images/docker.svg", AltText= "docker icon"},
+                                        new(){ ImageUrl="images/nginx.svg", AltText= "nginX icon"},
+                                        new(){ ImageUrl="images/postgres-ub.png", AltText= "postgresql icon"},
                                     },
                                 },
                                 new TextSection()
@@ -281,7 +281,8 @@ namespace SciFiPortfolio.Data.Seeders
                                         new(){ Text = "Jag drivs av att lösa problem, lära mig nya tekniker och utveckla lösningar som skapar verkligt värde. Oavsett om det handlar om att optimera prestanda i ett API, bygga nya funktioner eller sätta upp en stabil produktionsmiljö strävar jag alltid efter att leverera kod av hög kvalitet." },
                                         new(){ Text = "När jag inte utvecklar utforskar jag gärna nya tekniker och verktyg för att fortsätta utvecklas som utvecklare och hålla mig uppdaterad inom branschen." }
                                     },
-                                    BackgroundColor = "section-bg",
+                                    BackgroundColorCss = "section-bg",
+                                    BordersCss = "border-all border-primary"
                                 },
                                 new CardSection()
                                 {
@@ -317,7 +318,7 @@ namespace SciFiPortfolio.Data.Seeders
                             {
                                 new HeroSection
                                 {
-                                    Image = new(){ ImageUrl = "Images/server.png"},
+                                    Image = new(){ ImageUrl = "images/server.png"},
                                     SpaceBottom = false
                                 },
 
@@ -326,7 +327,7 @@ namespace SciFiPortfolio.Data.Seeders
                                     SubHeading ="Teknikstack",
                                     Paragraphs = new()
                                     {
-                                            new(){ Text = "Jag designade och driftsatte en containerbaserad servermiljö på en VPS-hostad Ubuntu Server. Infrastrukturens fokus ligger på isolering, säkerhet och enkel skalning av applikationer." }
+                                        new(){ Text = "Jag designade och driftsatte en containerbaserad servermiljö på en VPS-hostad Ubuntu Server. Infrastrukturens fokus ligger på isolering, säkerhet och enkel skalning av applikationer." }
                                     },
                                     ListItems = {
                                         new(){Text="Ubuntu Server (minimal installation)", IconName = ""  },
@@ -336,7 +337,8 @@ namespace SciFiPortfolio.Data.Seeders
                                         new(){Text="Certbot (Let´s Encrypt)", IconName = ""},
                                         new(){Text="VPS-hosting via Hostinger)", IconName = ""},
                                     },
-                                    BackgroundColor = "section-bg",
+                                    BackgroundColorCss = "section-bg",
+                                    BordersCss = "border-all border-primary"
                                 },
                                 new ImageWithPositionSection
                                 {
@@ -362,7 +364,8 @@ namespace SciFiPortfolio.Data.Seeders
                                         "Istället routas inkommande trafik till rätt container baserat på domän och konfiguration. Lösningen ger en " +
                                         "flexibel grund för att hosta flera tjänster på samma server samtidigt som säkerhet, underhållbarhet och skalbarhet bibehålls." }
                                     },
-                                    BackgroundColor = "section-bg",
+                                    BackgroundColorCss = "section-bg",
+                                    BordersCss = "border-all border-primary"
                                 },
                                 new TextSection()
                                 {
@@ -391,7 +394,8 @@ namespace SciFiPortfolio.Data.Seeders
                                     "från varandra minimeras risken att ett problem i en applikation påverkar övriga system på servern."},
 
                                     SpaceBottom = true,
-                                    BackgroundColor = "section-bg",
+                                    BackgroundColorCss = "section-bg",
+                                    BordersCss = "border-all border-primary"
                                 },
                                 new TextSection()
                                 {
@@ -421,7 +425,8 @@ namespace SciFiPortfolio.Data.Seeders
                                         "oberoende av varandra. Resultatet är en flexibel och skalbar plattform som kan växa i takt med nya behov utan att kräva större " +
                                         "förändringar i den underliggande infrastrukturen." },
                                     },
-                                    BackgroundColor = "section-bg",
+                                    BackgroundColorCss = "section-bg",
+                                    BordersCss = "border-all border-primary",
                                     SpaceBottom = false,
                                 },
                             }
@@ -467,7 +472,7 @@ namespace SciFiPortfolio.Data.Seeders
                                                 "enklare att vidareutveckla och underhålla."
                                             },
                                         },
-                                        BackgroundColor = "",
+                                        BackgroundColorCss = "",
                                     },
                                     new ImageCenterSection
                                     {
@@ -503,8 +508,9 @@ namespace SciFiPortfolio.Data.Seeders
                                                 "testmiljön från produktionsmiljön och undvika påverkan på riktig användardata."
                                             },
                                         },
-                                        BackgroundColor = "section-bg",
-
+                                        BackgroundColorCss = "section-bg",
+                                        BordersCss = "border-all border-primary",
+                                        SpaceBottom = false,
                                     },
                                 }
                         }
@@ -530,38 +536,311 @@ namespace SciFiPortfolio.Data.Seeders
                         {
                             Sections =
                             {
-                                  new TextSection
+                                new TextSection
+                                {
+                                    Paragraphs =
                                     {
-                                        Heading = "Frontend",
-                                        Paragraphs =
+                                        new()
                                         {
-                                            new()
-                                            {
-                                                Text="Frontenden är utvecklad i Vue.js 3 med Composition API och bygger på en komponentbaserad arkitektur där " +
-                                                "återanvändbarhet och tydlig ansvarsfördelning har varit centrala designprinciper."
-                                            },
-                                            new()
-                                            {
-                                                Text=" Applikationen består av ett stort antal specialiserade komponenter för recept, ingredienshantering, " +
-                                                "gruppadministration, matscheman, formulär och dialogrutor. Kommunikation mellan komponenter sker genom props, " +
-                                                "emitters och gemensamma eventflöden, vilket möjliggör en tydlig separation mellan presentation och affärslogik."
-                                            },new()
-                                            {
-                                                Text="Navigeringen hanteras med Vue Router där olika layouts används beroende på användarens autentiseringsstatus. " +
-                                                "Publika sidor såsom inloggning och registrering använder en separat layout från de delar av applikationen som kräver inloggning."
-                                            },new()
-                                            {
-                                                Text="För att förbättra användarupplevelsen lagras utvald data lokalt i klienten för att minska mängden upprepade API-anrop. " +
-                                                "Detta bidrar till snabbare laddningstider och en mer responsiv användarupplevelse."
-                                            },
-                                            new()
-                                            {
-                                                Text="Klienten innehåller även stöd för automatisk konvertering av bildformat såsom HEIC innan uppladdning, " +
-                                                "vilket säkerställer kompatibilitet mellan olika enheter och webbläsare."
-                                            }
+                                            Text = "Frontenden är utvecklad i Vue.js 3 med Composition API och bygger på en komponentbaserad arkitektur där återanvändbarhet, " +
+                                            "tydlig ansvarsfördelning och underhållbar kod har varit centrala designprinciper genom hela projektet."
                                         },
-                                        BackgroundColor = "section-bg"
+                                        new()
+                                        {
+                                            Text = "Applikationen består av ett stort antal specialiserade komponenter för bland annat recept, ingredienshantering, " +
+                                            "gruppadministration, matscheman, profiler, formulär, dialogrutor och navigering. Genom att dela upp funktionaliteten i mindre " +
+                                            "komponenter har samma komponenter kunnat återanvändas på flera ställen i applikationen, vilket minskar kodduplicering och förenklar " +
+                                            "vidareutveckling."
+                                        },
+                                        new()
+                                        {
+                                            Text = "Affärslogiken hålls i stor utsträckning separerad från presentationslagret genom egna composables och serviceklasser. " +
+                                            "Kommunikation mellan komponenter sker främst via props och emitters, medan globala händelser hanteras med en central EventBus. " +
+                                            "Detta används exempelvis för att uppdatera olika delar av användargränssnittet när data förändras eller när notifieringar behöver visas " +
+                                            "utan att komponenterna känner till varandra."
+                                        },
+                                        new()
+                                        {
+                                            Text = "Projektet är uppbyggt med en tydlig mappstruktur där komponenter, vyer, composables, API-tjänster och routing hålls åtskilda. " +
+                                            "Detta gör projektet mer skalbart och enklare att underhålla " +
+                                            "när nya funktioner läggs till."
+                                        },
                                     },
+                                    SpaceBottom = true,
+                                },
+                                new TextSection
+                                {
+                                    Heading = "Routing och autentisering",
+                                    Paragraphs =
+                                    {
+                                        new()
+                                        {
+                                            Text = "Navigeringen hanteras med Vue Router där olika layouts används beroende på användarens autentiseringsstatus. " +
+                                            "Publika sidor, såsom inloggning, registrering och återställning av lösenord, använder en separat layout från den del " +
+                                            "av applikationen som kräver inloggning. På så sätt hålls användarupplevelsen enkel innan användaren loggat in samtidigt " +
+                                            "som den inloggade delen av applikationen kan erbjuda sidomenyer, navigering och användarspecifika funktioner."
+                                        }
+                                    },
+                                    BackgroundColorCss = "section-bg",
+                                    SpaceBottom = false,
+                                    BordersCss = "border-top border-primary",
+                                },
+                                new FlexSection
+                                {
+                                    ParagraphsLeft = [ new(){ Text = "Auth layout" } ],
+                                    ImagesLeft = [ new() { ImageUrl = "images/auth-layout.png" } ],
+                                    ParagraphsRight = [ new(){ Text = "Account layout" } ],
+                                    ImagesRight = [ new() { ImageUrl = "images/account-layout.png" } ],
+                                    BackgroundColorCss = "section-bg",
+                                    PaddingsCss = "pb-3",
+                                    BordersCss = "border-bottom border-primary",
+                                },
+                                new ImageWithPositionSection
+                                {
+                                    Heading = "Kommunikation med backend",
+                                    Paragraphs =
+                                    {
+                                        new()
+                                        {
+                                            Text = "All kommunikation med backend sker via ett REST-API genom ett separat servicelager. " +
+                                            "Genom att samla API-anrop på ett ställe blir komponenterna enklare och mer fokuserade på presentation."
+                                        },
+                                        new()
+                                        {
+                                            Text = "För att förbättra prestandan lagras viss information lokalt i klienten för att minska mängden " +
+                                            "upprepade API-anrop. Detta ger kortare laddningstider och gör att användaren upplever applikationen som " +
+                                            "snabbare och mer responsiv."
+                                        }
+                                    },
+                                    ImagePosition = ImagePosition.Bottom,
+                                    DesktopImage = { ImageUrl= "images/api-call-ex.png" },
+                                    BackgroundColorCss ="",
+                                    SpaceBottom = false,
+                                },
+                                new TextSection
+                                {
+                                    Paragraphs =
+                                    {
+                                        new()
+                                        {
+                                            Text = "Flera funktioner bygger på att affärslogiken ligger i backend istället för i klienten. Ett exempel är " +
+                                            "genereringen av matscheman där backend ansvarar för slumpalgoritmen. Algoritmen ser till att samma recept inte " +
+                                            "väljs flera gånger under samma vecka och att variationen ökar i takt med att fler recept finns tillgängliga. " +
+                                            "Genom att placera denna logik i backend säkerställs att alla klienter får samma resultat och att reglerna inte " +
+                                            "kan kringgås."
+                                        },
+                                        new() { Text = "Exempel på logiken i backend:" },
+                                    },
+                                    PaddingsCss = "",
+                                    SpaceBottom = false,
+                                },
+                                new ImageSection
+                                {
+                                    DesktopImages =
+                                    {
+                                        new() { ImageUrl = "images/part-off-dinner-schedule-creation.png" },
+                                        new() { ImageUrl = "images/get-random-recipes.png" },
+                                        new() { ImageUrl = "images/add-rotation-points.png" }
+                                    },
+                                    PaddingsCss = "",
+                                    SpaceBottom = true
+                                },
+                                new ImageCenterSection
+                                {
+                                    Heading = "Realtidskommunikation",
+                                    ParagraphsTop =
+                                    {
+                                        new()
+                                        { Text = "Applikationen använder Server-Sent Events (SSE) för att skapa realtidsfunktionalitet. När användaren är inloggad " +
+                                            "lyssnar klienten kontinuerligt efter händelser från servern utan att behöva göra återkommande polling-anrop."
+                                        }
+                                    },
+                                    DesktopImages =
+                                    {
+                                        new(){ ImageUrl = "images/sse-connect.png" },
+                                        new(){ ImageUrl = "images/sse-disconnect.png" }
+                                    },
+                                    ParagraphsBottom =
+                                    {
+                                        new()
+                                        {
+                                            Text = "Denna lösning används bland annat för gruppinbjudningar. När en användare blir inbjuden till en " +
+                                            "grupp visas informationen direkt i gränssnittet utan att sidan behöver laddas om. " +
+                                            "Detta bidrar till en mer responsiv och modern användarupplevelse."
+                                        }
+                                    },
+                                    SpaceBottom = true,
+                                    PaddingsCss = "pt-3 pb-3",
+                                    BackgroundColorCss = "section-bg",
+                                    BordersCss = "border-all border-primary",
+                                },
+                                new ListSection
+                                {
+                                    Heading = "Profilsida",
+                                    Paragraphs = [ new() { Text = "Varje användare har en profilsida där kontot kan administreras. Här kan användaren bland annat:" }, ],
+                                    ListItems =
+                                    {
+                                        new() { Text = "ändra personlig information" },
+                                        new() { Text = "byta lösenord" },
+                                        new() { Text = "se hur många grupper man är medlem i" },
+                                        new() { Text = "se hur många recept man har delat" },
+                                        new() { Text = "anpassa applikationens tema" },
+                                        new() { Text = "hantera övriga kontoinställningar" },
+                                    },
+                                    SpaceBottom = false,
+                                    PaddingsCss = "pt-3"
+                                },
+                                new TextSection
+                                {
+                                    Paragraphs = { new() { Text = "Genom att samla all kontohantering på ett ställe blir det enkelt för användaren " +
+                                    "att administrera sitt konto." }, },
+                                    PaddingsCss = "pb-3"
+                                },
+                                new TextSection
+                                {
+                                    Heading = "Användarupplevelse",
+                                    Paragraphs =
+                                    {
+                                        new()
+                                        {
+                                            Text = "Stor vikt har lagts vid att skapa ett snyggt och responsivt gränssnitt. Datumhantering " +
+                                            "sker med komponenten VueDatePicker, vilket ger ett betydligt mer användarvänligt " +
+                                            "sätt att välja datum vid exempelvis planering av matscheman."
+                                        },
+                                    },
+                                    SpaceBottom = false,
+                                    PaddingsCss = "pt-3",
+                                    BackgroundColorCss = "section-bg",
+                                    BordersCss = "border-top border-primary"
+                                },
+                                new FlexSection
+                                {
+                                    ImagesLeft = [ new() { ImageUrl = "images/datepicker.png" }, ],
+                                    ImagesRight = [ new() { ImageUrl = "images/calendar.png" }, ],
+                                    BackgroundColorCss = "section-bg",
+                                    SpaceBottom = false,
+                                },
+                                new TextSection
+                                {
+                                    Paragraphs =
+                                    {
+                                        new()
+                                        {
+                                            Text = "Applikationen innehåller även automatisk konvertering av HEIC-bilder via Heic2any innan uppladdning. " +
+                                            "Browser-image-compression används för att se till att bilden inte är förstor innan den skickas till backend, " +
+                                            "men även backend kollar formatet, komprimerar och optimiserar bilden ytterligare så att det inte går att kringå i frontend." +
+                                            "Detta gör att användare, framför allt från iPhone och andra Apple-enheter, " +
+                                            "kan ladda upp receptbilder utan att själva behöva konvertera filformatet (för att det ska kunna visas i alla webbläsare)."
+                                        },
+                                        new() { Text = "För att göra applikationen mer personlig kan användaren även växla mellan olika teman." }
+                                    },
+                                    BackgroundColorCss = "section-bg",
+                                    SpaceBottom = false,
+                                    PaddingsCss = "",
+                                },
+                                new FlexSection
+                                {
+                                    ImagesLeft = [ new() { ImageUrl = "images/light-theme.png" }, ],
+                                    ImagesRight = [ new() { ImageUrl = "images/dark-theme.png" }, ],
+                                    BackgroundColorCss = "section-bg",
+                                    SpaceBottom = false,
+                                },
+                                new TextSection
+                                {
+                                    Paragraphs =
+                                    {
+                                        new()
+                                        {
+                                            Text = "Gränssnittet använder dessutom laddningsindikatorer vid längre operationer samt tydliga " +
+                                            "återkopplingar när en åtgärd lyckas eller misslyckas. Detta gör att användaren alltid får tydlig " +
+                                            "feedback på vad som händer."
+                                        },
+                                        new() { Text = "Applikationen är även responsivt uppbyggd och fungerar på både dator, surfplatta och mobiltelefon." }
+                                    },
+                                    SpaceBottom = false,
+                                    PaddingsCss = "",
+                                    BackgroundColorCss = "section-bg",
+                                },
+                                new FlexSection
+                                {
+                                    ImagesLeft = [ new() { ImageUrl = "images/desktop.png" }, ],
+                                    ImagesRight = [ new() { ImageUrl = "images/mobile.png" }, ],
+                                    BackgroundColorCss = "section-bg",
+                                    BordersCss = "border-bottom border-primary"
+                                },
+                                new ImageCenterSection
+                                {
+                                    Heading = "Behörigheter och säkerhet",
+                                    ParagraphsTop =
+                                    {
+                                        new()
+                                        {
+                                            Text = "Behörighetskontroller utförs alltid i backend. Frontenden använder den information som returneras " +
+                                            "för att visa eller dölja funktioner beroende på användarens rättigheter, men alla kritiska kontroller verifieras " +
+                                            "på serversidan."
+                                        },
+                                        new()
+                                        {
+                                            Text = "Exempelvis kan endast gruppens ägare bjuda in nya medlemmar eller ta bort befintliga medlemmar. Även om " +
+                                            "någon skulle försöka manipulera klienten kommer backend att neka otillåtna åtgärder."
+                                        }
+                                    },
+                                    DesktopImages = { new(){ ImageUrl = "images/groupowner.png" }, },
+                                    ParagraphsBottom =
+                                    {
+                                        new()
+                                        {
+                                            Text = "Åtkomst till receptbilder kontrolleras också av backend. Bilder kan endast visas av receptets ägare eller " +
+                                            "av användare som är medlem i en grupp där receptet har delats."
+                                        }
+                                    },
+                                    SpaceBottom = false,
+                                    PaddingsCss = "pt-3 pb-3",
+
+                                },
+                                new TextSection
+                                {
+                                    Heading = "Delning av recept",
+                                    Paragraphs =
+                                    {
+                                        new()
+                                        {
+                                            Text = "När ett recept delas inom en grupp skapas en separat entitet i backend istället för att flera användare " +
+                                            "arbetar mot samma databaspost. " +
+                                            "Denna lösning gör det möjligt för användare att skapa egna kopior av delade recept och fortsätta utveckla " +
+                                            "dem utan att originalreceptet påverkas. " +
+                                            "På så sätt kan recept delas mellan användare samtidigt som varje användare behåller möjligheten " +
+                                            "att göra egna ändringar."
+                                        },
+                                    },
+                                    BackgroundColorCss = "section-bg",
+                                    BordersCss = "border-all border-primary"
+                                },
+                                new TextSection
+                                {
+                                    Heading = "Kodkvalitet och skalbarhet",
+                                    Paragraphs =
+                                    {
+                                        new()
+                                        {
+                                            Text = "Projektet har utvecklats med fokus på långsiktig underhållbarhet. Genom den komponentbaserade " +
+                                            "arkitekturen, återanvändbara composables, ett separat API-lager och en tydlig projektstruktur är det " +
+                                            "enkelt att lägga till nya funktioner utan att påverka befintlig kod."
+                                        },
+                                        new()
+                                        {
+                                            Text = "Sidor laddas dynamiskt via Vue Router (lazy loading) för att minska den initiala laddningstiden, " +
+                                            "och återanvändbara komponenter används genom hela applikationen för att skapa ett enhetligt gränssnitt och " +
+                                            "minska mängden duplicerad kod."
+                                        },
+                                        new()
+                                        {
+                                            Text = "Denna arkitektur har gjort det möjligt att successivt bygga ut projektet med nya funktioner utan att " +
+                                            "behöva göra större förändringar i den befintliga kodbasen."
+                                        },
+                                    },
+                                    PaddingsCss = "pb-3"
+                                },
                             }
                         }
                     };
@@ -599,9 +878,9 @@ namespace SciFiPortfolio.Data.Seeders
                                     },
                                     DesktopImage = { ImageUrl = "images/receptakuten-layers.png"},
                                     ImagePosition = ImagePosition.Bottom,
-                                    BackgroundColor = "",
+                                    BackgroundColorCss = "",
                                     SpaceBottom = false,
-                                    Paddings = "",
+                                    PaddingsCss = "",
 
                                 },
                                 new ImageCenterSection
@@ -638,9 +917,9 @@ namespace SciFiPortfolio.Data.Seeders
                                             "Genom att använda interfaces mellan lagren kan implementationer bytas ut utan att affärslogiken påverkas."
                                         },
                                     },
-                                    BackgroundColor = "",
+                                    BackgroundColorCss = "",
                                     SpaceBottom = false,
-                                    Paddings = "",
+                                    PaddingsCss = "",
                                 },
                                 new ImageCenterSection
                                 {
@@ -667,7 +946,7 @@ namespace SciFiPortfolio.Data.Seeders
                                         }
                                     },
                                     DesktopImages = { new() { ImageUrl = "images/recept-diagram.png" } },
-                                    BackgroundColor = "",
+                                    BackgroundColorCss = "",
                                     SpaceBottom = false,
 
                                 },
@@ -705,7 +984,7 @@ namespace SciFiPortfolio.Data.Seeders
                                         new() { Text = "Roll- och behörighetskontroller" },
                                     },
                                     SpaceBottom = false,
-                                    Paddings = "",
+                                    PaddingsCss = "",
                                 },
                                 new TextSection
                                 {
@@ -721,7 +1000,7 @@ namespace SciFiPortfolio.Data.Seeders
                                             Text= "För att aktivera nya konton krävs e-postverifiering och samma mekanism används vid glömt lösenord."
                                         }
                                     },
-                                    Paddings = "",
+                                    PaddingsCss = "",
                                     SpaceBottom = false,
 
                                 },
@@ -743,9 +1022,9 @@ namespace SciFiPortfolio.Data.Seeders
                                     },
                                     DesktopImage = { ImageUrl = "images/inbjudning.png" },
                                     ImagePosition = ImagePosition.Bottom,
-                                    BackgroundColor = "",
+                                    BackgroundColorCss = "",
                                     SpaceBottom = false,
-                                    Paddings = "",
+                                    PaddingsCss = "",
 
                                 },
                                 new ImageCenterSection
@@ -769,9 +1048,9 @@ namespace SciFiPortfolio.Data.Seeders
                                             "används för att ge klarare förståelse när man läser koden, detta upprepas över hela projektet."
                                         },
                                     },
-                                    BackgroundColor = "",
+                                    BackgroundColorCss = "",
                                     SpaceBottom = false,
-                                    Paddings = "",
+                                    PaddingsCss = "",
                                 },
                                 new ImageSection
                                 {
@@ -779,8 +1058,8 @@ namespace SciFiPortfolio.Data.Seeders
                                     {
                                         new() { ImageUrl = "images/save-image.png"}
                                     },
-                                    BackgroundColor = "",
-                                    Paddings = ""
+                                    BackgroundColorCss = "",
+                                    PaddingsCss = ""
                                 },
                                 new ListSection
                                 {
@@ -798,7 +1077,7 @@ namespace SciFiPortfolio.Data.Seeders
                                         new() { Text = "Ta bort konton som aldrig aktiverats" },
                                     },
                                     SpaceBottom = true,
-                                    Paddings = "",
+                                    PaddingsCss = "",
                                 },
                                 new TextSection
                                 {
@@ -806,15 +1085,15 @@ namespace SciFiPortfolio.Data.Seeders
                                     {
                                         new() { Text = "Dessa jobb configureras med hjälp av nycklar och triggers där man sedan anger när de ska köras, Här kan ni se ett exempel på ett av dess jobb: " },
                                     },
-                                    Paddings = "",
+                                    PaddingsCss = "",
                                     SpaceBottom = false,
                                 },
                                 new FlexSection
                                 {
-                                    ImagesLeft = [ new () { ImageUrl = "images/quartz-conf-2.png" } ],
-                                    ImagesRight = [ new () { ImageUrl = "images/quartz-job-ex-3.png" } ],
+                                    ImagesLeft = [ new () { ImageUrl = "/images/quartz-conf-2.png" } ],
+                                    ImagesRight = [ new () { ImageUrl = "/images/quartz-job-ex-3.png" } ],
                                     SpaceBottom = false,
-                                    Paddings = ""
+                                    PaddingsCss = ""
                                 },
                                 new TextSection
                                 {
@@ -826,7 +1105,7 @@ namespace SciFiPortfolio.Data.Seeders
                                             " på användarrelaterade förfrågningar samtidigt som återkommande underhåll sker automatiskt."
                                         },
                                     },
-                                    Paddings = "",
+                                    PaddingsCss = "",
                                     SpaceBottom = false,
                                 },
                                 new TextSection

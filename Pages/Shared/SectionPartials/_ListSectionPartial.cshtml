@@ -5,7 +5,7 @@
     var paragraphs = Model.Paragraphs;
 }
 
-<section class="section-full @(!string.IsNullOrWhiteSpace(Model.BackgroundColor) ? $"{Model.BackgroundColor}" : "") @Model.Paddings">
+<section class="section-full @(!string.IsNullOrWhiteSpace(Model.BackgroundColorCss) ? $"{Model.BackgroundColorCss}" : "") @Model.PaddingsCss @Model.BordersCss">
     <div class="container">
         <h2 class="text-green text-sci-fi">@Model.Heading</h2>
         @if (!string.IsNullOrWhiteSpace(Model.SubHeading))

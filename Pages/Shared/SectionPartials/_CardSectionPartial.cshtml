@@ -1,7 +1,7 @@
 ﻿@model CardSection
 @{
 }
-<section class="section-full @(!string.IsNullOrWhiteSpace(Model.BackgroundColor) ? $"{Model.BackgroundColor}" : "") @Model.Paddings">
+<section class="section-full @(!string.IsNullOrWhiteSpace(Model.BackgroundColorCss) ? $"{Model.BackgroundColorCss}" : "") @Model.PaddingsCss @Model.BordersCss">
     <div class="project-cards container">
         @if (!string.IsNullOrWhiteSpace(Model.Heading))
         {

@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using SciFiPortfolio.Helpers;
 using SciFiPortfolio.Interfaces.Services;
+using SciFiPortfolio.Models.ContentSections;
 using SciFiPortfolio.ViewModels;
 
 namespace SciFiPortfolio.Pages.Projects
@@ -26,7 +27,11 @@ namespace SciFiPortfolio.Pages.Projects
             if (page is null)
                 return;
 
-            Vm.Hero = PageHelper.GetHeroSection(page);
+            Vm.Hero = new HeroSection
+            {
+                Heading = "Receptakuten - Backend",
+                TextColor = "sci-fi-glow",
+            };
             page.Sections = PageHelper.FilterHero(page);
             Vm.Page = page;
             Vm.ShowTitle = false;

@@ -1,4 +1,4 @@
-﻿@page "/projects/{slug}"
+﻿@page "/projects/receptakuten-frontend/{slug}"
 
 @model ReceptakutenPageModel
 @{
@@ -17,12 +17,13 @@
     }
 
     <div class="container">
-        @foreach (var p in Model.Vm.Page.ChildPages)
+        @* @foreach (var p in Model.Vm.Page.ChildPages)
         {
             <a href="@($"/projects/{p.Slug}")">Läs om @p.Title -></a>
-        }
-    </div>
+        } *@
+        <a asp-page="/projects/receptakutenfrontend" asp-route-slug="receptakuten-frontend">ggggggggggggggggggggggggggggggggg</a>
 
+    </div>
     <vc:Renderer sections="Model.Vm.Page.Sections" />
 }
 

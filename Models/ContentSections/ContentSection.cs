@@ -21,8 +21,10 @@ namespace SciFiPortfolio.Models.ContentSections
 
         public bool SpaceBottom { get; set; } = true;
 
-        public string BackgroundColor { get; set; } = "";
+        public string BackgroundColorCss { get; set; } = "";
 
-        public string Paddings { get; set; } = "pt-3 pb-3";
+        public string PaddingsCss { get; set; } = "pt-3 pb-3";
+
+        public string BordersCss { get; set; } = "";
     }
 }

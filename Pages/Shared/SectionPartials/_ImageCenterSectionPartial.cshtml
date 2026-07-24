@@ -7,7 +7,7 @@
     var paraBottom = Model.ParagraphsBottom;
 }
 
-<section class="section-full @(!string.IsNullOrWhiteSpace(Model.BackgroundColor) ? $"{Model.BackgroundColor}" : "") @Model.Paddings">
+<section class="section-full @(!string.IsNullOrWhiteSpace(Model.BackgroundColorCss) ? $"{Model.BackgroundColorCss}" : "") @Model.PaddingsCss @Model.BordersCss">
     <div class="container">
         @if (!string.IsNullOrWhiteSpace(Model.Heading))
         {
@@ -25,11 +25,11 @@
 
         @foreach (var image in desktopImages)
         {
-            <img class="@(mobileImages.Any() ? "desktop-img" : "image-center-section-img")" src="~/@image.ImageUrl" alt="@image.AltText" />
+            <img class="@(mobileImages.Any() ? "desktop-img" : "image-center-section-img") border-white" src="~/@image.ImageUrl" alt="@image.AltText" />
         }
         @foreach (var image in mobileImages)
         {
-            <img class="mobile-img" src="~/@image.ImageUrl" alt="@image.AltText" />
+            <img class="mobile-img border-white" src="~/@image.ImageUrl" alt="@image.AltText" />
         }
         @foreach (var para in paraBottom)
         {
