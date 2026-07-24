@@ -23,6 +23,6 @@ namespace SciFiPortfolio.Models.ContentSections
 
         public string BackgroundColor { get; set; } = "";
 
-        public bool Paddings { get; set; } = true;
+        public string Paddings { get; set; } = "pt-3 pb-3";
     }
 }

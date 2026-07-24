@@ -5,5 +5,7 @@
         public Image? Image { get; set; }
 
         public string HeroImageSizeCssClass { get; set; } = "large";
+
+        public string TextColor { get; set; } = "primary";
     }
 }

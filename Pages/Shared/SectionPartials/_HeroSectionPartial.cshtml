@@ -3,7 +3,7 @@
 @{
 
 }
-<section class="section-full @(!string.IsNullOrWhiteSpace(Model.BackgroundColor) ? $"{Model.BackgroundColor}" : "") @(Model.Paddings ? "pt-3 pb-3" : "")">
+<section class="section-full @(!string.IsNullOrWhiteSpace(Model.BackgroundColor) ? $"{Model.BackgroundColor}" : "") @Model.Paddings">
         @if (Model.Image is not null)
         {
             <div class="hero-image-@Model.HeroImageSizeCssClass">
@@ -16,8 +16,8 @@
         {
             <div class="text-hero container">
                 <div class="hero-text">
-                    <h1 class="mb-2">@Model.Heading</h1>
-                    <h1>@Model.SubHeading</h1>
+                    <h1 class="mb-2 text-@Model.TextColor">@Model.Heading</h1>
+                    <h1 class="text-@Model.TextColor">@Model.SubHeading</h1>
                 </div>
             </div>          
         }

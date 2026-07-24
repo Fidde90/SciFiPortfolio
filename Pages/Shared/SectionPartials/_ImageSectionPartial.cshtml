@@ -5,26 +5,26 @@
     var mobileImages = Model.MobileImages;
 }
 
-<section class="section-full @(!string.IsNullOrWhiteSpace(Model.BackgroundColor) ? $"{Model.BackgroundColor}" : "") @(Model.Paddings ? "pt-3 pb-3" : "")">
+<section class="section-full @(!string.IsNullOrWhiteSpace(Model.BackgroundColor) ? $"{Model.BackgroundColor}" : "") @Model.Paddings">
     <div class="container">
         @if (!string.IsNullOrWhiteSpace(Model.Heading))
         {
-            <h2 class="text-green sci-fi-text">@Model.Heading</h2>
+            <h2 class="text-green text-sci-fi">@Model.Heading</h2>
         }
         @if (!string.IsNullOrWhiteSpace(Model.SubHeading))
         {
-            <h3 class="text-green sci-fi-text">@Model.SubHeading</h3>
+            <h3 class="text-green text-sci-fi">@Model.SubHeading</h3>
         }
         <div class="text-center">
             @foreach (var image in desktopImages)
             {
-                <img class="@(mobileImages.Any() ? "desktop-img" : "regular-img")" src="~/@image.ImageUrl" alt="@image.AltText" />
+                <img class="@(mobileImages.Any() ? "desktop-img" : "regular-img") border-white" src="~/@image.ImageUrl" alt="@image.AltText" />
             }
             @if (mobileImages.Any())
             {
                 @foreach (var image in mobileImages)
                 {
-                    <img class="mobile-img" src="~/@image.ImageUrl" alt="@image.AltText" />
+                    <img class="mobile-img border-white" src="~/@image.ImageUrl" alt="@image.AltText" />
                 }
             }
         </div>

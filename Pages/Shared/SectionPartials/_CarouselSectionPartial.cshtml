@@ -6,7 +6,7 @@
 
 @if (images.Any())
 {
-    <section class="slider-container container @(!string.IsNullOrWhiteSpace(Model.BackgroundColor) ? $"{Model.BackgroundColor}" : "") @(Model.Paddings ? "pt-3 pb-3" : "")">
+    <section class="slider-container container @(!string.IsNullOrWhiteSpace(Model.BackgroundColor) ? $"{Model.BackgroundColor}" : "") @Model.Paddings">
         <div class="carousel">
             <div class="carousel-group">
                 @foreach (var image in images)

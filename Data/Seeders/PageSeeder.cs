@@ -506,8 +506,6 @@ namespace SciFiPortfolio.Data.Seeders
                                         BackgroundColor = "section-bg",
 
                                     },
-                                   
-                                
                                 }
                         }
                     };
@@ -603,7 +601,7 @@ namespace SciFiPortfolio.Data.Seeders
                                     ImagePosition = ImagePosition.Bottom,
                                     BackgroundColor = "",
                                     SpaceBottom = false,
-                                    Paddings = false,
+                                    Paddings = "",
 
                                 },
                                 new ImageCenterSection
@@ -642,7 +640,7 @@ namespace SciFiPortfolio.Data.Seeders
                                     },
                                     BackgroundColor = "",
                                     SpaceBottom = false,
-                                    Paddings = false,
+                                    Paddings = "",
                                 },
                                 new ImageCenterSection
                                 {
@@ -671,7 +669,6 @@ namespace SciFiPortfolio.Data.Seeders
                                     DesktopImages = { new() { ImageUrl = "images/recept-diagram.png" } },
                                     BackgroundColor = "",
                                     SpaceBottom = false,
-                                    Paddings = true,
 
                                 },
                                 new ListSection
@@ -708,7 +705,7 @@ namespace SciFiPortfolio.Data.Seeders
                                         new() { Text = "Roll- och behörighetskontroller" },
                                     },
                                     SpaceBottom = false,
-                                    Paddings = false,
+                                    Paddings = "",
                                 },
                                 new TextSection
                                 {
@@ -724,7 +721,7 @@ namespace SciFiPortfolio.Data.Seeders
                                             Text= "För att aktivera nya konton krävs e-postverifiering och samma mekanism används vid glömt lösenord."
                                         }
                                     },
-                                    Paddings = false,
+                                    Paddings = "",
                                     SpaceBottom = false,
 
                                 },
@@ -748,7 +745,7 @@ namespace SciFiPortfolio.Data.Seeders
                                     ImagePosition = ImagePosition.Bottom,
                                     BackgroundColor = "",
                                     SpaceBottom = false,
-                                    Paddings = true,
+                                    Paddings = "",
 
                                 },
                                 new ImageCenterSection
@@ -774,7 +771,7 @@ namespace SciFiPortfolio.Data.Seeders
                                     },
                                     BackgroundColor = "",
                                     SpaceBottom = false,
-                                    Paddings = false,
+                                    Paddings = "",
                                 },
                                 new ImageSection
                                 {
@@ -783,7 +780,7 @@ namespace SciFiPortfolio.Data.Seeders
                                         new() { ImageUrl = "images/save-image.png"}
                                     },
                                     BackgroundColor = "",
-                                    Paddings = false
+                                    Paddings = ""
                                 },
                                 new ListSection
                                 {
@@ -801,7 +798,7 @@ namespace SciFiPortfolio.Data.Seeders
                                         new() { Text = "Ta bort konton som aldrig aktiverats" },
                                     },
                                     SpaceBottom = true,
-                                    Paddings = false,
+                                    Paddings = "",
                                 },
                                 new TextSection
                                 {
@@ -809,7 +806,7 @@ namespace SciFiPortfolio.Data.Seeders
                                     {
                                         new() { Text = "Dessa jobb configureras med hjälp av nycklar och triggers där man sedan anger när de ska köras, Här kan ni se ett exempel på ett av dess jobb: " },
                                     },
-                                    Paddings = false,
+                                    Paddings = "",
                                     SpaceBottom = false,
                                 },
                                 new FlexSection
@@ -817,7 +814,7 @@ namespace SciFiPortfolio.Data.Seeders
                                     ImagesLeft = [ new () { ImageUrl = "images/quartz-conf-2.png" } ],
                                     ImagesRight = [ new () { ImageUrl = "images/quartz-job-ex-3.png" } ],
                                     SpaceBottom = false,
-                                    Paddings = false
+                                    Paddings = ""
                                 },
                                 new TextSection
                                 {
@@ -829,7 +826,7 @@ namespace SciFiPortfolio.Data.Seeders
                                             " på användarrelaterade förfrågningar samtidigt som återkommande underhåll sker automatiskt."
                                         },
                                     },
-                                    Paddings = false,
+                                    Paddings = "",
                                     SpaceBottom = false,
                                 },
                                 new TextSection
@@ -852,7 +849,6 @@ namespace SciFiPortfolio.Data.Seeders
                                             "exempelvis vid filhantering och borttagning av resurser från servern."
                                         },
                                     },
-                                    Paddings = true,
                                     SpaceBottom = true,
                                 },
                             }

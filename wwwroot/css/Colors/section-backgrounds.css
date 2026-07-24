@@ -4,6 +4,10 @@
     backdrop-filter: blur(12px);
 }
 
+.section-border {
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
 .section-bg-green {
     background: rgba(29, 205, 159, 0.08);
     border: 1px solid rgba(29, 205, 159, 0.25);
