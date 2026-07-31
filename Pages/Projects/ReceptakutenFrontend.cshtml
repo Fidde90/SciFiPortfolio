@@ -1,10 +1,10 @@
-﻿@page "/projects/{slug}"
+﻿@page "/projects/receptakuten/frontend"
 
 @model ReceptakutenFrontendModel
 @{
-    var hej = "";
+
 }
-<h1>hej</h1>
+
 @if (Model.Vm is not null && Model.Vm.Page is not null)
 {
     @if (Model.Vm.Hero is not null)
@@ -15,11 +15,6 @@
     @if (Model.Vm.ShowTitle)
     {
         <h1 class="text-center text-mega main-title gradient-text text-sci-fi">@(Model.Vm.Page.Title)</h1>
-    }
-
-    @foreach (var p in Model.Vm.Page.ChildPages)
-    {
-        <a href="@($"/projects/{p.Slug}")">Läs om @p.Title -></a>
     }
 
     <vc:Renderer sections="Model.Vm.Page.Sections" />

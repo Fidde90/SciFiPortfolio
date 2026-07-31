@@ -37,6 +37,14 @@ namespace SciFiPortfolio
                 options.LowercaseUrls = true;
             });
 
+            //builder.Services.AddRazorPages(opt =>
+            //{
+            //    opt.Conventions.AddFolderRouteModelConvention("/projects/receptakuten", model =>
+            //    {
+            //        model.;
+            //    });
+            //});
+
             var app = builder.Build();
 
 

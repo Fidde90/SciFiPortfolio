@@ -867,7 +867,7 @@ namespace SciFiPortfolio.Data.Seeders
                             {
                                 new ImageWithPositionSection
                                 {
-                                    Heading = "Backend",
+                                    Heading = "",
                                     Paragraphs =
                                     {
                                         new()

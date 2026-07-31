@@ -18,7 +18,7 @@ namespace SciFiPortfolio.Pages.Projects
             _pageService = pageService;
         }
 
-        public async Task OnGetAsync([FromRoute] string slug)
+        public async Task OnGetAsync([FromQuery] string slug)
         {
             ViewData["Title"] = "Receptakuten - Frontend";
 
