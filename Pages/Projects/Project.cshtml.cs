@@ -2,36 +2,31 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using SciFiPortfolio.Helpers;
 using SciFiPortfolio.Interfaces.Services;
-using SciFiPortfolio.Models.ContentSections;
 using SciFiPortfolio.ViewModels;
 
 namespace SciFiPortfolio.Pages.Projects
 {
-    public class ReceptakutenBackendModel : PageModel
+    public class ProjectModel : PageModel
     {
-        public ReceptakutenBackendViewModel Vm { get; set; } = new();
+        public ProjectViewModel Vm { get; set; } = new();
 
         private readonly IPageService _pageService;
 
-        public ReceptakutenBackendModel(IPageService pageService)
+        public ProjectModel(IPageService pageService)
         {
             _pageService = pageService;
         }
 
-        public async Task OnGetAsync([FromQuery] string slug)
+        public async Task OnGet([FromRoute] string slug)
         {
-            ViewData["Title"] = "Receptakuten - Backend";
+            ViewData["Title"] = $"{slug}";
 
             var page = await _pageService.GetPageAsync(slug);
 
             if (page is null)
                 return;
 
-            Vm.Hero = new HeroSection
-            {
-                Heading = "Receptakuten - Backend",
-                TextColor = "sci-fi-glow",
-            };
+            Vm.Hero = PageHelper.GetHeroSection(page);
             page.Sections = PageHelper.FilterHero(page);
             Vm.Page = page;
             Vm.ShowTitle = false;

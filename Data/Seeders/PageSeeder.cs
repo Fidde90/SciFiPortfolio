@@ -151,6 +151,7 @@ namespace SciFiPortfolio.Data.Seeders
                 new(){ Name= "razor-pages", Text = "Razor pages" },
                 new(){ Name= "vanilla-javascript", Text = "Vanilla javascript" },
                 new(){ Name= "ssr", Text = "SSR" },
+                new(){ Name= "custom-cms", Text = "Custom CMS" },
             };
 
             var existingNames = await _context.Tags
@@ -207,11 +208,12 @@ namespace SciFiPortfolio.Data.Seeders
                     UniqueName = "sci-fi-portfolio",
                     ImageUrl = "images/portimg.jpeg",
                     ImageAltText = "a sci-fi image",
-                    AppLink = { LinkText="Läs mer", LinkUrl ="/", PageSlug="sci-fi-portfolio", PageId = sciFiPort.Id },
+                    AppLink = { LinkText="Läs mer", LinkUrl ="/", PageSlug="/", PageId = sciFiPort.Id },
                     Tags = {
                         tagLookup["razor-pages"],
                         tagLookup["vanilla-javascript"],
                         tagLookup["ssr"],
+                        tagLookup["custom-cms"]
                     }
                 }
             };
@@ -452,7 +454,11 @@ namespace SciFiPortfolio.Data.Seeders
                         Content =
                         {
                              Sections =
-                                {   
+                                {   new HeroSection
+                                    {
+                                       Image = new() { ImageUrl ="images/recept-bil-ub.png" },
+                                       HeroImageSizeCssClass = "small",
+                                    },
                                     new TextSection
                                     {
                                         Heading = "",
@@ -536,6 +542,11 @@ namespace SciFiPortfolio.Data.Seeders
                         {
                             Sections =
                             {
+                                new HeroSection
+                                {
+                                    Heading = "Receptakuten",
+                                    TextColor = "sci-fi-glow",
+                                },
                                 new TextSection
                                 {
                                     Paragraphs =
@@ -865,6 +876,11 @@ namespace SciFiPortfolio.Data.Seeders
                         {
                             Sections =
                             {
+                                new HeroSection
+                                {
+                                    Heading = "Receptakuten ",
+                                    TextColor = "sci-fi-glow",
+                                },
                                 new ImageWithPositionSection
                                 {
                                     Heading = "",

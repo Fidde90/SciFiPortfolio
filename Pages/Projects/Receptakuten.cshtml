@@ -1,6 +1,6 @@
-﻿@page "/projects/{slug}"
+﻿@page "/projects/receptakuten"
 
-@model ReceptakutenPageModel
+@model ReceptakutenModel
 @{
 }
 
@@ -8,6 +8,7 @@
 {
     @if (Model.Vm.Hero is not null)
     {
+        <div class="section-space"></div>
         <partial name="/Pages/Shared/SectionPartials/_HeroSectionPartial.cshtml" model="Model.Vm.Hero" />
     }
 
@@ -19,17 +20,9 @@
     <div class="container">
         @foreach(var childPage in Model.Vm.Page.ChildPages)
         {
-            <a asp-page="/projects/receptakuten@(childPage.Title)" asp-route-slug="@childPage.Slug">Läs mer om @childPage.Title -></a>
+            <a href="/projects/@childPage.Slug">Läs mer om @childPage.Title -></a>
         }
     </div>
 
     <vc:Renderer sections="Model.Vm.Page.Sections" />
 }
-
-<style>
-    .image-hero {
-        width: 40%;
-        background: rgba(0, 0, 0, .9);
-        overflow: hidden;
-    }
-</style>

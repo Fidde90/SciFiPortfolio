@@ -7,18 +7,18 @@ using SciFiPortfolio.ViewModels;
 
 namespace SciFiPortfolio.Pages.Projects
 {
-    public class ReceptakutenPageModel : PageModel
+    public class ReceptakutenModel : PageModel
     {
         public ReceptakutenViewModel Vm { get; set; } = new();
 
         private readonly IPageService _pageService;
 
-        public ReceptakutenPageModel(IPageService pageService)
+        public ReceptakutenModel(IPageService pageService)
         {
             _pageService = pageService;
         }
 
-        public async Task OnGetAsync([FromRoute] string slug)
+        public async Task OnGetAsync([FromRoute] string slug = "receptakuten")
         {
             ViewData["Title"] = "Receptakuten";
 

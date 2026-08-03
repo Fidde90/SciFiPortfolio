@@ -19,7 +19,7 @@
 }
 
 .tag {
-    border: 1px solid var(--color-border-accent);
+    border: 2px solid var(--color-border-accent);
     border-radius: 20px;
     padding: 3px 10px;
     width: fit-content;

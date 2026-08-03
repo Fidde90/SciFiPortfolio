@@ -23,6 +23,13 @@ namespace SciFiPortfolio.Repositories
                 .FirstOrDefaultAsync(page => page.Slug == slug);
         }
 
+        public async Task<List<ProjectCardEntity>?> GetProjcetCardsAsync()
+        {
+            return await _context.ProjectCards
+                .Include(p => p.Tags)
+                .ToListAsync();
+        }
+
         public async Task<List<ProjectCardEntity>?> GetProjcetCardsAsync(List<string> cardIds)
         {
             return await _context.ProjectCards

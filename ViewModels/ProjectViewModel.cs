@@ -3,7 +3,7 @@ using SciFiPortfolio.Models.ContentSections;
 
 namespace SciFiPortfolio.ViewModels
 {
-    public class HostingViewModel
+    public class ProjectViewModel
     {
         public HeroSection? Hero { get; set; }
 

@@ -1,6 +1,6 @@
-﻿@page "/projects/receptakuten/frontend"
+﻿@page "/projects/{slug}"
 
-@model ReceptakutenFrontendModel
+@model ProjectModel
 @{
 
 }
@@ -12,7 +12,7 @@
         <partial name="/Pages/Shared/SectionPartials/_HeroSectionPartial.cshtml" model="Model.Vm.Hero" />
     }
 
-    @if (Model.Vm.ShowTitle)
+    @if (!string.IsNullOrWhiteSpace(Model.Vm.Page.Title))
     {
         <h1 class="text-center text-mega main-title gradient-text text-sci-fi">@(Model.Vm.Page.Title)</h1>
     }
