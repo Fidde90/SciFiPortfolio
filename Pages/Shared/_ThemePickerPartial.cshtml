@@ -1,0 +1,15 @@
+﻿@{
+    var currentTheme = Context.Request.Cookies["theme"] ?? "sci-fi";
+}
+
+<div class="theme-selector-box">
+    <p class="dropdown-link text-primary m-0">Tema: </p>
+    <select class="theme-select" onchange="setTheme(this.value)">
+        @foreach (var theme in ColorThemes.All)
+        {
+            <option value="@theme" selected="@(theme == currentTheme)">
+                @theme
+            </option>
+        }
+    </select>
+</div>

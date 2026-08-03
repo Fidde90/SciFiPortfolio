@@ -1,5 +1,14 @@
-﻿<!DOCTYPE html>
-<html lang="en">
+﻿@{
+    var theme = Context.Request.Cookies["theme"];
+
+    if (!ColorThemes.All.Contains(theme))
+    {
+        theme = "sci-fi";
+    }
+}
+
+<!DOCTYPE html>
+<html lang="en" data-theme="@theme">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,7 +18,7 @@
           integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
           crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
     <script defer src="~/js/site.js" asp-append-version="true"></script>
     <script type="importmap"></script>
@@ -23,7 +32,7 @@
     <div class="nav-shadow"></div>
     <div class="wrapper">
         
-        <header>
+        <header class="nav-bars">
             <partial name="_HeaderPartial.cshtml" />
         </header>
       

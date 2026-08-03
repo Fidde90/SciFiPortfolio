@@ -16,11 +16,16 @@
     top: 0;
     left: 0;
     right: 0;
-    box-shadow: 0px -10px 32px 1px #00ffff;
+    box-shadow: 0px -10px 32px 1px var(--wall-grid-primary);
 }
 
 .nav-item {
     position: relative;
+    padding: 8px 15px;
+}
+
+.nav-item-header .nav-item:has(a:active) {
+    background-color: red;
 }
 
 .nav-item:hover i {
@@ -49,17 +54,17 @@
     top: 100%;
     z-index: 99999;
     width: 100%;
-    height: 20px;
+    height: 5px;
 }
 
-.nav-dropdown {
+.nav-dropdown, .nav-theme {
     background-color: var(--color-bg);
     position: absolute;
-    top: calc(100% + 14.5px);
+    top: calc(100% + 2px);
     left: -10px;
     z-index: 99999;
     padding-inline: 10px;
-    padding: 10px 0px 10px 5px;
+    padding: 10px 5px 10px 5px;
     border: 1px solid var(--blue-color);
     border-top: none;
     border-bottom-left-radius: 5px;
@@ -68,22 +73,99 @@
     min-width: 150px;
 }
 
+.nav-theme span {
+    display: block;
+    padding: 8px 15px;
+}
+
+.nav-theme span:hover {
+    display: block;
+    background-color: var(--color-surface);
+    border-radius: 3px;
+    cursor:pointer;
+}
+
+.nav-item:hover .nav-theme {
+    display: block;
+}
+
 .nav-dropdown a {
     display: block;
-    padding: 10px;
+    padding: 8px 15px;
 }
 
 .nav-dropdown a:hover {
     display: block;
-    background-color: var(--color-surface-hover);
-    border-radius: 10px;
+    background-color: var(--color-surface);
+    border-radius: 3px;
 }
 
 .nav-item:hover .nav-dropdown {
     display: block;
 }
 
-.nav-item:hover .nav-item-header {
+.nav-item:hover  {
     background-color: var(--color-surface);
-    border-radius: 10px;
+    border-radius: 3px;
+}
+
+
+.theme-selector-box{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.theme-selector-box p {
+   margin:0;
+}
+
+.theme-select,
+.theme-select::picker(select) {
+    appearance: base-select;
+}
+
+.theme-select {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px;
+    width: 150px;
+    font-size:14px;
+    color: inherit;
+    border:none;
+    font-weight:var(--fw-bold);
+    background: var(--color-surface);
+    cursor: pointer;
+}
+
+.theme::picker(select) {
+    background: var(--color-bg);
+    max-height: 200px;
+    overflow-y: auto;
+    border:none;
+}
+
+.theme-select option {
+    padding: 10px 5px 10px 5px;
+    background: var(--color-bg);
+    color: var(--color-text);
+}
+
+.theme-select option:hover {
+    background: var(--color-surface);
+}
+
+.theme-select option:checked {
+    background: var(--color-surface);
+}
+
+.theme-select option:checked::checkmark {
+    content: '✔';
+    margin-right: 0.5em;
+    color: #2196f3;
+}
+
+select::-ms-expand {
+    display: none;
 }

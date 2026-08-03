@@ -1,0 +1,50 @@
+﻿/*=============== CYBERPUNK THEME =================*/
+:root[data-theme="cyberpunk"] {
+    --color-section-bg: rgba(12, 18, 35, 0.75);
+    /*WALLS*/
+    --wall-grid-primary: rgba(0,255,255,.8);
+    --wall-grid-secondary: rgba(255,0,255,.8);
+    --wall-top: #020617;
+    --wall-middle: #0f172a;
+    --wall-bottom: #1a1040;
+    --wall-glow: #00ffff;
+    --wall-glow-soft: rgba(0,255,255,.3);
+    /* TEXT */
+    --color-text: #f8f8ff;
+    --color-text-muted: #c4c9d8;
+    --color-text-soft: #8f97b2;
+    /* PRIMARY (CYAN) */
+    --color-primary-900: #005f73;
+    --color-primary-800: #008ca3;
+    --color-primary-700: #00b8d4;
+    --color-primary-600: #00ffff;
+    --color-primary-500: #4dffff;
+    --color-primary-400: #80ffff;
+    --color-primary-300: #b3ffff;
+    /* ACCENT (MAGENTA) */
+    --color-purple-900: #5c0066;
+    --color-purple-800: #8a0099;
+    --color-purple-700: #c000c0;
+    --color-purple-600: #ff00ff;
+    --color-purple-500: #ff4dff;
+    --color-purple-400: #ff99ff;
+    /* BORDERS */
+    --color-border: rgba(255,255,255,.08);
+    --color-border-soft: rgba(255,255,255,.04);
+    --color-border-strong: rgba(255,255,255,.18);
+    --color-border-primary: #00ffff;
+    --color-border-accent: #ff00ff;
+    /* SHADOWS */
+    --shadow-primary: 0 0 25px rgba(0,255,255,.35);
+    --shadow-accent: 0 0 30px rgba(255,0,255,.35);
+    /* STATUS */
+    --color-success: #00ff88;
+    --color-warning: #ffb300;
+    --color-danger: #ff3864;
+    --color-info: #00d9ff;
+    /* GRADIENTS */
+    --gradient-primary: linear-gradient( 135deg, #00ffff 0%, #ff00ff 100% );
+    --gradient-accent: linear-gradient( 135deg, #ff00ff 0%, #7a00ff 100% );
+    --gradient-hero: linear-gradient( 135deg, #00ffff 0%, #6a00ff 50%, #ff00ff 100% );
+    --gradient-surface: linear-gradient( 135deg, rgba(0,255,255,.06) 0%, rgba(255,0,255,.06) 100% );
+}

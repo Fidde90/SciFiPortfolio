@@ -4,7 +4,7 @@
         <environment include="Development">
             <div class="nav-item">
                 <div class="nav-item-header">
-                    <a asp-page="/Test" class="dropdown-link">Test Partial</a>
+                    <a asp-page="/Test" class="dropdown-link text-primary">Test Partial</a>
                     <i class="text-primary fa-solid fa-caret-down"></i>
                 </div>
             </div>
@@ -12,46 +12,32 @@
       
         <div class="nav-item">
             <div class="nav-item-header">
-                <a class="dropdown-link" href="./next-page.html">Projekt</a>
-                <i class="text-primary fa-solid fa-caret-down"></i>
-            </div>
-
-            <div class="nav-dropdown">
-                <a class="dropdown-link" href="./next-page.html">Projekt</a>
+                <a class="dropdown-link text-primary" href="/">Hem</a>
             </div>
         </div>
 
         <div class="nav-item">
             <div class="nav-item-header">
-                <a class="dropdown-link" href="./next-page.html">Hosting</a>
-                <i class="text-primary fa-solid fa-caret-down"></i>
+                <a class="dropdown-link text-primary" href="./next-page.html">Projekt</a>
+                <i class="fa-solid fa-caret-down text-primary"></i>
             </div>
 
             <div class="nav-dropdown">
-                <a class="dropdown-link" href="./next-page.html">Projekt</a>
+                <a class="dropdown-link text-primary" href="./next-page.html">en sida</a>
             </div>
         </div>
 
         <div class="nav-item">
             <div class="nav-item-header">
-                <a class="dropdown-link" href="./next-page.html">Om mig</a>
-                <i class="text-primary fa-solid fa-caret-down"></i>
+                <a class="dropdown-link text-primary" href="./next-page.html">Om mig</a>
+                <i class="fa-solid fa-caret-down text-primary"></i>
             </div>
 
             <div class="nav-dropdown">
-                <a class="dropdown-link" href="./next-page.html">Projekt</a>
+                <a class="dropdown-link text-primary" href="./next-page.html">blabla</a>
             </div>
         </div>
 
-        <div class="nav-item">
-            <div class="nav-item-header">
-                <a class="dropdown-link" href="./next-page.html">Tekniker</a>
-                <i class="text-primary fa-solid fa-caret-down"></i>
-            </div>
-
-            <div class="nav-dropdown">
-                <a class="dropdown-link" href="./next-page.html">Projekt</a>
-            </div>
-        </div>
+        <partial name="_ThemePickerPartial.cshtml" />
     </div>
 </nav>

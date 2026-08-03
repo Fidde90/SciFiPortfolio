@@ -35,6 +35,7 @@ body {
 }
 
 header {
+    border-bottom: 1px solid var(--wall-grid-primary);
 }
 
 footer {

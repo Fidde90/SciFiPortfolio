@@ -1,5 +1,5 @@
 ﻿.section-bg {
-    background: rgba(30, 30, 35, 0.75);
+    background: var(--color-section-bg);
     backdrop-filter: blur(12px);
 }
 

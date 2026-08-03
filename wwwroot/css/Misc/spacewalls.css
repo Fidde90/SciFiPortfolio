@@ -4,28 +4,11 @@
     top: -80px;
     width: 10px;
     height: 120vh;
-    z-index: 99999;
+    z-index: 999999;
     animation: pulse 2s infinite ease-in-out;
-    /*      background:
-    repeating-linear-gradient(
-        to right,
-        transparent 0 48px,
-        #00ffff 48px 50px
-    ),
-    repeating-linear-gradient(
-        to bottom,
-        transparent 0 48px,
-        #ff00ff 48px 50px
-    ),
-    linear-gradient(
-        to bottom,
-        #050510,
-        #0d1025,
-        #050510
-    );  */
-    background: repeating-linear-gradient( to right, transparent 23px 48px, rgba(0,255,255,0.8) 48px 50px ), repeating-linear-gradient( to bottom, transparent 15px 48px, rgba(0,255,255,0.8) 48px 50px ), linear-gradient( to bottom, #020617, #0f172a, var(--color-primary-900) );
-    box-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, inset 0 0 20px rgba(0, 255, 255, 0.3);
-    filter: drop-shadow(0 0 8px #00ffff) drop-shadow(0 0 16px #00ffff);
+    background: repeating-linear-gradient( to right, transparent 23px 48px, var(--wall-grid-primary) 48px 50px ), repeating-linear-gradient( to bottom, transparent 15px 48px, var(--wall-grid-secondary) 48px 50px ), linear-gradient( to bottom, var(--wall-top), var(--wall-middle), var(--wall-bottom) );
+    box-shadow: 0 0 10px var(--wall-glow), 0 0 20px var(--wall-glow), inset 0 0 20px var(--wall-glow-soft);
+    filter: drop-shadow(0 0 8px var(--wall-glow)) drop-shadow(0 0 16px var(--wall-glow));
 }
 
 .right-wall {

@@ -7,6 +7,15 @@
     --color-surface-secondary: #202228;
     --color-surface-hover: #2a2a2a;
     --color-surface-active: #323232;
+    --color-section-bg: rgba(30, 30, 35, 0.75);
+    /*WALLS*/
+    --wall-grid-primary: rgba(0, 255, 255, 0.8);
+    --wall-grid-secondary: rgba(0, 255, 255, 0.8);
+    --wall-top: #020617;
+    --wall-middle: #0f172a;
+    --wall-bottom: var(--color-primary-900);
+    --wall-glow: #00ffff;
+    --wall-glow-soft: rgba(0, 255, 255, 0.3);
     /*TEXT*/
     --color-text: #f5f7fa;
     --color-text-muted: #b4bac5;

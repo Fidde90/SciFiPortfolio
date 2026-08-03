@@ -53,3 +53,9 @@ function redrawStars() {
     canvas.height = window.innerHeight;
     drawStars();
 }
+
+function setTheme(theme) {
+    document.documentElement.dataset.theme = theme;
+    document.cookie =
+        `theme=${theme};path=/;max-age=31536000;SameSite=Lax`;
+}

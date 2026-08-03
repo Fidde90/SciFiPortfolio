@@ -1,0 +1,49 @@
+﻿:root[data-theme="alien-tech"] {
+    --color-section-bg: rgba(10, 20, 22, 0.82);
+    /* WALLS */
+    --wall-grid-primary: rgba(0,255,220,.4);
+    --wall-grid-secondary: rgba(255,190,0,.25);
+    --wall-top: #021212;
+    --wall-middle: #082323;
+    --wall-bottom: #143030;
+    --wall-glow: #00ffdc;
+    --wall-glow-soft: rgba(0,255,220,.25);
+    /* TEXT */
+    --color-text: #efffff;
+    --color-text-muted: #a7d7d2;
+    --color-text-soft: #6ea6a1;
+    /* PRIMARY */
+    --color-primary-900: #00685b;
+    --color-primary-800: #009688;
+    --color-primary-700: #00c7b4;
+    --color-primary-600: #00ffdc;
+    --color-primary-500: #66ffea;
+    --color-primary-400: #99fff1;
+    --color-primary-300: #ccfffa;
+    /* ACCENT */
+    --color-purple-900: #6d5200;
+    --color-purple-800: #8f6b00;
+    --color-purple-700: #c79400;
+    --color-purple-600: #ffbe00;
+    --color-purple-500: #ffd04d;
+    --color-purple-400: #ffe08c;
+    /* BORDERS */
+    --color-border: rgba(0,255,220,.12);
+    --color-border-soft: rgba(0,255,220,.05);
+    --color-border-strong: rgba(0,255,220,.25);
+    --color-border-primary: #00ffdc;
+    --color-border-accent: #ffbe00;
+    /* SHADOWS */
+    --shadow-primary: 0 0 25px rgba(0,255,220,.30);
+    --shadow-accent: 0 0 20px rgba(255,190,0,.20);
+    /* STATUS */
+    --color-success: #22c55e;
+    --color-warning: #ffbe00;
+    --color-danger: #ef4444;
+    --color-info: #00ffdc;
+    /* GRADIENTS */
+    --gradient-primary: linear-gradient(135deg,#00ffdc 0%,#ffbe00 100%);
+    --gradient-accent: linear-gradient(135deg,#082323 0%,#ffbe00 100%);
+    --gradient-hero: linear-gradient(135deg,#021212 0%,#00ffdc 50%,#ffbe00 100%);
+    --gradient-surface: linear-gradient(135deg,rgba(0,255,220,.08) 0%,rgba(255,190,0,.03) 100%);
+}
