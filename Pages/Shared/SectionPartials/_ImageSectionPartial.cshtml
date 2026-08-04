@@ -18,7 +18,7 @@
         <div class="text-center">
             @foreach (var image in desktopImages)
             {
-                <img class="@(mobileImages.Any() ? "desktop-img" : "regular-img") border-white" src="~/@image.ImageUrl" alt="@image.AltText" />
+                <img class="@(mobileImages.Any() ? "desktop-img" : "regular-img") border-white d-block" src="~/@image.ImageUrl" alt="@image.AltText" />
             }
             @if (mobileImages.Any())
             {

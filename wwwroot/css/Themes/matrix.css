@@ -43,8 +43,8 @@
     --color-danger: #ff4d4d;
     --color-info: #33ff99;
     /* GRADIENTS */
-    --gradient-primary: linear-gradient( 135deg, #00ff66 0%, #00c851 100% );
-    --gradient-accent: linear-gradient( 135deg, #003d14 0%, #00ff66 100% );
+    --gradient-primary: linear-gradient( 135deg, #00ff66 0%, #00c851 75%,transparent 85% );
+    --gradient-accent: linear-gradient( 135deg, #003d14 0%, #00ff66 80%, transparent 80% );
     --gradient-hero: linear-gradient( 135deg, #001a00 0%, #00ff66 50%, #b3ffd1 100% );
     --gradient-surface: linear-gradient( 135deg, rgba(0,255,100,.08) 0%, rgba(0,255,100,.02) 100% );
 }

@@ -47,8 +47,14 @@
 
 .striped-list li {
     font-size: var(--text-m);
-    padding: 2px;
+    padding: 2px 15px;
     margin-bottom: 2px;
+    width: 80%;
+    color: var(--color-text);
+    font-weight: var(--fw-bold);
+    background: rgba(255,255,255,.03);
+    border-left: 3px solid var(--color-primary);
+    text-shadow: 0 2px 4px rgba(0,0,0,.95), 0 4px 12px rgba(0,0,0,.85);
 }
 
 .striped-list li:nth-child(2n-1) {
@@ -58,6 +64,11 @@
 .striped-list li:nth-child(2n-2) {
     background: var(--gradient-surface);
 }
+
+.striped-list li:nth-child(even) {
+    border-left-color: var(--color-accent);
+}
+
 /*-----------------DOCKER--------------------------------------*/
 .containers {
     display: flex;
