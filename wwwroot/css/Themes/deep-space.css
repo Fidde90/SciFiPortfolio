@@ -1,5 +1,6 @@
 ﻿:root[data-theme="deep-space"] {
     --color-section-bg: rgba(8, 15, 30, 0.82);
+    --theme-text: #64b4ff;
     /* WALLS */
     --wall-grid-primary: rgba(100,180,255,.25);
     --wall-grid-secondary: rgba(255,255,255,.08);

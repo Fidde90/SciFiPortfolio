@@ -1,5 +1,6 @@
 ﻿:root[data-theme="starfleet"] {
     --color-section-bg: rgba(18, 14, 24, 0.82);
+    --theme-text: #ff8c50;
     /* WALLS */
     --wall-grid-primary: rgba(255,140,80,.25);
     --wall-grid-secondary: rgba(140,180,255,.15);

@@ -8,7 +8,7 @@
         @foreach (var theme in ColorThemes.All)
         {
             <option value="@theme" selected="@(theme == currentTheme)">
-                @theme
+                <p class="text-glow-@theme">@theme</p>  
             </option>
         }
     </select>

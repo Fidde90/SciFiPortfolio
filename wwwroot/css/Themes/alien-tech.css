@@ -1,5 +1,6 @@
 ﻿:root[data-theme="alien-tech"] {
     --color-section-bg: rgba(10, 20, 22, 0.82);
+    --theme-text: rgba(0,255,220,.25);
     /* WALLS */
     --wall-grid-primary: rgba(0,255,220,.4);
     --wall-grid-secondary: rgba(255,190,0,.25);

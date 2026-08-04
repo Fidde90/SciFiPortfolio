@@ -1,15 +1,15 @@
 ﻿@model ImageWithPositionSection
 @{
     bool IsTopPosition = Model.ImagePosition.ToString() == "Top";
-    bool mobileImage = !string.IsNullOrWhiteSpace(Model.MobileImage.ImageUrl);
+    bool hasMobileImage = !string.IsNullOrWhiteSpace(Model.MobileImage.ImageUrl);
 }
 
 @if (IsTopPosition)
 {
     <div class="d-flex-column">
         <div class="text-center">
-            <img class="image-position-y @(mobileImage ? "desktop-img" : "")" src="~/@Model.DesktopImage.ImageUrl" alt="@Model.DesktopImage.AltText" />
-            @if (mobileImage)
+            <img class="image-position-y @(hasMobileImage ? "desktop-img" : "")" src="~/@Model.DesktopImage.ImageUrl" alt="@Model.DesktopImage.AltText" />
+            @if (hasMobileImage)
             {
                 <img class="image-position-y mobile-img border-white" src="~/@Model.MobileImage.ImageUrl" alt="@Model.MobileImage.AltText" />
             }
@@ -32,8 +32,8 @@ else
             }
         </div>
         <div>
-            <img class="image-position-y @(mobileImage ? "desktop-img" : "") border-white" src="~/@Model.DesktopImage.ImageUrl" alt="@Model.DesktopImage.AltText" />
-            @if (mobileImage)
+            <img class="image-position-y @(hasMobileImage ? "desktop-img" : "") border-white" src="~/@Model.DesktopImage.ImageUrl" alt="@Model.DesktopImage.AltText" />
+            @if (hasMobileImage)
             {
                 <img class="image-position-y mobile-img border-white" src="~/@Model.MobileImage.ImageUrl" alt="@Model.MobileImage.AltText" />
             }

@@ -26,8 +26,32 @@
     color: var(--color-warning)
 }
 
-.text-sci-fi{
-  
+.text-glow-starfleet {
+    color: #ff8c50;
+}
+
+.text-glow-sci-fi {
+    color: #00ffff;
+}
+
+.text-glow-matrix {
+    color: #00ff66;
+}
+
+.text-glow-cyberpunk {
+    color: #c000c0;
+}
+
+.text-glow-plasma-core {
+    color: #8a4700;
+}
+
+.text-glow-deep-space {
+    color: #64b4ff;
+}
+
+.text-glow-alien-tech {
+    color: rgba(0,255,220,.25);
 }
 
 .text-sci-fi-glow {

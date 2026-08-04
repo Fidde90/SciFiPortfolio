@@ -1,0 +1,14 @@
+﻿.border-top {
+    border-top-width: 1px;
+    border-top-style: solid;
+}
+
+.border-bottom {
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+}
+
+.border-all {
+    border-width: 1px;
+    border-style: solid;
+}

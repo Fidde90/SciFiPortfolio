@@ -1,5 +1,6 @@
 ﻿:root[data-theme="plasma-core"] {
     --color-section-bg: rgba(15, 18, 28, 0.82);
+    --theme-text: #8a4700;
     /* WALLS */
     --wall-grid-primary: rgba(0,180,255,.35);
     --wall-grid-secondary: rgba(255,120,0,.35);

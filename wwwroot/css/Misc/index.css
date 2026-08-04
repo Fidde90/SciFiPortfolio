@@ -2,6 +2,8 @@
 @import "./spacewalls.css";
 @import "./containers.css";
 @import "./buttons.css";
+@import "./borders.css";
+@import "./theme-picker.css";
 
 .link {
     display: block;
@@ -50,13 +52,13 @@
 }
 
 .striped-list li:nth-child(2n-1) {
-    background: var(--gradient-surface);
+    background: var(--gradient-accent);
 }
 
 .striped-list li:nth-child(2n-2) {
-    background: var(--gradient-accent);
+    background: var(--gradient-surface);
 }
-/*-------------------------------------------------------*/
+/*-----------------DOCKER--------------------------------------*/
 .containers {
     display: flex;
     flex-direction: column;

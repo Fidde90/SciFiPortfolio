@@ -1,5 +1,6 @@
 ﻿:root[data-theme="matrix"] {
     --color-section-bg: rgba(5, 18, 5, 0.80);
+    --theme-text: #00ff66;
     /* WALLS */
     --wall-grid-primary: rgba(0,255,100,.8);
     --wall-grid-secondary: rgba(0,255,100,.4);

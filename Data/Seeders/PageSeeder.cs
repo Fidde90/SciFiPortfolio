@@ -82,9 +82,9 @@ namespace SciFiPortfolio.Data.Seeders
                 _logger.LogInformation(":::::: Receptakuten Page Seeded ::::::");
             }
 
-            if(receptakuten is not null)
+            if (receptakuten is not null)
             {
-                if(receptaktenFrontend is null)
+                if (receptaktenFrontend is null)
                 {
                     receptaktenFrontend = new PageEntity
                     {
@@ -134,24 +134,26 @@ namespace SciFiPortfolio.Data.Seeders
                 _logger.LogInformation(":::::: Sci-fi Page Seeded ::::::");
             }
 
+
+
             #endregion
 
             #region Tags, Cards, Lookups
 
             var tags = new List<TagEntity>()
             {
-                new(){ Name= ".net-api", Text= ".Net API" },
-                new(){ Name= "vue-js", Text = "Vue.js" },
-                new(){ Name= "postgresql", Text = "PostgreSql" },
-                new(){ Name= "identity", Text = "Identity" },
-                new(){ Name= "nginx", Text = "NginX" },
-                new(){ Name= "ubuntu-server", Text = "Ubuntu Server" },
-                new(){ Name= "docker", Text = "Docker" },
-                new(){ Name= "hostinger", Text = "Hostinger" },
-                new(){ Name= "razor-pages", Text = "Razor pages" },
-                new(){ Name= "vanilla-javascript", Text = "Vanilla javascript" },
-                new(){ Name= "ssr", Text = "SSR" },
-                new(){ Name= "custom-cms", Text = "Custom CMS" },
+                new() { Name = ".net-api", Text = ".Net API" },
+                new() { Name = "vue-js", Text = "Vue.js" },
+                new() { Name = "postgresql", Text = "PostgreSql" },
+                new() { Name = "identity", Text = "Identity" },
+                new() { Name = "nginx", Text = "NginX" },
+                new() { Name = "ubuntu-server", Text = "Ubuntu Server" },
+                new() { Name = "docker", Text = "Docker" },
+                new() { Name = "hostinger", Text = "Hostinger" },
+                new() { Name = "razor-pages", Text = "Razor pages" },
+                new() { Name = "vanilla-javascript", Text = "Vanilla javascript" },
+                new() { Name = "ssr", Text = "SSR" },
+                new() { Name = "custom-cms", Text = "Custom CMS" },
             };
 
             var existingNames = await _context.Tags
@@ -170,7 +172,7 @@ namespace SciFiPortfolio.Data.Seeders
 
             var tagLookup = await _context.Tags
                 .ToDictionaryAsync(x => x.Name);
-            
+
             var cards = new List<ProjectCardEntity>()
             {
                 new()
@@ -179,8 +181,8 @@ namespace SciFiPortfolio.Data.Seeders
                     UniqueName = "receptakuten",
                     ImageUrl = "images/recept-bil-ub.png",
                     ImageAltText = "receptakuten image",
-                    Hyperlink = { LinkText= "Testa den här", LinkUrl="https://receptakuten.net", IconName = "fa-solid fa-arrow-right" },
-                    AppLink = { LinkText= "Läs mer om appen", LinkUrl = "/Projects/Receptakuten", PageSlug = "receptakuten", PageId = receptakuten?.Id },
+                    Hyperlink = { LinkText = "Testa den här", LinkUrl = "https://receptakuten.net", IconName = "fa-solid fa-arrow-right" },
+                    AppLink = { LinkText = "Läs mer om appen", LinkUrl = "/Projects/Receptakuten", PageSlug = "receptakuten", PageId = receptakuten?.Id },
                     Tags = {
                         tagLookup[".net-api"],
                         tagLookup["vue-js"],
@@ -194,7 +196,7 @@ namespace SciFiPortfolio.Data.Seeders
                     UniqueName = "vps-hosting",
                     ImageUrl = "images/server.png",
                     ImageAltText = "image of a server",
-                    AppLink = { LinkText="Läs mer", LinkUrl = "Projects/Hosting", PageSlug ="vps-hosting", PageId = vpsHosting.Id },
+                    AppLink = { LinkText = "Läs mer", LinkUrl = "Projects/Hosting", PageSlug = "vps-hosting", PageId = vpsHosting.Id },
                     Tags = {
                         tagLookup["nginx"],
                         tagLookup["ubuntu-server"],
@@ -208,7 +210,7 @@ namespace SciFiPortfolio.Data.Seeders
                     UniqueName = "sci-fi-portfolio",
                     ImageUrl = "images/portimg.jpeg",
                     ImageAltText = "a sci-fi image",
-                    AppLink = { LinkText="Läs mer", LinkUrl ="/", PageSlug="/", PageId = sciFiPort.Id },
+                    AppLink = { LinkText = "Läs mer", LinkUrl = "/", PageSlug = "/", PageId = sciFiPort.Id },
                     Tags = {
                         tagLookup["razor-pages"],
                         tagLookup["vanilla-javascript"],
@@ -262,26 +264,26 @@ namespace SciFiPortfolio.Data.Seeders
                                 {
                                     Images =
                                     {
-                                        new(){ ImageUrl="images/vue.svg", AltText= "vue icon"},
-                                        new(){ ImageUrl="images/javascript.svg", AltText= "javascript icon"},
-                                        new(){ ImageUrl="images/net.svg", AltText= ".net icon"},
-                                        new(){ ImageUrl="images/csharp.svg", AltText= "c# icon"},
-                                        new(){ ImageUrl="images/azure.svg", AltText= "azure icon"},
-                                        new(){ ImageUrl="images/api.svg", AltText= "api icon"},
-                                        new(){ ImageUrl="images/docker.svg", AltText= "docker icon"},
-                                        new(){ ImageUrl="images/nginx.svg", AltText= "nginX icon"},
-                                        new(){ ImageUrl="images/postgres-ub.png", AltText= "postgresql icon"},
+                                        new() { ImageUrl = "images/vue.svg", AltText = "vue icon" },
+                                        new() { ImageUrl = "images/javascript.svg", AltText = "javascript icon" },
+                                        new() { ImageUrl = "images/net.svg", AltText = ".net icon" },
+                                        new() { ImageUrl = "images/csharp.svg", AltText = "c# icon" },
+                                        new() { ImageUrl = "images/azure.svg", AltText = "azure icon" },
+                                        new() { ImageUrl = "images/api.svg", AltText = "api icon" },
+                                        new() { ImageUrl = "images/docker.svg", AltText = "docker icon" },
+                                        new() { ImageUrl = "images/nginx.svg", AltText = "nginX icon" },
+                                        new() { ImageUrl = "images/postgres-ub.png", AltText = "postgresql icon" },
                                     },
                                 },
                                 new TextSection()
                                 {
                                     Paragraphs =
                                     {
-                                        new(){ Text = "Hej! Jag är en .NET Fullstack-utvecklare med ett särskilt intresse för backendutveckling. Jag tycker om att bygga API:er, designa databaser och skapa robusta system som är skalbara, säkra och enkla att underhålla." },
-                                        new(){ Text = "Även om backend är där jag känner mig mest hemma har jag också erfarenhet av frontendutveckling med Vue.js, JavaScript, HTML och CSS. Det gör att jag kan ta ansvar för hela utvecklingsprocessen – från databas och API till användargränssnitt och användarupplevelse." },
-                                        new(){ Text = "Jag arbetar regelbundet med Docker för containerisering, Nginx för webbserver- och proxyhantering samt Ubuntu Server för drift och deployment. Kombinationen av utveckling och infrastruktur ger mig en helhetsförståelse för hur moderna webbapplikationer byggs, distribueras och underhålls i produktion." },
-                                        new(){ Text = "Jag drivs av att lösa problem, lära mig nya tekniker och utveckla lösningar som skapar verkligt värde. Oavsett om det handlar om att optimera prestanda i ett API, bygga nya funktioner eller sätta upp en stabil produktionsmiljö strävar jag alltid efter att leverera kod av hög kvalitet." },
-                                        new(){ Text = "När jag inte utvecklar utforskar jag gärna nya tekniker och verktyg för att fortsätta utvecklas som utvecklare och hålla mig uppdaterad inom branschen." }
+                                        new() { Text = "Hej! Jag är en .NET Fullstack-utvecklare med ett särskilt intresse för backendutveckling. Jag tycker om att bygga API:er, designa databaser och skapa robusta system som är skalbara, säkra och enkla att underhålla." },
+                                        new() { Text = "Även om backend är där jag känner mig mest hemma har jag också erfarenhet av frontendutveckling med Vue.js, JavaScript, HTML och CSS. Det gör att jag kan ta ansvar för hela utvecklingsprocessen – från databas och API till användargränssnitt och användarupplevelse." },
+                                        new() { Text = "Jag arbetar regelbundet med Docker för containerisering, Nginx för webbserver- och proxyhantering samt Ubuntu Server för drift och deployment. Kombinationen av utveckling och infrastruktur ger mig en helhetsförståelse för hur moderna webbapplikationer byggs, distribueras och underhålls i produktion." },
+                                        new() { Text = "Jag drivs av att lösa problem, lära mig nya tekniker och utveckla lösningar som skapar verkligt värde. Oavsett om det handlar om att optimera prestanda i ett API, bygga nya funktioner eller sätta upp en stabil produktionsmiljö strävar jag alltid efter att leverera kod av hög kvalitet." },
+                                        new() { Text = "När jag inte utvecklar utforskar jag gärna nya tekniker och verktyg för att fortsätta utvecklas som utvecklare och hålla mig uppdaterad inom branschen." }
                                     },
                                     BackgroundColorCss = "section-bg",
                                     BordersCss = "border-all border-primary"
@@ -320,24 +322,24 @@ namespace SciFiPortfolio.Data.Seeders
                             {
                                 new HeroSection
                                 {
-                                    Image = new(){ ImageUrl = "images/server.png"},
+                                    Image = new() { ImageUrl = "images/server.png" },
                                     SpaceBottom = false
                                 },
 
                                 new ListSection
                                 {
-                                    SubHeading ="Teknikstack",
+                                    SubHeading = "Teknikstack",
                                     Paragraphs = new()
                                     {
-                                        new(){ Text = "Jag designade och driftsatte en containerbaserad servermiljö på en VPS-hostad Ubuntu Server. Infrastrukturens fokus ligger på isolering, säkerhet och enkel skalning av applikationer." }
+                                        new() { Text = "Jag designade och driftsatte en containerbaserad servermiljö på en VPS-hostad Ubuntu Server. Infrastrukturens fokus ligger på isolering, säkerhet och enkel skalning av applikationer." }
                                     },
                                     ListItems = {
-                                        new(){Text="Ubuntu Server (minimal installation)", IconName = ""  },
-                                        new(){Text="Docker & Docker Compose", IconName = ""},
-                                        new(){Text="Nginx Reverse Proxy", IconName = ""},
-                                        new(){Text="PostgreSQL", IconName = ""},
-                                        new(){Text="Certbot (Let´s Encrypt)", IconName = ""},
-                                        new(){Text="VPS-hosting via Hostinger)", IconName = ""},
+                                        new() { Text = "Ubuntu Server (minimal installation)", IconName = "" },
+                                        new() { Text = "Docker & Docker Compose", IconName = "" },
+                                        new() { Text = "Nginx Reverse Proxy", IconName = "" },
+                                        new() { Text = "PostgreSQL", IconName = "" },
+                                        new() { Text = "Certbot (Let´s Encrypt)", IconName = "" },
+                                        new() { Text = "VPS-hosting via Hostinger)", IconName = "" },
                                     },
                                     BackgroundColorCss = "section-bg",
                                     BordersCss = "border-all border-primary"
@@ -347,10 +349,10 @@ namespace SciFiPortfolio.Data.Seeders
                                     Heading = "Infrastrukturdesign",
                                     Paragraphs =
                                     {
-                                        new(){ Text = "Servern är uppbyggd enligt en lagerindelad arkitektur där Nginx körs direkt på " +
+                                        new() { Text = "Servern är uppbyggd enligt en lagerindelad arkitektur där Nginx körs direkt på " +
                                         "värdmaskinen och fungerar som central ingresspunkt för all inkommande trafik." },
                                     },
-                                    DesktopImage = { ImageUrl = "images/infra-desktop.png"},
+                                    DesktopImage = { ImageUrl = "images/infra-desktop.png" },
                                     MobileImage = { ImageUrl = "images/infra-mobile.png" },
                                     ImagePosition = ImagePosition.Bottom
                                 },
@@ -358,11 +360,11 @@ namespace SciFiPortfolio.Data.Seeders
                                 {
                                     Heading = "Nätverksarkitektur",
                                     Paragraphs = {
-                                        new(){ Text = "Servermiljön är uppbyggd kring en central ingressmodell där Nginx fungerar som reverse proxy " +
+                                        new() { Text = "Servermiljön är uppbyggd kring en central ingressmodell där Nginx fungerar som reverse proxy " +
                                         "för samtliga applikationer. Genom att hantera SSL, domänrouting och trafikstyrning på värdservern skapas en tydlig " +
                                         "separation mellan publika och interna resurser." },
 
-                                        new(){ Text = "Applikationerna körs i isolerade Docker-nätverk och exponeras inte direkt mot internet. " +
+                                        new() { Text = "Applikationerna körs i isolerade Docker-nätverk och exponeras inte direkt mot internet. " +
                                         "Istället routas inkommande trafik till rätt container baserat på domän och konfiguration. Lösningen ger en " +
                                         "flexibel grund för att hosta flera tjänster på samma server samtidigt som säkerhet, underhållbarhet och skalbarhet bibehålls." }
                                     },
@@ -373,11 +375,11 @@ namespace SciFiPortfolio.Data.Seeders
                                 {
                                     Heading = "Säkerhet",
                                     Paragraphs = {
-                                        new(){ Text = "Säkerhet har varit en central del av serverarkitekturen redan från början. " +
+                                        new() { Text = "Säkerhet har varit en central del av serverarkitekturen redan från början. " +
                                         "All extern trafik krypteras med SSL-certifikat från Let's Encrypt som automatiskt förnyas med hjälp av Certbot. " +
                                         "Nginx fungerar som den enda publika ingresspunkten och ansvarar för att dirigera trafiken vidare till rätt tjänst." },
 
-                                        new(){ Text = "Databaser exponeras aldrig direkt mot internet utan är endast åtkomliga från de " +
+                                        new() { Text = "Databaser exponeras aldrig direkt mot internet utan är endast åtkomliga från de " +
                                         "containrar som behöver kommunicera med dem. Genom privata Docker-nätverk och separerade applikationsmiljöer " +
                                         "skapas ytterligare ett skyddslager som begränsar åtkomsten mellan olika system." }
                                     },
@@ -385,15 +387,15 @@ namespace SciFiPortfolio.Data.Seeders
                                 new DockerSection()
                                 {
                                     Heading = "Containerisering",
-                                    LeftParagraph = { Text= "Säkerhet har varit en central del av serverarkitekturen redan från början. All extern trafik krypteras med " +
+                                    LeftParagraph = { Text = "Säkerhet har varit en central del av serverarkitekturen redan från början. All extern trafik krypteras med " +
                                     "SSL-certifikat från Let's Encrypt som automatiskt förnyas med hjälp av Certbot. Nginx fungerar som den enda publika " +
                                     "ingresspunkten och ansvarar för att dirigera trafiken vidare till rätt tjänst. Databaser exponeras aldrig " +
                                         "direkt mot internet utan är endast åtkomliga från de containrar som behöver kommunicera med dem. Genom privata " +
-                                        "Docker-nätverk och separerade applikationsmiljöer skapas ytterligare ett skyddslager som begränsar åtkomsten mellan olika system."},
+                                        "Docker-nätverk och separerade applikationsmiljöer skapas ytterligare ett skyddslager som begränsar åtkomsten mellan olika system." },
 
-                                    RightParagraph = { Text= "För att skapa en stabil och lättadministrerad driftmiljö är plattformen uppbyggd kring Docker." +
+                                    RightParagraph = { Text = "För att skapa en stabil och lättadministrerad driftmiljö är plattformen uppbyggd kring Docker." +
                                     "Varje applikation körs i sin egen isolerade container tillsammans med en dedikerad PostgreSQL-databas. Genom att separera tjänsterna " +
-                                    "från varandra minimeras risken att ett problem i en applikation påverkar övriga system på servern."},
+                                    "från varandra minimeras risken att ett problem i en applikation påverkar övriga system på servern." },
 
                                     SpaceBottom = true,
                                     BackgroundColorCss = "section-bg",
@@ -403,15 +405,15 @@ namespace SciFiPortfolio.Data.Seeders
                                 {
                                     Heading = "Skalbarhet",
                                     Paragraphs = {
-                                        new(){ Text = "Infrastrukturen är designad för att enkelt kunna växa när nya projekt eller tjänster " +
+                                        new() { Text = "Infrastrukturen är designad för att enkelt kunna växa när nya projekt eller tjänster " +
                                         "behöver läggas till. Genom Docker Compose definieras hela miljön som kod, vilket innebär att samma " +
                                         "konfiguration kan återskapas på nya servrar med minimala manuella insatser." },
 
-                                        new(){ Text = "När en ny applikation ska driftsättas skapas en separat containeruppsättning med egna miljövariabler, " +
+                                        new() { Text = "När en ny applikation ska driftsättas skapas en separat containeruppsättning med egna miljövariabler, " +
                                         "databasresurser och nätverksinställningar. Nginx kan därefter konfigureras för att routa trafik till den nya tjänsten " +
                                         "utan att påverka redan existerande applikationer." },
 
-                                        new(){ Text = "Detta arbetssätt ger konsekventa miljöer mellan utveckling, test och produktion samtidigt " +
+                                        new() { Text = "Detta arbetssätt ger konsekventa miljöer mellan utveckling, test och produktion samtidigt " +
                                         "som det förenklar både felsökning och framtida expansion." },
                                     },
                                 },
@@ -419,11 +421,11 @@ namespace SciFiPortfolio.Data.Seeders
                                 {
                                     Heading = "Resultat",
                                     Paragraphs = {
-                                        new(){ Text = "Den färdiga plattformen ger en robust grund för att hosta flera applikationer på samma " +
+                                        new() { Text = "Den färdiga plattformen ger en robust grund för att hosta flera applikationer på samma " +
                                         "server utan att kompromissa med säkerhet eller underhållbarhet. Genom containerisering, centraliserad trafikhantering " +
                                         "och automatiserad certifikathantering har infrastrukturen blivit både enkel att administrera och enkel att vidareutveckla." },
 
-                                        new(){ Text = "Arkitekturen möjliggör snabb driftsättning av nya projekt samtidigt som befintliga tjänster kan uppdateras " +
+                                        new() { Text = "Arkitekturen möjliggör snabb driftsättning av nya projekt samtidigt som befintliga tjänster kan uppdateras " +
                                         "oberoende av varandra. Resultatet är en flexibel och skalbar plattform som kan växa i takt med nya behov utan att kräva större " +
                                         "förändringar i den underliggande infrastrukturen." },
                                     },
@@ -453,72 +455,72 @@ namespace SciFiPortfolio.Data.Seeders
                         PageId = receptakuten.Id,
                         Content =
                         {
-                             Sections =
-                                {   new HeroSection
+                            Sections =
+                            { new HeroSection
+                            {
+                                Image = new() { ImageUrl = "images/recept-bil-ub.png" },
+                                HeroImageSizeCssClass = "small",
+                            },
+                                new TextSection
+                                {
+                                    Heading = "",
+                                    Paragraphs =
                                     {
-                                       Image = new() { ImageUrl ="images/recept-bil-ub.png" },
-                                       HeroImageSizeCssClass = "small",
-                                    },
-                                    new TextSection
-                                    {
-                                        Heading = "",
-                                        Paragraphs =
-                                        {
-                                            new()
-                                            { Text = "ReceptAkuten är en webbapp där användare kan skapa, spara och dela recept samt få hjälp med att planera sina måltider." +
+                                        new()
+                                        { Text = "ReceptAkuten är en webbapp där användare kan skapa, spara och dela recept samt få hjälp med att planera sina måltider." +
                                                 "Målet med projektet är att göra det enklare att hålla ordning på sina recept och minska tiden som läggs på att planera veckans mat."
-                                            },
-                                            new()
-                                            { Text = "Användare kan skapa egna recept, spara recept från andra användare och anpassa kopior av recept efter egna önskemål utan att ändra originalet." +
+                                        },
+                                        new()
+                                        { Text = "Användare kan skapa egna recept, spara recept från andra användare och anpassa kopior av recept efter egna önskemål utan att ändra originalet." +
                                                 "Det finns även möjlighet att skapa grupper där användare kan dela recept och innehåll med exempelvis familj eller vänner."
-                                            },
-                                                new()
-                                            { Text = "Systemet kan använda användarens valda recept för att skapa måltidsplaner och generera inköpslistor baserat på de planerade måltiderna." +
+                                        },
+                                        new()
+                                        { Text = "Systemet kan använda användarens valda recept för att skapa måltidsplaner och generera inköpslistor baserat på de planerade måltiderna." +
                                                 "Projektet har utvecklats med fokus på en tydlig struktur där presentation, affärslogik och datalagring är separerade för att göra systemet" +
                                                 "enklare att vidareutveckla och underhålla."
-                                            },
                                         },
-                                        BackgroundColorCss = "",
                                     },
-                                    new ImageCenterSection
+                                    BackgroundColorCss = "",
+                                },
+                                new ImageCenterSection
+                                {
+                                    Heading = "Systemarkitektur",
+                                    ParagraphsTop =
                                     {
-                                        Heading = "Systemarkitektur",
-                                        ParagraphsTop =
+                                        new()
                                         {
-                                            new()
-                                            {
-                                                Text = "Receptakuten är uppbyggt som en klient-server-applikation där frontend, backend och databas är separerade från varandra. Frontenden är utvecklad " +
+                                            Text = "Receptakuten är uppbyggt som en klient-server-applikation där frontend, backend och databas är separerade från varandra. Frontenden är utvecklad " +
                                                 "i Vue.js 3 med Composition API och kommunicerar med ett REST API byggt i .NET 8. Systemets data lagras i en PostgreSQL-databas."
-                                            },
-                                            new()
-                                            {
-                                                Text = " De olika delarna körs i separata Docker-containrar, vilket gör det enklare att utveckla och uppdatera varje del utan att påverka resten av systemet." +
-                                                "Containrarna kommunicerar med varandra via interna nätverk och hanteras som separata tjänster."
-                                            },
                                         },
-                                        DesktopImages = { new() { ImageUrl = "images/receptakuten-arch-desktop.png" } },
-                                        MobileImages = { new() { ImageUrl = "images/receptakuten-arch-mobile.png" } },
-                                        ParagraphsBottom =
+                                        new()
                                         {
-                                            new()
-                                            {
-                                                Text = "I produktionsmiljön är frontenden tillgänglig via receptakuten.net och backend-API körs på en separat subdomän," +
+                                            Text = " De olika delarna körs i separata Docker-containrar, vilket gör det enklare att utveckla och uppdatera varje del utan att påverka resten av systemet." +
+                                                "Containrarna kommunicerar med varandra via interna nätverk och hanteras som separata tjänster."
+                                        },
+                                    },
+                                    DesktopImages = { new() { ImageUrl = "images/receptakuten-arch-desktop.png" } },
+                                    MobileImages = { new() { ImageUrl = "images/receptakuten-arch-mobile.png" } },
+                                    ParagraphsBottom =
+                                    {
+                                        new()
+                                        {
+                                            Text = "I produktionsmiljön är frontenden tillgänglig via receptakuten.net och backend-API körs på en separat subdomän," +
                                                 "api.receptakuten.net. För att kunna testa nya funktioner innan de släpps finns även en separat stagingmiljö med" +
                                                 "egna instanser av frontend och backend. Denna miljö är skyddad med Basic Authentication och används för att kontrollera" +
                                                 "att förändringar fungerar innan de distribueras till produktion."
-                                            },
-                                            new()
-                                            {
-                                                Text = "Utvecklingen sker genom att nya funktioner först skapas i egna feature-brancher och sedan flyttas vidare genom" +
+                                        },
+                                        new()
+                                        {
+                                            Text = "Utvecklingen sker genom att nya funktioner först skapas i egna feature-brancher och sedan flyttas vidare genom" +
                                                 "olika miljöer innan de når produktion. Varje miljö har egna inställningar och miljövariabler för att separera" +
                                                 "testmiljön från produktionsmiljön och undvika påverkan på riktig användardata."
-                                            },
                                         },
-                                        BackgroundColorCss = "section-bg",
-                                        BordersCss = "border-all border-primary",
-                                        SpaceBottom = false,
                                     },
-                                }
+                                    BackgroundColorCss = "section-bg",
+                                    BordersCss = "border-all border-primary",
+                                    SpaceBottom = false,
+                                },
+                            }
                         }
                     };
 
@@ -598,10 +600,10 @@ namespace SciFiPortfolio.Data.Seeders
                                 },
                                 new FlexSection
                                 {
-                                    ParagraphsLeft = [ new(){ Text = "Auth layout" } ],
-                                    ImagesLeft = [ new() { ImageUrl = "images/auth-layout.png" } ],
-                                    ParagraphsRight = [ new(){ Text = "Account layout" } ],
-                                    ImagesRight = [ new() { ImageUrl = "images/account-layout.png" } ],
+                                    ParagraphsLeft = [new() { Text = "Auth layout" }],
+                                    ImagesLeft = [new() { ImageUrl = "images/auth-layout.png" }],
+                                    ParagraphsRight = [new() { Text = "Account layout" }],
+                                    ImagesRight = [new() { ImageUrl = "images/account-layout.png" }],
                                     BackgroundColorCss = "section-bg",
                                     PaddingsCss = "pb-3",
                                     BordersCss = "border-bottom border-primary",
@@ -624,8 +626,8 @@ namespace SciFiPortfolio.Data.Seeders
                                         }
                                     },
                                     ImagePosition = ImagePosition.Bottom,
-                                    DesktopImage = { ImageUrl= "images/api-call-ex.png" },
-                                    BackgroundColorCss ="",
+                                    DesktopImage = { ImageUrl = "images/api-call-ex.png" },
+                                    BackgroundColorCss = "",
                                     SpaceBottom = false,
                                 },
                                 new TextSection
@@ -668,8 +670,8 @@ namespace SciFiPortfolio.Data.Seeders
                                     },
                                     DesktopImages =
                                     {
-                                        new(){ ImageUrl = "images/sse-connect.png" },
-                                        new(){ ImageUrl = "images/sse-disconnect.png" }
+                                        new() { ImageUrl = "images/sse-connect.png" },
+                                        new() { ImageUrl = "images/sse-disconnect.png" }
                                     },
                                     ParagraphsBottom =
                                     {
@@ -688,7 +690,7 @@ namespace SciFiPortfolio.Data.Seeders
                                 new ListSection
                                 {
                                     Heading = "Profilsida",
-                                    Paragraphs = [ new() { Text = "Varje användare har en profilsida där kontot kan administreras. Här kan användaren bland annat:" }, ],
+                                    Paragraphs = [new() { Text = "Varje användare har en profilsida där kontot kan administreras. Här kan användaren bland annat:" },],
                                     ListItems =
                                     {
                                         new() { Text = "ändra personlig information" },
@@ -726,8 +728,8 @@ namespace SciFiPortfolio.Data.Seeders
                                 },
                                 new FlexSection
                                 {
-                                    ImagesLeft = [ new() { ImageUrl = "images/datepicker.png" }, ],
-                                    ImagesRight = [ new() { ImageUrl = "images/calendar.png" }, ],
+                                    ImagesLeft = [new() { ImageUrl = "images/datepicker.png" },],
+                                    ImagesRight = [new() { ImageUrl = "images/calendar.png" },],
                                     BackgroundColorCss = "section-bg",
                                     SpaceBottom = false,
                                 },
@@ -751,8 +753,8 @@ namespace SciFiPortfolio.Data.Seeders
                                 },
                                 new FlexSection
                                 {
-                                    ImagesLeft = [ new() { ImageUrl = "images/light-theme.png" }, ],
-                                    ImagesRight = [ new() { ImageUrl = "images/dark-theme.png" }, ],
+                                    ImagesLeft = [new() { ImageUrl = "images/light-theme.png" },],
+                                    ImagesRight = [new() { ImageUrl = "images/dark-theme.png" },],
                                     BackgroundColorCss = "section-bg",
                                     SpaceBottom = false,
                                 },
@@ -774,8 +776,8 @@ namespace SciFiPortfolio.Data.Seeders
                                 },
                                 new FlexSection
                                 {
-                                    ImagesLeft = [ new() { ImageUrl = "images/desktop.png" }, ],
-                                    ImagesRight = [ new() { ImageUrl = "images/mobile.png" }, ],
+                                    ImagesLeft = [new() { ImageUrl = "images/desktop.png" },],
+                                    ImagesRight = [new() { ImageUrl = "images/mobile.png" },],
                                     BackgroundColorCss = "section-bg",
                                     BordersCss = "border-bottom border-primary"
                                 },
@@ -796,7 +798,7 @@ namespace SciFiPortfolio.Data.Seeders
                                             "någon skulle försöka manipulera klienten kommer backend att neka otillåtna åtgärder."
                                         }
                                     },
-                                    DesktopImages = { new(){ ImageUrl = "images/groupowner.png" }, },
+                                    DesktopImages = { new() { ImageUrl = "images/groupowner.png" }, },
                                     ParagraphsBottom =
                                     {
                                         new()
@@ -892,7 +894,7 @@ namespace SciFiPortfolio.Data.Seeders
                                             "separerade mellan olika lager (Bytte namn från Meal Menu till Receptakuten när projektet närmade sig sitt slut)."
                                         },
                                     },
-                                    DesktopImage = { ImageUrl = "images/receptakuten-layers.png"},
+                                    DesktopImage = { ImageUrl = "images/receptakuten-layers.png" },
                                     ImagePosition = ImagePosition.Bottom,
                                     BackgroundColorCss = "",
                                     SpaceBottom = false,
@@ -942,12 +944,12 @@ namespace SciFiPortfolio.Data.Seeders
                                     SubHeading = "Databas och datamodell",
                                     ParagraphsTop =
                                     {
-                                            new()
+                                        new()
                                         {
                                             Text = "Databasen är utvecklad enligt en Code First-strategi med Entity Framework Core. Datamodellen definieras " +
                                             "i kod och migreras därefter automatiskt till PostgreSQL genom migrations. "
                                         },
-                                            new()
+                                        new()
                                         {
                                             Text = "Databasen innehåller ett flertal relationer mellan användare, grupper, recept, matscheman och inköpslistor. " +
                                             "Denna struktur gör det möjligt att hantera både personliga receptsamlingar och gruppbaserade funktioner på ett konsekvent sätt. Ett exempel på relationer nedan:"
@@ -1008,12 +1010,12 @@ namespace SciFiPortfolio.Data.Seeders
                                     {
                                         new()
                                         {
-                                            Text= "Utöver klientbaserade begränsningar verifieras samtliga rättigheter även på serversidan för att " +
+                                            Text = "Utöver klientbaserade begränsningar verifieras samtliga rättigheter även på serversidan för att " +
                                             "säkerställa att obehöriga användare inte kan kringgå systemets regler genom manipulerade anrop."
                                         },
                                         new()
                                         {
-                                            Text= "För att aktivera nya konton krävs e-postverifiering och samma mekanism används vid glömt lösenord."
+                                            Text = "För att aktivera nya konton krävs e-postverifiering och samma mekanism används vid glömt lösenord."
                                         }
                                     },
                                     PaddingsCss = "",
@@ -1050,16 +1052,16 @@ namespace SciFiPortfolio.Data.Seeders
                                     {
                                         new()
                                         {
-                                            Text="Användaruppladdade bilder bearbetas på serversidan med hjälp av ImageMagick via Magick.NET. Där kontroll av accepterade bildtypr kontrolleras, storlek osv"
+                                            Text = "Användaruppladdade bilder bearbetas på serversidan med hjälp av ImageMagick via Magick.NET. Där kontroll av accepterade bildtypr kontrolleras, storlek osv"
                                         },
 
                                     },
-                                    DesktopImages = {new() { ImageUrl= "images/allowed-images.png" } },
+                                    DesktopImages = { new() { ImageUrl = "images/allowed-images.png" } },
                                     ParagraphsBottom =
                                     {
                                         new()
                                         {
-                                            Text="Vid uppladdning genomförs konvertering och storlek/kvallitets optimering för att minska lagringsutrymme och förbättra laddningstider. " +
+                                            Text = "Vid uppladdning genomförs konvertering och storlek/kvallitets optimering för att minska lagringsutrymme och förbättra laddningstider. " +
                                             "Bilderna lagras därefter på servern och kopplas till respektive recept. Nedan kan man se att Clean Code mönster följs med flera små metoder " +
                                             "används för att ge klarare förståelse när man läser koden, detta upprepas över hela projektet."
                                         },
@@ -1072,7 +1074,7 @@ namespace SciFiPortfolio.Data.Seeders
                                 {
                                     DesktopImages =
                                     {
-                                        new() { ImageUrl = "images/save-image.png"}
+                                        new() { ImageUrl = "images/save-image.png" }
                                     },
                                     BackgroundColorCss = "",
                                     PaddingsCss = ""
@@ -1106,8 +1108,8 @@ namespace SciFiPortfolio.Data.Seeders
                                 },
                                 new FlexSection
                                 {
-                                    ImagesLeft = [ new () { ImageUrl = "/images/quartz-conf-2.png" } ],
-                                    ImagesRight = [ new () { ImageUrl = "/images/quartz-job-ex-3.png" } ],
+                                    ImagesLeft = [new() { ImageUrl = "/images/quartz-conf-2.png" }],
+                                    ImagesRight = [new() { ImageUrl = "/images/quartz-job-ex-3.png" }],
                                     SpaceBottom = false,
                                     PaddingsCss = ""
                                 },
@@ -1117,7 +1119,7 @@ namespace SciFiPortfolio.Data.Seeders
                                     {
                                         new()
                                         {
-                                            Text= "Genom att flytta denna typ av arbete till separata processer kan API:t fokusera" +
+                                            Text = "Genom att flytta denna typ av arbete till separata processer kan API:t fokusera" +
                                             " på användarrelaterade förfrågningar samtidigt som återkommande underhåll sker automatiskt."
                                         },
                                     },
@@ -1131,16 +1133,16 @@ namespace SciFiPortfolio.Data.Seeders
                                     {
                                         new()
                                         {
-                                            Text= "För övervakning och felsökning används Serilog med stöd för både konsolloggning och filbaserad loggning."
+                                            Text = "För övervakning och felsökning används Serilog med stöd för både konsolloggning och filbaserad loggning."
                                         },
                                         new()
                                         {
-                                            Text= " Systemet använder en central Global Exception Handler som fångar upp oväntade fel och returnerar konsekventa felmeddelanden till klienten. " +
+                                            Text = " Systemet använder en central Global Exception Handler som fångar upp oväntade fel och returnerar konsekventa felmeddelanden till klienten. " +
                                             "Detta minskar mängden duplicerad felhantering i applikationen och förenklar felsökning."
                                         },
                                         new()
                                         {
-                                            Text= "I särskilda situationer där återhämtning är möjlig används riktade try/catch-block för att hantera specifika undantag," +
+                                            Text = "I särskilda situationer där återhämtning är möjlig används riktade try/catch-block för att hantera specifika undantag," +
                                             "exempelvis vid filhantering och borttagning av resurser från servern."
                                         },
                                     },
@@ -1154,11 +1156,41 @@ namespace SciFiPortfolio.Data.Seeders
                     await _context.SaveChangesAsync();
 
                     _logger.LogInformation(":::::: Receptakuten Backend PageContent Seeded ::::::");
-                }    
+                }
             }
 
+            if (sciFiPort is not null)
+            {
+                var content = await _context.PageContents.FirstOrDefaultAsync(x => x.PageId == sciFiPort.Id);
+
+                if (content is null)
+                {
+                    var sciFiPageContent = new PageContentEntity
+                    {
+                        PageId = sciFiPort.Id,
+                        Content =
+                        {
+                            Sections =
+                            {
+                                new HeroSection
+                                {
+                                    Heading = "Sci-fi Portfolio",
+                                    SubHeading = "",
+                                    SpaceBottom = true
+                                },
+
+                            }
+                        }
+                    };
+
+                    _context.PageContents.Add(sciFiPageContent);
+                    await _context.SaveChangesAsync();
+                    _logger.LogInformation(":::::: sci-fi PageContent Seeded ::::::");
+                }
+
             #endregion
-        }  
+            }
+        }
     }
 }
 

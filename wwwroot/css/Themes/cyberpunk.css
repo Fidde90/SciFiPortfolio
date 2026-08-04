@@ -1,6 +1,7 @@
 ﻿/*=============== CYBERPUNK THEME =================*/
 :root[data-theme="cyberpunk"] {
     --color-section-bg: rgba(12, 18, 35, 0.75);
+    --theme-text: #c000c0;
     /*WALLS*/
     --wall-grid-primary: rgba(0,255,255,.8);
     --wall-grid-secondary: rgba(255,0,255,.8);
