@@ -11,7 +11,7 @@
             <div class="carousel-group">
                 @foreach (var image in images)
                 {
-                    <img class="carousel-img" src="~/@image.ImageUrl" alt="@image.AltText" />
+                    <img asp-append-version="true"  class="carousel-img" src="~/@image.ImageUrl" alt="@image.AltText" />
                 }
             </div>
         </div>

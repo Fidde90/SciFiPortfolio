@@ -25,11 +25,11 @@
 
         @foreach (var image in desktopImages)
         {
-            <img class="@(mobileImages.Any() ? "desktop-img" : "image-center-section-img") border-white" src="~/@image.ImageUrl" alt="@image.AltText" />
+            <img asp-append-version="true"  class="@(mobileImages.Any() ? "desktop-img" : "image-center-section-img") border-white" src="~/@image.ImageUrl" alt="@image.AltText" />
         }
         @foreach (var image in mobileImages)
         {
-            <img class="mobile-img border-white" src="~/@image.ImageUrl" alt="@image.AltText" />
+            <img asp-append-version="true" class="mobile-img border-white" src="~/@image.ImageUrl" alt="@image.AltText" />
         }
         @foreach (var para in paraBottom)
         {

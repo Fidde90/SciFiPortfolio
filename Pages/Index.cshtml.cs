@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.OutputCaching;
 using SciFiPortfolio.Helpers;
 using SciFiPortfolio.Interfaces.Services;
 using SciFiPortfolio.ViewModels;

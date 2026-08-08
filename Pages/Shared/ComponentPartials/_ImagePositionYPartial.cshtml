@@ -8,10 +8,10 @@
 {
     <div class="d-flex-column">
         <div class="text-center">
-            <img class="image-position-y @(hasMobileImage ? "desktop-img" : "")" src="~/@Model.DesktopImage.ImageUrl" alt="@Model.DesktopImage.AltText" />
+            <img asp-append-version="true" class="image-position-y @(hasMobileImage ? "desktop-img" : "")" src="~/@Model.DesktopImage.ImageUrl" alt="@Model.DesktopImage.AltText" />
             @if (hasMobileImage)
             {
-                <img class="image-position-y mobile-img border-white" src="~/@Model.MobileImage.ImageUrl" alt="@Model.MobileImage.AltText" />
+                <img asp-append-version="true"  class="image-position-y mobile-img border-white" src="~/@Model.MobileImage.ImageUrl" alt="@Model.MobileImage.AltText" />
             }
         </div>
         <div>
@@ -32,10 +32,10 @@ else
             }
         </div>
         <div>
-            <img class="image-position-y @(hasMobileImage ? "desktop-img" : "") border-white" src="~/@Model.DesktopImage.ImageUrl" alt="@Model.DesktopImage.AltText" />
+            <img asp-append-version="true"  class="image-position-y @(hasMobileImage ? "desktop-img" : "") border-white" src="~/@Model.DesktopImage.ImageUrl" alt="@Model.DesktopImage.AltText" />
             @if (hasMobileImage)
             {
-                <img class="image-position-y mobile-img border-white" src="~/@Model.MobileImage.ImageUrl" alt="@Model.MobileImage.AltText" />
+                <img asp-append-version="true" class="image-position-y mobile-img border-white" src="~/@Model.MobileImage.ImageUrl" alt="@Model.MobileImage.AltText" />
             }
         </div>
     </div>

@@ -5,7 +5,7 @@
 }
 
 <div class="text-position-x">
-    <img class="@imageClass" src="~/@Model.DesktopImage.ImageUrl" alt="@Model.DesktopImage.AltText" />
+    <img asp-append-version="true"  class="@imageClass" src="~/@Model.DesktopImage.ImageUrl" alt="@Model.DesktopImage.AltText" />
     @foreach (var para in Model.Paragraphs)
     {
         <p>@para.Text</p>

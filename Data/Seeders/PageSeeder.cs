@@ -1665,7 +1665,7 @@ namespace SciFiPortfolio.Data.Seeders
                                     Paragraphs =
                                     [
                                         new() { Text = "Eftersom att innehållet är identiskt för alla besökare lämpar sig systemet väl för caching." },
-                                        new() { Text = "In-memory caching används för innehåll som sällan förändras, exempelvis: " },
+                                        new() { Text = "Output cache används för innehåll som sällan förändras, exempelvis: " },
                                     ],
                                     ListItems =
                                     {
@@ -1725,9 +1725,9 @@ namespace SciFiPortfolio.Data.Seeders
                     await _context.SaveChangesAsync();
                     _logger.LogInformation(":::::: sci-fi PageContent Seeded ::::::");
                 }
+            }
 
             #endregion
-            }
         }
     }
 }

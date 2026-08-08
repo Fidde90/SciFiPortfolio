@@ -31,7 +31,7 @@
                 {
                     foreach (var img in imagesLeft)
                     {
-                        <img class="flex-section-img border-white" src="~/@img.ImageUrl" alt="@img.AltText" />
+                        <img asp-append-version="true"  class="flex-section-img border-white" src="~/@img.ImageUrl" alt="@img.AltText" />
                     }
                 }
             </div> 
@@ -48,7 +48,7 @@
                 {
                     foreach (var img in imagesRight)
                     {
-                        <img class="flex-section-img border-white" src="~/@img.ImageUrl" alt="@img.AltText" />
+                        <img asp-append-version="true" class="flex-section-img border-white" src="~/@img.ImageUrl" alt="@img.AltText" />
                     }
                 }
             </div>

@@ -4,6 +4,7 @@ using SciFiPortfolio.Data.Seeders;
 using SciFiPortfolio.Interfaces;
 using SciFiPortfolio.Interfaces.Repositories;
 using SciFiPortfolio.Interfaces.Services;
+using SciFiPortfolio.Middlewares;
 using SciFiPortfolio.Repositories;
 using SciFiPortfolio.Services;
 
@@ -28,7 +29,14 @@ namespace SciFiPortfolio
             builder.Services.AddDbContext<SciFiContext>(options =>
                 options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")
             ));
-
+            builder.Services.AddOutputCache(options =>
+            {
+                options.AddBasePolicy(policy =>
+                {
+                    policy.Cache();
+                    policy.Expire(TimeSpan.FromDays(30));
+                });
+            });
             var app = builder.Build();
 
             using (var scope = app.Services.CreateScope())
@@ -48,6 +56,10 @@ namespace SciFiPortfolio
             app.UseStatusCodePagesWithReExecute("/Error/{0}");
             app.UseHttpsRedirection();
             app.UseRouting();
+
+            app.UseMiddleware<VisitorMiddleware>();
+
+            app.UseOutputCache();
             app.UseAuthorization();
             app.MapStaticAssets();
             app.MapRazorPages()
