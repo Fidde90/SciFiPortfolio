@@ -323,13 +323,16 @@ namespace SciFiPortfolio.Data.Seeders
                                     Image = new() { ImageUrl = "images/server.png" },
                                     SpaceBottom = false
                                 },
-
                                 new ListSection
                                 {
                                     SubHeading = "Teknikstack",
                                     Paragraphs = new()
                                     {
-                                        new() { Text = "Jag designade och driftsatte en containerbaserad servermiljö på en VPS-hostad Ubuntu Server. Infrastrukturens fokus ligger på isolering, säkerhet och enkel skalning av applikationer." }
+                                        new() 
+                                        { 
+                                            Text = "Jag designade och driftsatte en containerbaserad servermiljö på en VPS-hostad Ubuntu Server. " +
+                                            "Infrastrukturens fokus ligger på isolering, säkerhet och enkel skalning av applikationer." 
+                                        }
                                     },
                                     ListItems = {
                                         new() { Text = "Ubuntu Server (minimal installation)", IconName = "" },
@@ -340,96 +343,136 @@ namespace SciFiPortfolio.Data.Seeders
                                         new() { Text = "VPS-hosting via Hostinger)", IconName = "" },
                                     },
                                     BackgroundColorCss = "section-bg",
-                                    BordersCss = "border-all border-primary"
+                                    BordersCss = "border-all border-primary",
+                                    SpaceBottom = false,                                    
                                 },
                                 new ImageWithPositionSection
                                 {
                                     Heading = "Infrastrukturdesign",
                                     Paragraphs =
                                     {
-                                        new() { Text = "Servern är uppbyggd enligt en lagerindelad arkitektur där Nginx körs direkt på " +
-                                        "värdmaskinen och fungerar som central ingresspunkt för all inkommande trafik." },
+                                        new() 
+                                        { 
+                                            Text = "Servern är uppbyggd enligt en lagerindelad arkitektur där Nginx körs direkt på " +
+                                            "värdmaskinen och fungerar som central ingresspunkt för all inkommande trafik." 
+                                        },
                                     },
                                     DesktopImage = { ImageUrl = "images/infra-desktop.png" },
                                     MobileImage = { ImageUrl = "images/infra-mobile.png" },
-                                    ImagePosition = ImagePosition.Bottom
+                                    ImagePosition = ImagePosition.Bottom,
+                                    SpaceBottom = false,
                                 },
                                 new TextSection()
                                 {
                                     Heading = "Nätverksarkitektur",
-                                    Paragraphs = {
-                                        new() { Text = "Servermiljön är uppbyggd kring en central ingressmodell där Nginx fungerar som reverse proxy " +
-                                        "för samtliga applikationer. Genom att hantera SSL, domänrouting och trafikstyrning på värdservern skapas en tydlig " +
-                                        "separation mellan publika och interna resurser." },
+                                    Paragraphs = 
+                                    {
+                                        new() 
+                                        { 
+                                            Text = "Servermiljön är uppbyggd kring en central ingressmodell där Nginx fungerar som reverse proxy " +
+                                            "för samtliga applikationer. Genom att hantera SSL, domänrouting och trafikstyrning på värdservern skapas en tydlig " +
+                                            "separation mellan publika och interna resurser." 
+                                        },
 
-                                        new() { Text = "Applikationerna körs i isolerade Docker-nätverk och exponeras inte direkt mot internet. " +
-                                        "Istället routas inkommande trafik till rätt container baserat på domän och konfiguration. Lösningen ger en " +
-                                        "flexibel grund för att hosta flera tjänster på samma server samtidigt som säkerhet, underhållbarhet och skalbarhet bibehålls." }
+                                        new() 
+                                        { 
+                                            Text = "Applikationerna körs i isolerade Docker-nätverk och exponeras inte direkt mot internet. " +
+                                            "Istället routas inkommande trafik till rätt container baserat på domän och konfiguration. Lösningen ger en " +
+                                            "flexibel grund för att hosta flera tjänster på samma server samtidigt som säkerhet, underhållbarhet och skalbarhet bibehålls." 
+                                        }
                                     },
                                     BackgroundColorCss = "section-bg",
-                                    BordersCss = "border-all border-primary"
+                                    BordersCss = "border-all border-primary",
+                                    SpaceBottom = false,
                                 },
                                 new TextSection()
                                 {
                                     Heading = "Säkerhet",
                                     Paragraphs = {
-                                        new() { Text = "Säkerhet har varit en central del av serverarkitekturen redan från början. " +
-                                        "All extern trafik krypteras med SSL-certifikat från Let's Encrypt som automatiskt förnyas med hjälp av Certbot. " +
-                                        "Nginx fungerar som den enda publika ingresspunkten och ansvarar för att dirigera trafiken vidare till rätt tjänst." },
+                                        new() 
+                                        { 
+                                            Text = "Säkerhet har varit en central del av serverarkitekturen redan från början. " +
+                                            "All extern trafik krypteras med SSL-certifikat från Let's Encrypt som automatiskt förnyas med hjälp av Certbot. " +
+                                            "Nginx fungerar som den enda publika ingresspunkten och ansvarar för att dirigera trafiken vidare till rätt tjänst." 
+                                        },
 
-                                        new() { Text = "Databaser exponeras aldrig direkt mot internet utan är endast åtkomliga från de " +
-                                        "containrar som behöver kommunicera med dem. Genom privata Docker-nätverk och separerade applikationsmiljöer " +
-                                        "skapas ytterligare ett skyddslager som begränsar åtkomsten mellan olika system." }
+                                        new() 
+                                        { 
+                                            Text = "Databaser exponeras aldrig direkt mot internet utan är endast åtkomliga från de " +
+                                            "containrar som behöver kommunicera med dem. Genom privata Docker-nätverk och separerade applikationsmiljöer " +
+                                            "skapas ytterligare ett skyddslager som begränsar åtkomsten mellan olika system." 
+                                        }
                                     },
+                                   SpaceBottom = false,
                                 },
                                 new DockerSection()
                                 {
                                     Heading = "Containerisering",
-                                    LeftParagraph = { Text = "Säkerhet har varit en central del av serverarkitekturen redan från början. All extern trafik krypteras med " +
-                                    "SSL-certifikat från Let's Encrypt som automatiskt förnyas med hjälp av Certbot. Nginx fungerar som den enda publika " +
-                                    "ingresspunkten och ansvarar för att dirigera trafiken vidare till rätt tjänst. Databaser exponeras aldrig " +
-                                        "direkt mot internet utan är endast åtkomliga från de containrar som behöver kommunicera med dem. Genom privata " +
-                                        "Docker-nätverk och separerade applikationsmiljöer skapas ytterligare ett skyddslager som begränsar åtkomsten mellan olika system." },
+                                    LeftParagraph = 
+                                    { 
+                                        Text = "Säkerhet har varit en central del av serverarkitekturen redan från början. All extern trafik krypteras med " +
+                                        "SSL-certifikat från Let's Encrypt som automatiskt förnyas med hjälp av Certbot. Nginx fungerar som den enda publika " +
+                                        "ingresspunkten och ansvarar för att dirigera trafiken vidare till rätt tjänst. Databaser exponeras aldrig " +
+                                            "direkt mot internet utan är endast åtkomliga från de containrar som behöver kommunicera med dem. Genom privata " +
+                                            "Docker-nätverk och separerade applikationsmiljöer skapas ytterligare ett skyddslager som begränsar åtkomsten mellan olika system." 
+                                    },
 
-                                    RightParagraph = { Text = "För att skapa en stabil och lättadministrerad driftmiljö är plattformen uppbyggd kring Docker." +
-                                    "Varje applikation körs i sin egen isolerade container tillsammans med en dedikerad PostgreSQL-databas. Genom att separera tjänsterna " +
-                                    "från varandra minimeras risken att ett problem i en applikation påverkar övriga system på servern." },
-
-                                    SpaceBottom = true,
+                                    RightParagraph = 
+                                    { 
+                                        Text = "För att skapa en stabil och lättadministrerad driftmiljö är plattformen uppbyggd kring Docker." +
+                                        "Varje applikation körs i sin egen isolerade container tillsammans med en dedikerad PostgreSQL-databas. Genom att separera tjänsterna " +
+                                        "från varandra minimeras risken att ett problem i en applikation påverkar övriga system på servern." 
+                                    },
                                     BackgroundColorCss = "section-bg",
-                                    BordersCss = "border-all border-primary"
+                                    BordersCss = "border-all border-primary",
+                                    SpaceBottom = false,
                                 },
                                 new TextSection()
                                 {
                                     Heading = "Skalbarhet",
-                                    Paragraphs = {
-                                        new() { Text = "Infrastrukturen är designad för att enkelt kunna växa när nya projekt eller tjänster " +
-                                        "behöver läggas till. Genom Docker Compose definieras hela miljön som kod, vilket innebär att samma " +
-                                        "konfiguration kan återskapas på nya servrar med minimala manuella insatser." },
+                                    Paragraphs = 
+                                    {
+                                        new() 
+                                        { Text = "Infrastrukturen är designad för att enkelt kunna växa när nya projekt eller tjänster " +
+                                            "behöver läggas till. Genom Docker Compose definieras hela miljön som kod, vilket innebär att samma " +
+                                            "konfiguration kan återskapas på nya servrar med minimala manuella insatser." 
+                                        },
 
-                                        new() { Text = "När en ny applikation ska driftsättas skapas en separat containeruppsättning med egna miljövariabler, " +
-                                        "databasresurser och nätverksinställningar. Nginx kan därefter konfigureras för att routa trafik till den nya tjänsten " +
-                                        "utan att påverka redan existerande applikationer." },
+                                        new() 
+                                        { 
+                                            Text = "När en ny applikation ska driftsättas skapas en separat containeruppsättning med egna miljövariabler, " +
+                                            "databasresurser och nätverksinställningar. Nginx kan därefter konfigureras för att routa trafik till den nya tjänsten " +
+                                            "utan att påverka redan existerande applikationer." 
+                                        },
 
-                                        new() { Text = "Detta arbetssätt ger konsekventa miljöer mellan utveckling, test och produktion samtidigt " +
-                                        "som det förenklar både felsökning och framtida expansion." },
+                                        new()
+                                        { 
+                                            Text = "Detta arbetssätt ger konsekventa miljöer mellan utveckling, test och produktion samtidigt " +
+                                            "som det förenklar både felsökning och framtida expansion." 
+                                        },
                                     },
+                                    SpaceBottom = false,
                                 },
                                 new TextSection()
                                 {
                                     Heading = "Resultat",
                                     Paragraphs = {
-                                        new() { Text = "Den färdiga plattformen ger en robust grund för att hosta flera applikationer på samma " +
-                                        "server utan att kompromissa med säkerhet eller underhållbarhet. Genom containerisering, centraliserad trafikhantering " +
-                                        "och automatiserad certifikathantering har infrastrukturen blivit både enkel att administrera och enkel att vidareutveckla." },
+                                        new() 
+                                        { 
+                                            Text = "Den färdiga plattformen ger en robust grund för att hosta flera applikationer på samma " +
+                                            "server utan att kompromissa med säkerhet eller underhållbarhet. Genom containerisering, centraliserad trafikhantering " +
+                                            "och automatiserad certifikathantering har infrastrukturen blivit både enkel att administrera och enkel att vidareutveckla." 
+                                        },
 
-                                        new() { Text = "Arkitekturen möjliggör snabb driftsättning av nya projekt samtidigt som befintliga tjänster kan uppdateras " +
-                                        "oberoende av varandra. Resultatet är en flexibel och skalbar plattform som kan växa i takt med nya behov utan att kräva större " +
-                                        "förändringar i den underliggande infrastrukturen." },
+                                        new() 
+                                        { 
+                                            Text = "Arkitekturen möjliggör snabb driftsättning av nya projekt samtidigt som befintliga tjänster kan uppdateras " +
+                                            "oberoende av varandra. Resultatet är en flexibel och skalbar plattform som kan växa i takt med nya behov utan att kräva större " +
+                                            "förändringar i den underliggande infrastrukturen." 
+                                        },
                                     },
                                     BackgroundColorCss = "section-bg",
                                     BordersCss = "border-all border-primary",
-                                    SpaceBottom = false,
                                 },
                             }
                         }
@@ -454,11 +497,12 @@ namespace SciFiPortfolio.Data.Seeders
                         Content =
                         {
                             Sections =
-                            { new HeroSection
-                            {
-                                Image = new() { ImageUrl = "images/recept-bil-ub.png" },
-                                HeroImageSizeCssClass = "small",
-                            },
+                            { 
+                                new HeroSection
+                                {
+                                    Image = new() { ImageUrl = "images/recept-bil-ub.png" },
+                                    HeroImageSizeCssClass = "small",
+                                },
                                 new TextSection
                                 {
                                     Heading = "",
@@ -479,6 +523,7 @@ namespace SciFiPortfolio.Data.Seeders
                                         },
                                     },
                                     BackgroundColorCss = "",
+                                    SpaceBottom = false,
                                 },
                                 new ImageCenterSection
                                 {
@@ -577,7 +622,9 @@ namespace SciFiPortfolio.Data.Seeders
                                             "när nya funktioner läggs till."
                                         },
                                     },
-                                    SpaceBottom = true,
+                                    SpaceBottom = false,
+                                    BordersCss = "border-top border-primary",
+                                    BackgroundColorCss = "section-bg",
                                 },
                                 new TextSection
                                 {
@@ -592,9 +639,7 @@ namespace SciFiPortfolio.Data.Seeders
                                             "som den inloggade delen av applikationen kan erbjuda sidomenyer, navigering och användarspecifika funktioner."
                                         }
                                     },
-                                    BackgroundColorCss = "section-bg",
                                     SpaceBottom = false,
-                                    BordersCss = "border-top border-primary",
                                 },
                                 new FlexSection
                                 {
@@ -602,9 +647,8 @@ namespace SciFiPortfolio.Data.Seeders
                                     ImagesLeft = [new() { ImageUrl = "images/auth-layout.png" }],
                                     ParagraphsRight = [new() { Text = "Account layout" }],
                                     ImagesRight = [new() { ImageUrl = "images/account-layout.png" }],
-                                    BackgroundColorCss = "section-bg",
                                     PaddingsCss = "pb-3",
-                                    BordersCss = "border-bottom border-primary",
+                                    SpaceBottom = false,
                                 },
                                 new ImageWithPositionSection
                                 {
@@ -625,7 +669,8 @@ namespace SciFiPortfolio.Data.Seeders
                                     },
                                     ImagePosition = ImagePosition.Bottom,
                                     DesktopImage = { ImageUrl = "images/api-call-ex.png" },
-                                    BackgroundColorCss = "",
+                                    BackgroundColorCss = "section-bg",
+                                    BordersCss = "border-top border-primary",
                                     SpaceBottom = false,
                                 },
                                 new TextSection
@@ -643,6 +688,7 @@ namespace SciFiPortfolio.Data.Seeders
                                         new() { Text = "Exempel på logiken i backend:" },
                                     },
                                     PaddingsCss = "",
+                                    BackgroundColorCss = "section-bg",
                                     SpaceBottom = false,
                                 },
                                 new ImageSection
@@ -653,8 +699,10 @@ namespace SciFiPortfolio.Data.Seeders
                                         new() { ImageUrl = "images/get-random-recipes.png" },
                                         new() { ImageUrl = "images/add-rotation-points.png" }
                                     },
-                                    PaddingsCss = "",
-                                    SpaceBottom = true
+                                    PaddingsCss = "pb-3",
+                                    BackgroundColorCss = "section-bg",
+                                    BordersCss = "border-bottom border-primary",
+                                    SpaceBottom = false,
                                 },
                                 new ImageCenterSection
                                 {
@@ -680,10 +728,7 @@ namespace SciFiPortfolio.Data.Seeders
                                             "Detta bidrar till en mer responsiv och modern användarupplevelse."
                                         }
                                     },
-                                    SpaceBottom = true,
-                                    PaddingsCss = "pt-3 pb-3",
-                                    BackgroundColorCss = "section-bg",
-                                    BordersCss = "border-all border-primary",
+                                    SpaceBottom = false,
                                 },
                                 new ListSection
                                 {
@@ -699,13 +744,24 @@ namespace SciFiPortfolio.Data.Seeders
                                         new() { Text = "hantera övriga kontoinställningar" },
                                     },
                                     SpaceBottom = false,
-                                    PaddingsCss = "pt-3"
+                                    PaddingsCss = "pt-3",
+                                    BackgroundColorCss = "section-bg",
+                                    BordersCss = "border-top border-primary",
                                 },
                                 new TextSection
                                 {
-                                    Paragraphs = { new() { Text = "Genom att samla all kontohantering på ett ställe blir det enkelt för användaren " +
-                                    "att administrera sitt konto." }, },
-                                    PaddingsCss = "pb-3"
+                                    Paragraphs = 
+                                    { 
+                                        new() 
+                                        { 
+                                            Text = "Genom att samla all kontohantering på ett ställe blir det enkelt för användaren " +
+                                            "att administrera sitt konto." 
+                                        }, 
+                                    },
+                                    PaddingsCss = "pb-3",
+                                    SpaceBottom = false,
+                                    BackgroundColorCss = "section-bg",
+                                    BordersCss = "border-bottom border-primary",
                                 },
                                 new TextSection
                                 {
@@ -721,8 +777,6 @@ namespace SciFiPortfolio.Data.Seeders
                                     },
                                     SpaceBottom = false,
                                     PaddingsCss = "pt-3",
-                                    BackgroundColorCss = "section-bg",
-                                    BordersCss = "border-top border-primary"
                                 },
                                 new ImageSection
                                 {
@@ -731,8 +785,8 @@ namespace SciFiPortfolio.Data.Seeders
                                         new() { ImageUrl = "images/datepicker.png" },
                                         new() { ImageUrl = "images/calendar.png" },
                                     ],
-                                    BackgroundColorCss = "section-bg",
                                     SpaceBottom = false,
+                                    PaddingsCss = "",
                                 },
                                 new TextSection
                                 {
@@ -748,7 +802,6 @@ namespace SciFiPortfolio.Data.Seeders
                                         },
                                         new() { Text = "För att göra applikationen mer personlig kan användaren även växla mellan olika teman." }
                                     },
-                                    BackgroundColorCss = "section-bg",
                                     SpaceBottom = false,
                                     PaddingsCss = "",
                                 },
@@ -758,8 +811,8 @@ namespace SciFiPortfolio.Data.Seeders
                                     [
                                         new() { ImageUrl = "images/themes.png" },
                                     ],
-                                    BackgroundColorCss = "section-bg",
                                     SpaceBottom = false,
+                                    PaddingsCss = "",
                                 },
                                 new TextSection
                                 {
@@ -775,7 +828,6 @@ namespace SciFiPortfolio.Data.Seeders
                                     },
                                     SpaceBottom = false,
                                     PaddingsCss = "",
-                                    BackgroundColorCss = "section-bg",
                                 },
                                 new ImageSection
                                 {
@@ -783,8 +835,8 @@ namespace SciFiPortfolio.Data.Seeders
                                     [
                                         new() { ImageUrl = "images/receptakuten-mobile-desktop.png" },
                                     ],
-                                    BackgroundColorCss = "section-bg",
-                                    BordersCss = "border-bottom border-primary"
+                                    SpaceBottom = false,
+                                    PaddingsCss = "pb-3",
                                 },
                                 new ImageCenterSection
                                 {
@@ -813,8 +865,8 @@ namespace SciFiPortfolio.Data.Seeders
                                         }
                                     },
                                     SpaceBottom = false,
-                                    PaddingsCss = "pt-3 pb-3",
-
+                                    BackgroundColorCss = "section-bg",
+                                    BordersCss = "border-all border-primary"
                                 },
                                 new TextSection
                                 {
@@ -831,8 +883,7 @@ namespace SciFiPortfolio.Data.Seeders
                                             "att göra egna ändringar."
                                         },
                                     },
-                                    BackgroundColorCss = "section-bg",
-                                    BordersCss = "border-all border-primary"
+                                    SpaceBottom = false,
                                 },
                                 new TextSection
                                 {
@@ -857,7 +908,8 @@ namespace SciFiPortfolio.Data.Seeders
                                             "behöva göra större förändringar i den befintliga kodbasen."
                                         },
                                     },
-                                    PaddingsCss = "pb-3"
+                                    BackgroundColorCss = "section-bg",
+                                    BordersCss = "border-all border-primary"
                                 },
                             }
                         }
@@ -885,7 +937,7 @@ namespace SciFiPortfolio.Data.Seeders
                             {
                                 new HeroSection
                                 {
-                                    Heading = "Receptakuten ",
+                                    Heading = "Receptakuten",
                                     TextColor = "sci-fi-glow",
                                 },
                                 new ImageWithPositionSection
@@ -901,10 +953,10 @@ namespace SciFiPortfolio.Data.Seeders
                                     },
                                     DesktopImage = { ImageUrl = "images/receptakuten-layers.png" },
                                     ImagePosition = ImagePosition.Bottom,
-                                    BackgroundColorCss = "",
+                                    BackgroundColorCss = "section-bg",
+                                    BordersCss = "border-top border-primary",
                                     SpaceBottom = false,
-                                    PaddingsCss = "",
-
+                                    PaddingsCss = "pt-3"
                                 },
                                 new ImageCenterSection
                                 {
@@ -940,9 +992,9 @@ namespace SciFiPortfolio.Data.Seeders
                                             "Genom att använda interfaces mellan lagren kan implementationer bytas ut utan att affärslogiken påverkas."
                                         },
                                     },
-                                    BackgroundColorCss = "",
+                                    BackgroundColorCss = "section-bg",
                                     SpaceBottom = false,
-                                    PaddingsCss = "",
+                                    BordersCss = "border-bottom border-primary"
                                 },
                                 new ImageCenterSection
                                 {
@@ -1001,13 +1053,15 @@ namespace SciFiPortfolio.Data.Seeders
                                     {
                                         new() { Text = "JWT Authentication" },
                                         new() { Text = "Refresh Tokens" },
-                                        new() { Text = "CSRF-skydd (XXS ?)" },
+                                        new() { Text = "Cross-Site Scripting" },
                                         new() { Text = "Rate Limiting" },
                                         new() { Text = "Inputvalidering" },
                                         new() { Text = "Roll- och behörighetskontroller" },
                                     },
                                     SpaceBottom = false,
-                                    PaddingsCss = "",
+                                    BackgroundColorCss = "section-bg",
+                                    PaddingsCss = "pt-3",
+                                    BordersCss = "border-primary border-top"
                                 },
                                 new TextSection
                                 {
@@ -1023,9 +1077,8 @@ namespace SciFiPortfolio.Data.Seeders
                                             Text = "För att aktivera nya konton krävs e-postverifiering och samma mekanism används vid glömt lösenord."
                                         }
                                     },
-                                    PaddingsCss = "",
-                                    SpaceBottom = false,
-
+                                    BackgroundColorCss = "section-bg",
+                                    BordersCss = "border-bottom border-primary"
                                 },
                                 new ImageWithPositionSection
                                 {
@@ -1046,7 +1099,6 @@ namespace SciFiPortfolio.Data.Seeders
                                     DesktopImage = { ImageUrl = "images/inbjudning.png" },
                                     ImagePosition = ImagePosition.Bottom,
                                     BackgroundColorCss = "",
-                                    SpaceBottom = false,
                                     PaddingsCss = "",
 
                                 },
@@ -1071,9 +1123,10 @@ namespace SciFiPortfolio.Data.Seeders
                                             "används för att ge klarare förståelse när man läser koden, detta upprepas över hela projektet."
                                         },
                                     },
-                                    BackgroundColorCss = "",
+                                    BackgroundColorCss = "section-bg",
                                     SpaceBottom = false,
-                                    PaddingsCss = "",
+                                    BordersCss = "border-primary border-top",
+                                    PaddingsCss = "pt-3"
                                 },
                                 new ImageSection
                                 {
@@ -1081,8 +1134,10 @@ namespace SciFiPortfolio.Data.Seeders
                                     {
                                         new() { ImageUrl = "images/save-image.png" }
                                     },
-                                    BackgroundColorCss = "",
-                                    PaddingsCss = ""
+                                    BackgroundColorCss = "section-bg",
+                                    PaddingsCss = "pb-3",
+                                    BordersCss = "border-primary border-bottom",
+                                    SpaceBottom = false,
                                 },
                                 new ListSection
                                 {
@@ -1129,7 +1184,6 @@ namespace SciFiPortfolio.Data.Seeders
                                         },
                                     },
                                     PaddingsCss = "",
-                                    SpaceBottom = false,
                                 },
                                 new TextSection
                                 {
@@ -1151,7 +1205,8 @@ namespace SciFiPortfolio.Data.Seeders
                                             "exempelvis vid filhantering och borttagning av resurser från servern."
                                         },
                                     },
-                                    SpaceBottom = true,
+                                    BackgroundColorCss = "section-bg",
+                                    BordersCss = "border-primary border-all",
                                 },
                             }
                         }
@@ -1223,7 +1278,8 @@ namespace SciFiPortfolio.Data.Seeders
                                             "grunden för att förstå hur systemen fungerar bakom kulisserna. Många delar av lösningen är därför mer " +
                                             "avancerade än vad som egentligen krävs för en portfolio, men just den typen av tekniska utmaningar är också det som gör projektet roligt att arbeta med."
                                         }
-                                    }
+                                    },
+                                    SpaceBottom = false,
                                 },
                                 new TextSection
                                 {
@@ -1260,7 +1316,8 @@ namespace SciFiPortfolio.Data.Seeders
                                             Text = "Målet har hela tiden varit att skapa en flexibel struktur där nya sidor och sektioner " +
                                             "kan byggas på olika sätt beroende på behov, utan att den grundläggande arkitekturen behöver förändras."
                                         }
-                                    }
+                                    },
+                                    SpaceBottom = false,
                                 },
                                 new ListSection
                                 {
@@ -1310,7 +1367,8 @@ namespace SciFiPortfolio.Data.Seeders
                                     ImagePosition = ImagePosition.Bottom,
                                     PaddingsCss = "pb-3",
                                     BordersCss = "border-bottom border-primary",
-                                    BackgroundColorCss = "section-bg"
+                                    BackgroundColorCss = "section-bg",
+                                    SpaceBottom = false,
                                 },
                                 new ImageCenterSection
                                 {
@@ -1368,7 +1426,8 @@ namespace SciFiPortfolio.Data.Seeders
                                             "samtidigt som databasen förblir relativt enkel."
                                         },
                                     },
-                                    PaddingsCss = "pb-3"
+                                    PaddingsCss = "pb-3",
+                                    SpaceBottom = false,
                                 },
                                 new ImageWithPositionSection
                                 {
@@ -1386,7 +1445,6 @@ namespace SciFiPortfolio.Data.Seeders
                                     BordersCss = "border-top border-primary",
                                     BackgroundColorCss = "section-bg",
                                     SpaceBottom = false,
-
                                 },
                                 new ImageWithPositionSection
                                 {
@@ -1405,7 +1463,6 @@ namespace SciFiPortfolio.Data.Seeders
                                     PaddingsCss = "",
                                     BackgroundColorCss = "section-bg",
                                     SpaceBottom = false,
-
                                 },
                                 new FlexSection
                                 {
@@ -1432,7 +1489,8 @@ namespace SciFiPortfolio.Data.Seeders
                                         new() { ImageUrl = "images/image-y-partial.png" }
                                     ],
                                     BackgroundColorCss = "section-bg",
-                                    BordersCss = "border-bottom border-primary"
+                                    BordersCss = "border-bottom border-primary",
+                                    SpaceBottom = false,
                                 },
                                 new ImageWithPositionSection
                                 {
@@ -1507,6 +1565,7 @@ namespace SciFiPortfolio.Data.Seeders
                                         new() { Text = "En partialvy" },
                                     },
                                     PaddingsCss = "pb-3",
+                                    SpaceBottom = false,
                                 },
                                 new TextSection
                                 {
@@ -1527,7 +1586,8 @@ namespace SciFiPortfolio.Data.Seeders
                                         },
                                     },
                                     BackgroundColorCss = "section-bg",
-                                    BordersCss = "border-all border-primary"
+                                    BordersCss = "border-all border-primary",
+                                    SpaceBottom = false,
                                 },
                                 new ListSection
                                 {
@@ -1563,7 +1623,8 @@ namespace SciFiPortfolio.Data.Seeders
                                         new() { Text = "Det gör det enkelt att introducera nya teman samtidigt som gränssnittet förblir konsekvent." },
                                     },
 
-                                    PaddingsCss = "pb-3"
+                                    PaddingsCss = "pb-3",
+                                    SpaceBottom = false,
                                 },
                                 new ListSection
                                 {
@@ -1595,7 +1656,8 @@ namespace SciFiPortfolio.Data.Seeders
                                     },
                                     PaddingsCss = "pb-3",
                                     BackgroundColorCss = "section-bg",
-                                    BordersCss = "border-bottom border-primary"
+                                    BordersCss = "border-bottom border-primary",
+                                    SpaceBottom = false,
                                 },
                                 new ListSection
                                 {
@@ -1622,6 +1684,7 @@ namespace SciFiPortfolio.Data.Seeders
                                         new() { Text = "Detta minskar antalet databasförfrågningar och förbättrar laddningstiderna för besökaren." },
                                     },
                                     PaddingsCss = "pb-3",
+                                    SpaceBottom = false,
                                 },
                                 new TextSection
                                 {
