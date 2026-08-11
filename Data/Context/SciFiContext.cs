@@ -15,6 +15,8 @@ namespace SciFiPortfolio.Data.Context
 
         public DbSet<TagEntity> Tags { get; set; }
 
+        public DbSet<VisitorEntity> Visitors { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<PageContentEntity>()

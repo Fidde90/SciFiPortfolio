@@ -5,6 +5,7 @@ using SciFiPortfolio.Interfaces;
 using SciFiPortfolio.Interfaces.Repositories;
 using SciFiPortfolio.Interfaces.Services;
 using SciFiPortfolio.Middlewares;
+using SciFiPortfolio.Settings;
 using SciFiPortfolio.Repositories;
 using SciFiPortfolio.Services;
 
@@ -18,9 +19,13 @@ namespace SciFiPortfolio
             builder.Services.AddScoped<IPageRepository, PageRepository>();
             builder.Services.AddScoped<IPageService, PageService>();
             builder.Services.AddScoped<IRendererService, RendererService>();
+            builder.Services.AddScoped<IAnalyticsService, AnalyticsService>();
+            builder.Services.AddScoped<IAnalyticsRepository, AnalyticsRepository>();
             builder.Services.AddScoped<ISeeder, PageSeeder>();
+            builder.Services.AddScoped<ISeeder, AnalyticsSeeder>();
             builder.Services.AddScoped<DbSeeder>();
             builder.Services.AddRazorPages();
+            builder.Services.AddControllers();
             builder.Services.Configure<RouteOptions>(options =>
             {
                 options.LowercaseQueryStrings = true;
@@ -29,14 +34,16 @@ namespace SciFiPortfolio
             builder.Services.AddDbContext<SciFiContext>(options =>
                 options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")
             ));
-            builder.Services.AddOutputCache(options =>
-            {
-                options.AddBasePolicy(policy =>
-                {
-                    policy.Cache();
-                    policy.Expire(TimeSpan.FromDays(30));
-                });
-            });
+            builder.Services.Configure<CookieSettings>(
+                builder.Configuration.GetSection("Cookies"));
+            //builder.Services.AddOutputCache(options =>
+            //{
+            //    options.AddBasePolicy(policy =>
+            //    {
+            //        policy.Cache();
+            //        policy.Expire(TimeSpan.FromDays(30));
+            //    });
+            //});
             var app = builder.Build();
 
             using (var scope = app.Services.CreateScope())
@@ -59,8 +66,9 @@ namespace SciFiPortfolio
 
             app.UseMiddleware<VisitorMiddleware>();
 
-            app.UseOutputCache();
+            //app.UseOutputCache();
             app.UseAuthorization();
+            app.MapControllers();
             app.MapStaticAssets();
             app.MapRazorPages()
                .WithStaticAssets();

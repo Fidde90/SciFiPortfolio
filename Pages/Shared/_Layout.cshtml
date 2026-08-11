@@ -1,5 +1,8 @@
-﻿@{
-    var theme = Context.Request.Cookies["theme"];
+﻿@using Microsoft.Extensions.Options
+@using SciFiPortfolio.Settings
+@inject IOptions<CookieSettings> Cookies
+@{
+    var theme = Context.Request.Cookies[Cookies.Value.Theme];
 
     if (!ColorThemes.All.Contains(theme))
     {
@@ -29,8 +32,7 @@
     <partial name="_SpacewallsPartial.cshtml" />
 
     <div class="nav-shadow"></div>
-    <div class="wrapper">
-        
+    <div class="wrapper">       
         <header>
             <div class="nav-bars">
                 <partial name="_HeaderPartial.cshtml" />
@@ -47,9 +49,11 @@
             <div class="container">
                 Något spännande i footern @(DateTime.UtcNow.ToShortDateString())
             </div>
-        </footer>
+        </footer> 
+  
     </div>
-
+   <partial name="_CookieConsentPartial" />
     @await RenderSectionAsync("Scripts", required: false)
 </body>
+
 </html>

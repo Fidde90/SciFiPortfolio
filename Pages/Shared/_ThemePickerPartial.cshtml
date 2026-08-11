@@ -1,5 +1,8 @@
-﻿@{
-    var currentTheme = Context.Request.Cookies["theme"] ?? "sci-fi";
+﻿@using Microsoft.Extensions.Options
+@using SciFiPortfolio.Settings
+@inject IOptions<CookieSettings> Cookies
+@{
+    var currentTheme = Context.Request.Cookies[Cookies.Value.Theme] ?? "sci-fi";
 }
 
 <div class="theme-selector-box">

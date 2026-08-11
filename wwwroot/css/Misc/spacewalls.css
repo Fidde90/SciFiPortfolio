@@ -4,7 +4,7 @@
     top: -80px;
     width: 10px;
     height: 120vh;
-    z-index: 999999;
+    z-index: 15;
     animation: pulse 2s infinite ease-in-out;
     background: repeating-linear-gradient( to right, transparent 23px 48px, var(--wall-grid-primary) 48px 50px ), repeating-linear-gradient( to bottom, transparent 15px 48px, var(--wall-grid-secondary) 48px 50px ), linear-gradient( to bottom, var(--wall-top), var(--wall-middle), var(--wall-bottom) );
     box-shadow: 0 0 10px var(--wall-glow), 0 0 20px var(--wall-glow), inset 0 0 20px var(--wall-glow-soft);
@@ -13,12 +13,12 @@
 
 .right-wall {
     right: 0;
-    transform: perspective(5cm) rotateY(-20deg);
+    transform: perspective(4cm) rotateY(-20deg);
 }
 
 .left-wall {
     left: 0;
-    transform: perspective(5cm) rotateY(20deg);
+    transform: perspective(4cm) rotateY(20deg);
 }
 
 @keyframes pulse {

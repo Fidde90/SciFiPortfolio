@@ -1,4 +1,9 @@
-﻿namespace SciFiPortfolio.Middlewares
+﻿using Microsoft.Extensions.Options;
+using SciFiPortfolio.Constants;
+using SciFiPortfolio.Interfaces.Services;
+using SciFiPortfolio.Settings;
+
+namespace SciFiPortfolio.Middlewares
 {
     public class VisitorMiddleware
     {
@@ -9,23 +14,22 @@
             _next = next;
         }
 
-        public async Task InvokeAsync(HttpContext context)
+        public async Task InvokeAsync(HttpContext context, IAnalyticsService analyticsService, IOptions<CookieSettings> cookieSettings)
         {
             if (context.Request.Method == "GET" && !Path.HasExtension(context.Request.Path))
             {
-                bool HasCookie = context.Request.Cookies.ContainsKey("vsd");
+                var settings = cookieSettings.Value;
+                var cookieConsent = context.Request.Cookies[settings.Consent];
 
-                if (!HasCookie)
+                if (cookieConsent == CookieConsentOptions.Accepted && !context.Request.Cookies.ContainsKey(settings.Visitor))
                 {
-                    var options = new CookieOptions
-                    {
-                        HttpOnly = true,
-                        Secure = true,
-                        SameSite = SameSiteMode.Lax,
-                        Expires = DateTime.UtcNow.AddMinutes(60)
-                    };
+                    int visitResult = await analyticsService.NewVisitAsync();
 
-                    context.Response.Cookies.Append("vsd", "true", options);
+                    if (visitResult > 0)
+                    {
+                        context.Response.Cookies.Append(settings.Visitor, "true",
+                            analyticsService.CreateCookie(DateTimeOffset.UtcNow.AddSeconds(10), SameSiteMode.Lax, true, true));
+                    }
                 }
             }
 
