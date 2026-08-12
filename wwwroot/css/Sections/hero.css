@@ -14,53 +14,6 @@
     font-size: clamp(2rem, 6vw, 4rem);
 }
 
-.slider-container {
-    position: relative;
-    min-height: 100px;
-}
-
-.carousel {
-    position: absolute;
-    left: -1px;
-    top:0;
-    width: 100%;
-    display: flex;
-    overflow:hidden;
-}
-
-.carousel-img {
-    width: 100px;
-    height: auto;
-}
-
-.carousel-group {
-    width: fit-content;
-    display: flex;
-    gap: 70px;
-    padding-right: 70px;
-    will-change: transform;
-    animation: scrolling 15s linear infinite;
-}
-
-.carousel::before,
-.carousel::after {
-    content: "";
-    position: absolute;
-    width: 50px;
-    height: 100%;
-    z-index: 5;
-}
-
-.carousel::before {
-    left: 0;
-    background: linear-gradient(to right, #000, transparent);
-}
-
-.carousel::after {
-    right: -2px;
-    background: linear-gradient(to left, #000, transparent);
-}
-
 .hero-image-large {
     width: 100%;
     background: rgba(0, 0, 0, .9);

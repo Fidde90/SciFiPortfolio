@@ -6,7 +6,11 @@
 
 }
 <div class="container">
-    <h1 class="text-center text-mega main-title gradient-text text-sci-fi">Fler projekt in progress</h1>
+    <div class="section-space"></div>
+    <div class="section-space"></div>
+
+    <h1 class="text-center text-xxl main-title gradient-text text-sci-fi">Läs om projekten</h1>
+
     @if (Model.Vm.CardsSection.Cards.Any())
     {
         <partial name="/Pages/Shared/SectionPartials/_CardSectionPartial.cshtml" model="Model.Vm.CardsSection" />

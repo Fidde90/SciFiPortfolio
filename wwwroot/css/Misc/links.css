@@ -1,0 +1,42 @@
+﻿.link {
+    display: block;
+    font-size: var(--text-m);
+    color: var(--color-primary-600);
+    font-weight: var(--fw-regular);
+}
+
+.green-link {
+    color: #22c55e;
+    margin-left: 10px;
+}
+
+.green-link-xl {
+    text-decoration: underline;
+    color: #22c55e;
+    font-weight: var(--fw-bold);
+    font-size: var(--text-xl);
+}
+
+.sci-fi-link::before {
+    content: "";
+    display: inline-block;
+    height: 2px;
+    width: 20px;
+    background-color: #22c55e;
+    transform: rotate(220deg);
+    margin-bottom: 2px;
+    margin-right: -3px;
+}
+
+.sci-fi-link::after {
+    content: "";
+    display: inline-block;
+    height: 2px;
+    width: 20px;
+    background-color: #22c55e;
+    transform: rotate(140deg);
+    margin-bottom: 2px;
+    margin-left: -3px;
+}
+
+

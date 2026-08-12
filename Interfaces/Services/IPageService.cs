@@ -8,6 +8,8 @@ namespace SciFiPortfolio.Interfaces.Services
 
         Task<List<ProjectCard>> GetProjectCardsAsync();
 
+        Task<List<ProjectCard>> GetProjectCardsAsync(int cardCount);
+
         Task<List<ProjectCard>> GetProjectCardsAsync(List<string> cardIds);
     }
 }

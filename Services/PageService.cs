@@ -94,6 +94,56 @@ namespace SciFiPortfolio.Services
             return cards;
         }
 
+        public async Task<List<ProjectCard>> GetProjectCardsAsync(int cardCount)
+        {
+            var cards_db = await _pageRepo.GetProjcetCardsAsync(cardCount);
+
+            if (cards_db is null || !cards_db.Any())
+                return [];
+
+            var cards = new List<ProjectCard>();
+
+            foreach (var c in cards_db)
+            {
+                var card = new ProjectCard
+                {
+                    Title = c.Title,
+                    Image =
+                    {
+                        ImageUrl = c.ImageUrl,
+                        AltText = c.ImageAltText
+                    },
+                    Hyperlink =
+                    {
+                        LinkUrl = c.Hyperlink.LinkUrl,
+                        LinkText = c.Hyperlink.LinkText,
+                        IconName = c.Hyperlink.IconName
+                    },
+                    AppLink =
+                    {
+                        LinkUrl = c.AppLink.LinkUrl,
+                        LinkText = c.AppLink.LinkText,
+                        PageId = c.AppLink.PageId,
+                        PageSlug = c.AppLink.PageSlug
+                    },
+                };
+
+                foreach (var t in c.Tags)
+                {
+                    var tag = new Tag
+                    {
+                        TagText = t.Text
+                    };
+
+                    card.Tags.Add(tag);
+                }
+
+                cards.Add(card);
+            }
+
+            return cards;
+        }
+
         public async Task<List<ProjectCard>> GetProjectCardsAsync(List<string> cardIds)
         {
             var cards_db = await _pageRepo.GetProjcetCardsAsync(cardIds);

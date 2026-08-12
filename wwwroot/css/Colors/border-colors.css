@@ -9,3 +9,12 @@
 .border-purple {
     border: 1px solid rgba(120, 88, 166, 0.3);
 }
+
+.border-white {
+    border: 1px solid var(--color-text);
+}
+
+.purple-border {
+    border: 2px solid var(--color-purple-600);
+    border-radius: 50px;
+}

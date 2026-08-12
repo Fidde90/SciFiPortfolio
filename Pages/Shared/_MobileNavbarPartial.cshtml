@@ -6,7 +6,6 @@
         </button>
     </div>
 
-
     <div class="mobile-links">
         <environment include="Development">
             <div class="mobile-content-box">
@@ -14,13 +13,13 @@
             </div>
         </environment>
         <div class="mobile-content-box">
-            <a class="dropdown-link text-primary" href="/">Hem</a>
+            <a class="dropdown-link text-primary" asp-page="/Index">Hem</a>
         </div>
         <div class="mobile-content-box">
-            <a class="dropdown-link text-primary" href="./next-page.html">Projekt</a>
+            <a class="dropdown-link text-primary" asp-page="/Projects/Index">Projekt</a>
         </div>
         <div class="mobile-content-box">
-            <a class="dropdown-link text-primary" href="./next-page.html">Om mig</a>
+            <a class="dropdown-link text-primary" asp-page="/About">Om mig</a>
         </div>
        <div class="mobile-content-box">
            <partial name="_ThemePickerPartial.cshtml" />

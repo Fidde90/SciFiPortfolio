@@ -5,17 +5,46 @@
 
 }
 
-@if (Model.Vm is not null && Model.Vm.Page is not null)
-{
-    @if (Model.Vm.Hero is not null)
-    {
-        <partial name="/Pages/Shared/SectionPartials/_HeroSectionPartial.cshtml" model="Model.Vm.Hero" />
-    }
 
-    @if (Model.Vm.ShowTitle)
-    {
-        <h1 class="text-center text-mega main-title gradient-text text-sci-fi">@(Model.Vm.Page.Title)</h1>
-    }
+<partial name="/Pages/Shared/SectionPartials/_HeroSectionPartial.cshtml" model="Model.Vm.Hero" />
 
-    <vc:Renderer sections="Model.Vm.Page.Sections" />
-}
+<h1 class="text-center text-mega main-title gradient-text text-sci-fi">@(Model.Vm.Title)</h1>
+
+<partial name="/Pages/Shared/SectionPartials/_CarouselSectionPartial.cshtml" model="Model.Vm.Carousel" />
+
+<section class="section-full section-bg border-all border-primary pt-3 pb-3">
+    <div class="container">
+        <p>
+            Hej! Jag är en .NET Fullstack-utvecklare med ett särskilt intresse för backendutveckling. 
+            Jag tycker om att bygga API:er, designa databaser och skapa robusta system som är skalbara, 
+            säkra och enkla att underhålla.
+        </p>
+
+        <p>
+            Även om backend är där jag känner mig mest hemma har jag också erfarenhet av frontendutveckling med Vue.js, 
+            JavaScript, HTML och CSS. Det gör att jag kan ta ansvar för hela utvecklingsprocessen – från databas och API till 
+            användargränssnitt och användarupplevelse.
+        </p>
+
+        <p>
+            Jag arbetar regelbundet med Docker för containerisering, Nginx för webbserver- och proxyhantering samt Ubuntu Server 
+            för drift och deployment. Kombinationen av utveckling och infrastruktur ger mig en helhetsförståelse för hur moderna 
+            webbapplikationer byggs, distribueras och underhålls i produktion.
+        </p>
+
+        <p>
+            Jag drivs av att lösa problem, lära mig nya tekniker och utveckla lösningar som skapar verkligt värde. 
+            Oavsett om det handlar om att optimera prestanda i ett API, bygga nya funktioner eller sätta upp en stabil 
+            produktionsmiljö strävar jag alltid efter att leverera kod av hög kvalitet.   
+        </p>
+
+        <p>
+            När jag inte utvecklar utforskar jag gärna nya tekniker och verktyg för att fortsätta utvecklas som 
+            utvecklare och hålla mig uppdaterad inom branschen. <a asp-page="/About" class="green-link"> Läs mer om mig</a>
+        </p>
+    </div>
+</section>
+
+<div class="section-space"></div>
+
+<partial name="/Pages/Shared/SectionPartials/_CardSectionPartial.cshtml" model="Model.Vm.Cards" />

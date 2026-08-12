@@ -30,6 +30,15 @@ namespace SciFiPortfolio.Repositories
                 .ToListAsync();
         }
 
+        public async Task<List<ProjectCardEntity>?> GetProjcetCardsAsync(int cardCount)
+        {
+            return await _context.ProjectCards
+                .Include(p => p.Tags)
+                .OrderByDescending(c => c.CreatedAt)
+                .Take(cardCount)
+                .ToListAsync();
+        }
+
         public async Task<List<ProjectCardEntity>?> GetProjcetCardsAsync(List<string> cardIds)
         {
             return await _context.ProjectCards

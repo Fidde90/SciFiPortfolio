@@ -4,21 +4,10 @@
 @import "./buttons.css";
 @import "./borders.css";
 @import "./theme-picker.css";
+@import "./layout.css";
+@import "./links.css";
+@import "./carousel.css";
 
-.link {
-    display: block;
-    font-size: var(--text-m);
-    color: var(--color-primary-600);
-    font-weight: var(--fw-regular);
-}
-
-.show {
-    display: block;
-}
-
-.hide {
-    display: none;
-}
 
 .tag {
     border: 2px solid var(--color-border-accent);
@@ -27,24 +16,6 @@
     width: fit-content;
 }
 
-.d-flex{
-    display:flex;
-    align-items:center;
-    gap:20px;
-}
-
-.d-flex-wrap {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    flex-wrap:wrap;
-}
-
-.d-flex-column {
-    display: flex;
-    gap: 10px;
-    flex-direction:column;
-}
 /*-------------------------------------------------------*/
 
 .striped-list {
@@ -144,29 +115,4 @@
     padding: 20px;
     width: 100%;
     background-color: var(--color-bg);
-}
-/*-------------------------------------------------------*/
-
-.gradient-text {
-    background: linear-gradient(90deg, #b48cff, #ffffff, #5b4b8a);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-shadow: 0 0 8px rgba(180, 140, 255, 0.4), 0 0 16px rgba(180, 140, 255, 0.3);
-    animation: glowMove 3s linear infinite;
-}
-
-@keyframes glowMove {
-    0% {
-        background-position: 0% 50%;
-    }
-
-    100% {
-        background-position: 100% 50%;
-    }
-}
-
-@media (min-width:768px) {
-    .main-title {
-        font-size: var(--text-ultra);
-    }
 }

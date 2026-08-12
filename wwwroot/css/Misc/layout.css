@@ -1,0 +1,45 @@
+﻿.text-center {
+    text-align: center;
+}
+
+.w-100 {
+    width: 100%;
+    max-width: 100%;
+}
+
+.w-50 {
+    width: 50%;
+    max-width: 50%;
+}
+
+.d-block {
+    display: block;
+}
+
+.show {
+    display: block;
+}
+
+.hide {
+    display: none;
+}
+
+.d-flex {
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    gap: 20px;
+}
+
+.d-flex-wrap {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.d-flex-column {
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+}

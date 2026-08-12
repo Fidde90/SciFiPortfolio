@@ -5,9 +5,13 @@ namespace SciFiPortfolio.ViewModels
 {
     public class IndexViewModel
     {
+        public string Title { get; set; } = "";
+
         public HeroSection? Hero {  get; set; } 
 
-        public Page Page { get; set; } = null!;
+        public CarouselSection? Carousel { get; set; }
+
+        public CardSection? Cards { get; set; }
 
         public bool ShowTitle { get; set; } = true;
     }
