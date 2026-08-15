@@ -27,3 +27,12 @@
     border: none;
     border-radius: var(--radius-sm);
 }
+
+.link-btn {
+    padding: 10px;
+    background: transparent;
+    color:aqua;
+    border: none;
+    cursor: pointer;
+    text-decoration:underline;
+}

@@ -7,6 +7,8 @@ drawStars();
 const mobileBtn = document.querySelector('.mobile-nav-btn');
 const mobileLinks = document.querySelector('.mobile-links');
 const mobileOverlay = document.querySelector('.mobile-overlay');
+const cookieSettings = document.getElementById('cookie-settings-btn');
+const banner = document.getElementById("cookie-banner");
 
 window.addEventListener('resize', () => {
     if (window.innerWidth > 768) {
@@ -26,6 +28,10 @@ window.addEventListener('load', () => {
     }
 });
 
+if (!document.cookie.includes(`${banner.dataset.consentCookie}=`)) {
+    banner.hidden = false;
+}
+
 mobileBtn.addEventListener('click', () => {
     mobileLinks.classList.toggle('active');
     mobileOverlay.classList.toggle('active');
@@ -34,6 +40,11 @@ mobileBtn.addEventListener('click', () => {
 mobileOverlay.addEventListener('click', () => {
     mobileLinks.classList.remove('active');
     mobileOverlay.classList.remove('active');
+})
+
+cookieSettings.addEventListener('click', () => {
+    const banner = document.getElementById('cookie-banner');
+    banner.hidden = false;
 })
 
 function drawStars() {
@@ -59,3 +70,4 @@ function setTheme(theme) {
     document.cookie =
         `theme=${theme};path=/;max-age=31536000;SameSite=Lax;Secure`;
 }
+

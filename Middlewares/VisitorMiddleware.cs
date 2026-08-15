@@ -16,7 +16,9 @@ namespace SciFiPortfolio.Middlewares
 
         public async Task InvokeAsync(HttpContext context, IAnalyticsService analyticsService, IOptions<CookieSettings> cookieSettings)
         {
-            if (context.Request.Method == "GET" && !Path.HasExtension(context.Request.Path))
+            var endPoint = context.GetEndpoint();
+
+            if (context.Request.Method == "GET" && !string.IsNullOrWhiteSpace(endPoint?.DisplayName))
             {
                 var settings = cookieSettings.Value;
                 var cookieConsent = context.Request.Cookies[settings.Consent];

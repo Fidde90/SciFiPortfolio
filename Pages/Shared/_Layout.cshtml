@@ -2,7 +2,7 @@
 
 @{
     var theme = Context.Request.Cookies[Cookies.Value.Theme];
-
+    var consentCookieName = Cookies.Value.Consent;
     if (!ColorThemes.All.Contains(theme))
     {
         theme = "sci-fi";
@@ -44,14 +44,20 @@
             </main>
         </div>
 
-        <footer class="">
-            <div class="container">
-                Något spännande i footern @(DateTime.UtcNow.ToShortDateString())
+        <footer class="pb-1">
+            <div class="container d-flex-between">
+                <div>
+                    <p class="m-0 text-s">Uppdaterad senast: @(DateTime.UtcNow.ToShortDateString())</p>
+                    <p class="text-s">Kontakt: fredrik.t.bengtsson@hotmail.com</p>
+                </div>
+                <button id="cookie-settings-btn" class="m-0 link-btn" typeof="button">Hantera cookies</button>
             </div>
         </footer> 
   
     </div>
-   <partial name="_CookieConsentPartial" />
+
+    <partial name="_CookieConsentPartial" model="@consentCookieName" />
+
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 

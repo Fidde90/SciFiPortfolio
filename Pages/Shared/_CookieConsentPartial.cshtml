@@ -1,8 +1,10 @@
-﻿@{
+﻿@model string  
+
+@{
 
 }
 
-<div id="cookie-banner" hidden>
+<div id="cookie-banner" hidden data-consent-cookie="@Model">
     <div class="container">
         <p>
             Vi använder cookies för anonym besöksstatistik, ingen personlig data sparas. Det registreras enbart att
@@ -16,28 +18,3 @@
         </form>
     </div>
 </div> 
-
-<style>
-    #cookie-banner {
-        padding: 20px;
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        z-index: 1000;
-        border-top: 2px solid var(--wall-glow);
-        height: auto;
-        width: 100%;
-        background-color: var(--color-bg);
-    }
-
-    #cookie-banner form {
-        display: flex;
-        gap: 20px;
-    }
-</style>
-<script>
-    if (!document.cookie.includes("cookie_consent")) {
-        document.getElementById("cookie-banner").hidden = false;
-    }
-</script>

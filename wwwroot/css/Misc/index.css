@@ -8,12 +8,29 @@
 @import "./links.css";
 @import "./carousel.css";
 
-
 .tag {
     border: 2px solid var(--color-border-accent);
     border-radius: 20px;
     padding: 3px 10px;
     width: fit-content;
+}
+
+#cookie-banner {
+    padding: 20px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    border-top: 2px solid var(--wall-glow);
+    height: auto;
+    width: 100%;
+    background-color: var(--color-bg);
+}
+
+#cookie-banner form {
+    display: flex;
+    gap: 20px;
 }
 
 /*-------------------------------------------------------*/

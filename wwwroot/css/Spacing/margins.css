@@ -12,6 +12,10 @@
     --m-10: 100px;
 }
 
+.m-0{
+    margin:var(--m-0);
+}
+
 /* Margin Top */
 
 .mt-1{
