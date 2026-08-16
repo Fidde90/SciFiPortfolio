@@ -17,10 +17,10 @@
         <h1 class="text-center text-mega main-title gradient-text text-sci-fi">@(Model.Vm.Page.Title)</h1>
     }
 
-    <div class="container d-flex">
+    <div class="container d-flex-wrap ">
         @foreach(var childPage in Model.Vm.Page.ChildPages)
         {
-            <a href="/projects/@childPage.Slug" class="sci-fi-link green-link-xl">Läs mer om @childPage.Title</a>
+            <a href="/projects/@childPage.Slug" class="sci-fi-link green-link-xl text-center">Läs mer om @childPage.Title</a>
         }
     </div>
 

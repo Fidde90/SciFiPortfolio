@@ -44,7 +44,7 @@ main{
 
 footer {
     height: fit-content;
-    padding: 20px;
+    padding: 15px;
     border: 1px solid var(--color-primary);
     border-left: none;
     border-right: none;

@@ -7,12 +7,12 @@ using SciFiPortfolio.ViewModels;
 
 namespace SciFiPortfolio.Pages
 {
-    public class TestModel : PageModel
+    public class PagebuilderModel : PageModel
     {
         private readonly IWebHostEnvironment _env;
         public TestViewModel Vm { get; set; } = new();
 
-        public TestModel(IWebHostEnvironment env) => _env = env;
+        public PagebuilderModel(IWebHostEnvironment env) => _env = env;
 
         public IActionResult OnGet()
         {
@@ -24,8 +24,9 @@ namespace SciFiPortfolio.Pages
             {
 
             };
-
-            Vm.Sections.AddRange(sections);
+            
+            if(Vm.Sections.Any())
+                Vm.Sections.AddRange(sections);
 
             return null!;
         }

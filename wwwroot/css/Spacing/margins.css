@@ -140,3 +140,45 @@
 .ml-10{
     margin-left:100px;
 }
+
+/* Margin Right */
+
+.mr-1 {
+    margin-right: 10px;
+}
+
+.mr-2 {
+    margin-right: 20px;
+}
+
+.mr-3 {
+    margin-right: 30px;
+}
+
+.mr-4 {
+    margin-right: 40px;
+}
+
+.mr-5 {
+    margin-right: 50px;
+}
+
+.mr-6 {
+    margin-right: 60px;
+}
+
+.mr-7 {
+    margin-right: 70px;
+}
+
+.mr-8 {
+    margin-right: 80px;
+}
+
+.mr-9 {
+    margin-right: 90px;
+}
+
+.mr-10 {
+    margin-right: 100px;
+}

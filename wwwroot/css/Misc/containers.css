@@ -1,24 +1,24 @@
 ﻿.container {
     margin: 0 auto;
     width: calc(100vw - 70px);
-    padding: 0 5px;
+    padding: 0 10px;
 }
 
 @media (min-width:576px) {
-    .container {
-        width: 510px;
+   .container {
+       
     }
 }
 
 @media (min-width:768px) {
     .container {
-        width: calc(720px - 70px);
+        width: calc(100vw - 140px);
     }
 }
 
 @media (min-width:992px) {
     .container {
-        width: calc(960px - 140px);
+        width: calc(100vw - 140px);
     }
 }
 

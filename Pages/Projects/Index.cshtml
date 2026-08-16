@@ -5,7 +5,7 @@
 @{
 
 }
-<div class="container">
+
     <div class="section-space"></div>
     <div class="section-space"></div>
 
@@ -13,7 +13,9 @@
 
     @if (Model.Vm.CardsSection.Cards.Any())
     {
-        <partial name="/Pages/Shared/SectionPartials/_CardSectionPartial.cshtml" model="Model.Vm.CardsSection" />
+    <div class="container-full section-bg-purple border-all border-primary pt-3">
+            <partial name="/Pages/Shared/SectionPartials/_CardSectionPartial.cshtml" model="Model.Vm.CardsSection" />
+        </div>
     }
-</div>
+
 

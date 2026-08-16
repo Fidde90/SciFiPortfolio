@@ -156,7 +156,7 @@ namespace SciFiPortfolio.Data.Seeders
                                     {
                                         new() { Text = "Projektkort" },
                                         new() { Text = "Taggar" },
-                                        new() { Text = "Övriga återanvändbara objekt som man kan tänkas vilja återanvända senare" }
+                                        new() { Text = "Övriga återanvändbara objekt" }
                                     },
                                     BackgroundColorCss = "section-bg",
                                     PaddingsCss = "pt-3",
@@ -419,10 +419,7 @@ namespace SciFiPortfolio.Data.Seeders
                                     ListItems =
                                     {
                                         new() { Text = "Sci-Fi" },
-                                        new() { Text = "Cyberpunk" },
                                         new() { Text = "Matrix" },
-                                        new() { Text = "Deep Space" },
-                                        new() { Text = "Plasma Core" },
                                         new() { Text = "Alien Tech" },
                                         new() { Text = "Starfleet" },
                                     },
@@ -437,7 +434,7 @@ namespace SciFiPortfolio.Data.Seeders
                                         {
                                             Text = "Temana bygger på CSS-variabler och ett data-theme-attribut på rot-elementet. " +
                                             "Genom att byta tema ändras färger, gradienter, skuggor, bakgrunder och visuella effekter " +
-                                            "utan att de enskilda komponenterna behöver känna till vilket tema som används.."
+                                            "utan att de enskilda komponenterna behöver känna till vilket tema som används. Att dölja sidoväggarna är också ett alternativ, där värdet sparas i en cookie."
                                         },
                                         new() { Text = "Det gör det enkelt att introducera nya teman samtidigt som gränssnittet förblir konsekvent." },
                                     },
@@ -505,6 +502,30 @@ namespace SciFiPortfolio.Data.Seeders
                                     PaddingsCss = "pb-3",
                                     SpaceBottom = false,
                                 },
+                                new ImageCenterSection
+                                {
+                                    Heading = "Analytics",
+                                    ParagraphsTop =
+                                    {
+                                        new(){ Text = "Ett lättviktigt analysverktyg byggt från grunden för att ge " +
+                                        "insikt i webbplatsens trafik utan att kompromissa med besökarnas integritet. " +
+                                        "För att registrera nya besök så byggde jag en middleware och cookie-baserad samtyckeshantering." },
+                                    },
+                                    DesktopImages =
+                                    {
+                                        new() { ImageUrl = "images/middleware.png" },
+                                    },
+
+                                    ParagraphsBottom =
+                                    {
+                                        new(){ Text = "Målet var att få en grundläggande bild av webbplatsens användning " +
+                                        "samtidigt som datainsamlingen hålls så begränsad och transparent som möjligt." }
+                                    },
+                                    PaddingsCss = "pt-3 pb-3",
+                                    SpaceBottom = false,
+                                    BackgroundColorCss = "section-bg",
+                                    BordersCss = "border-all border-primary"
+                                },
                                 new TextSection
                                 {
                                     Heading = "Framtida utveckling",
@@ -515,26 +536,25 @@ namespace SciFiPortfolio.Data.Seeders
                                             Text = "Även om systemet idag används för den egna portfolion har arkitekturen utvecklats " +
                                             "med betydligt större möjligheter i åtanke."
                                         },
-                                         new()
+                                            new()
                                         {
                                             Text = "Ett naturligt nästa steg är att bygga en separat administrationsapplikation där " +
                                             "innehåll kan hanteras genom ett grafiskt gränssnitt istället för att seedas in programmatiskt."
                                         },
-                                          new()
+                                            new()
                                         {
                                             Text = "På längre sikt finns även tankar kring att vidareutveckla lösningen till ett mer " +
                                             "generellt CMS som kan användas i andra projekt. Delar av funktionaliteten skulle exempelvis kunna " +
                                             "paketeras som ett NuGet-paket för att göra systemet återanvändbart även utanför den här webbplatsen."
                                         },
-                                           new()
+                                            new()
                                         {
                                             Text = "Oavsett hur långt projektet utvecklas har det redan fyllt sitt viktigaste syfte: " +
                                             "att fungera som en plattform för att experimentera, lära sig nya tekniker och bygga erfarenhet " +
                                             "kring arkitektur, datamodellering och innehållshantering i större webbapplikationer."
                                         },
                                     },
-                                    BackgroundColorCss = "section-bg",
-                                    BordersCss = "border-all border-primary",
+
                                 },
                             }
                         }

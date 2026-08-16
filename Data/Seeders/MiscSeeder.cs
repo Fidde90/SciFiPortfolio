@@ -67,7 +67,7 @@ namespace SciFiPortfolio.Data.Seeders
                 {
                     Title = "Sci-fi portfolio",
                     UniqueName = "sci-fi-portfolio",
-                    ImageUrl = "images/portimg.jpeg",
+                    ImageUrl = "images/port-thumb.png",
                     ImageAltText = "a sci-fi image",
                     AppLink = { LinkText = "Läs mer", LinkUrl = "Projects/sci-fi-portfolio", PageSlug = "sci-fi-portfolio", PageId = sciFiPortId },
                     Tags = {

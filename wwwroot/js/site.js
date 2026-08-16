@@ -32,6 +32,10 @@ if (!document.cookie.includes(`${banner.dataset.consentCookie}=`)) {
     banner.hidden = false;
 }
 
+function closeCookieBanner() {
+    banner.hidden = true;
+}
+
 mobileBtn.addEventListener('click', () => {
     mobileLinks.classList.toggle('active');
     mobileOverlay.classList.toggle('active');
@@ -48,7 +52,7 @@ cookieSettings.addEventListener('click', () => {
 })
 
 function drawStars() {
-    for (let i = 0; i < 80; i++) {
+    for (let i = 0; i < 380; i++) {
         const x = Math.random() * canvas.width;
         const y = Math.random() * canvas.height;
 

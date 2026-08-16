@@ -39,10 +39,7 @@
 }
 
 .image-postion-right {
-    float: right;
-    height: auto;
-    max-width: 100%;
-    margin: 0 0 10px 20px;
+
 }
 
 .image-postion-left {
@@ -79,12 +76,16 @@
     object-fit:fill;
 }
 
-@media (min-width:768px) {
-    .flex-section-box {
-        width: 50%;
-        height: 100%;
+@media (min-width:580px) {
+    .image-postion-right {
+        float: right;
+        height: auto;
+        max-width: 100%;
+        margin: 0 0 10px 20px;
     }
+}
 
+@media (min-width:768px) {
     .image-postion-right {
         max-width: 495px;
     }
