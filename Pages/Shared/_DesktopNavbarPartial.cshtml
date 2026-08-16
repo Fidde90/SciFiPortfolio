@@ -1,18 +1,18 @@
-﻿<nav class="desktop">
+﻿
+<nav class="desktop">
     <div class="desktop-nav-items container">
-
+ 
         <environment include="Development">
             <div class="nav-item">
                 <div class="nav-item-header">
-                    <a asp-page="/Test" class="dropdown-link text-primary">Test Partial</a>
-                    <i class="text-primary fa-solid fa-caret-down"></i>
+                    <a asp-page="/Test" class="dropdown-link text-green">Builder page</a>
                 </div>
             </div>
-        </environment>
+        </environment> 
       
         <div class="nav-item">
             <div class="nav-item-header">
-                <a class="dropdown-link text-primary" href="/">Hem</a>
+                <a class="dropdown-link text-primary" asp-page="/Index">Hem</a>
             </div>
         </div>
 
@@ -29,5 +29,6 @@
         </div>
 
         <partial name="_ThemePickerPartial.cshtml" />
+        <partial name="_SpacewallsTogglePartial.cshtml" />
     </div>
 </nav>

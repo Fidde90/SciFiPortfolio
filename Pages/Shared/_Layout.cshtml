@@ -29,30 +29,19 @@
 <body>
     <partial name="_SpacePartial.cshtml" />
     <partial name="_SpacewallsPartial.cshtml" />
-
     <div class="nav-shadow"></div>
-    <div class="wrapper">       
-        <header>
-            <div class="nav-bars">
-                <partial name="_HeaderPartial.cshtml" />
-            </div>
-        </header>
-      
+
+    <div class="wrapper">    
+        
+       <partial name="_HeaderPartial.cshtml" />
+
         <div class="">
             <main role="main" class="">
                 @RenderBody()
             </main>
         </div>
 
-        <footer class="pb-1">
-            <div class="container d-flex-between">
-                <div>
-                    <p class="m-0 text-s">Uppdaterad senast: @(DateTime.UtcNow.ToShortDateString())</p>
-                    <p class="text-s">Kontakt: fredrik.t.bengtsson@hotmail.com</p>
-                </div>
-                <button id="cookie-settings-btn" class="m-0 link-btn" typeof="button">Hantera cookies</button>
-            </div>
-        </footer> 
+        <partial name="_FooterPartial.cshtml" />
   
     </div>
 

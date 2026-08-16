@@ -1,4 +1,8 @@
-﻿<div class="walls">
+﻿@{
+    bool wallsHidden = bool.TryParse(Context.Request.Cookies["WallsHidden"], out bool hidden);
+}
+
+<div class="walls" hidden="@hidden">
     <div class="right-wall">
         <div class="grid">
             <div class="cell"></div>

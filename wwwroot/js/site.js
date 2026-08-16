@@ -71,3 +71,9 @@ function setTheme(theme) {
         `theme=${theme};path=/;max-age=31536000;SameSite=Lax;Secure`;
 }
 
+function toggleWalls() {
+    const walls = document.querySelector('.walls');
+    const hidden = !walls.hidden;
+    walls.hidden = hidden;
+    document.cookie = `WallsHidden=${hidden}; path=/; max-age=31536000`;
+}

@@ -1,0 +1,10 @@
+﻿@{
+    bool wallsHidden = bool.TryParse(Context.Request.Cookies["WallsHidden"], out bool hidden);
+}
+
+<div>
+    <label class="checkbox-control">
+        Sci-fi walls:
+        <input id="wall-toggle" type="checkbox" onchange="toggleWalls()" checked="@(!hidden)">
+    </label>
+</div>

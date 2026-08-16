@@ -16,6 +16,10 @@
     display: block;
 }
 
+.inline-block {
+    display: inline-block;
+}
+
 .show {
     display: block;
 }

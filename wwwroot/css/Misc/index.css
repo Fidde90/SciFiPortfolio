@@ -7,6 +7,7 @@
 @import "./layout.css";
 @import "./links.css";
 @import "./carousel.css";
+@import "./checkboxes.css";
 
 .tag {
     border: 2px solid var(--color-border-accent);
