@@ -76,7 +76,7 @@
     --radius-xl: 32px;
     /*GRADIENTS*/
     --gradient-primary: linear-gradient(135deg,#1dcd9f 0%,#7858a6 75%,transparent 85%);
-    --gradient-accent: linear-gradient(135deg,#371b58 0%,#1dcd9f 80%, transparent 80%);
+    --gradient-accent: linear-gradient( 155deg, #371b58 0%, #1dcd9f 100% );
     --gradient-hero: linear-gradient(135deg,#1dcd9f 0%,#7858a6 100%);
-    --gradient-surface: linear-gradient(135deg, rgba(39, 36, 36, 0.1) 0%, rgba(22, 22, 22) 75%, transparent 75%);
+    --gradient-surface: linear-gradient( 135deg, rgba(255,255,255,0.08) 0%, transparent 35% );
 }

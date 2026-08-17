@@ -53,7 +53,8 @@ namespace SciFiPortfolio.Data.Seeders
                                 new HeroSection
                                 {
                                     Image = new() { ImageUrl = "images/server.png" },
-                                    SpaceBottom = false
+                                    SpaceBottom = true,
+                                    PaddingsCss = "",
                                 },
                                 new ListSection
                                 {
@@ -205,6 +206,7 @@ namespace SciFiPortfolio.Data.Seeders
                                     },
                                     BackgroundColorCss = "section-bg",
                                     BordersCss = "border-all border-primary",
+                                    SpaceBottom = false,
                                 },
                             }
                         }

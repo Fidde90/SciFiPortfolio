@@ -12,10 +12,5 @@
         <partial name="/Pages/Shared/SectionPartials/_HeroSectionPartial.cshtml" model="Model.Vm.Hero" />
     }
 
-    @if (!string.IsNullOrWhiteSpace(Model.Vm.Page.Title))
-    {
-        <h1 class="text-center text-mega main-title gradient-text text-sci-fi">@(Model.Vm.Page.Title)</h1>
-    }
-
     <vc:Renderer sections="Model.Vm.Page.Sections" />
 }

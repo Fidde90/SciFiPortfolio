@@ -26,7 +26,7 @@ namespace SciFiPortfolio.Data.Seeders
             {
                 sciFiPort = new PageEntity
                 {
-                    Title = "Sci-fi Portfolio",
+                    Title = "",
                     Slug = "sci-fi-portfolio",
                     Published = true,
                     PublishedDate = DateTime.UtcNow
@@ -53,7 +53,7 @@ namespace SciFiPortfolio.Data.Seeders
                             {
                                 new HeroSection
                                 {
-                                    Heading = "Portfolio",
+                                    Heading = "Sci-fi Portfolio",
                                     SubHeading = "Razor pages / Cms",
                                     TextColor = "sci-fi-glow",
                                 },
@@ -300,7 +300,7 @@ namespace SciFiPortfolio.Data.Seeders
                                     [
                                         new()
                                         {
-                                            Text = "Sedan renderas bilden på rätt plats i vyn, i detta fallet så är det en topp/bottnen placering (kunde ha gjort detta enklare med bara css-klasser...men detta får vara just nu)."
+                                            Text = "Sedan renderas bilden på rätt plats i vyn, i detta fallet så är det en topp/bottnen placering."
                                         }
                                     ],
                                     ImagesRight =

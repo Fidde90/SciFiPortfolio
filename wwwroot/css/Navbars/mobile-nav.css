@@ -6,7 +6,7 @@
 
 .mobile-nav-btn {
     height: 50px;
-    margin-left: 25px;
+    margin-left: 5px;
     background-color: var(--color-bg);
     cursor: pointer;
     border: none;

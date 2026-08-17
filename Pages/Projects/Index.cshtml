@@ -6,16 +6,17 @@
 
 }
 
-    <div class="section-space"></div>
-    <div class="section-space"></div>
-
-    <h1 class="text-center text-xxl main-title gradient-text text-sci-fi">Läs om projekten</h1>
-
-    @if (Model.Vm.CardsSection.Cards.Any())
-    {
-    <div class="container-full section-bg-purple border-all border-primary pt-3">
-            <partial name="/Pages/Shared/SectionPartials/_CardSectionPartial.cshtml" model="Model.Vm.CardsSection" />
-        </div>
-    }
+<div class="text-hero container">
+    <div class="hero-text">
+    <h1 class="text-sci-fi-glow">Läs om projekten</h1>
+    </div>
+</div>
+<div class="section-space"></div>
+@if (Model.Vm.CardsSection.Cards.Any())
+{
+    <div class="section-full  ">
+        <partial name="/Pages/Shared/SectionPartials/_CardSectionPartial.cshtml" model="Model.Vm.CardsSection" />
+    </div>
+}
 
 

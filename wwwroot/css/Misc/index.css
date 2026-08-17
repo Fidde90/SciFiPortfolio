@@ -38,14 +38,14 @@
 
 .striped-list {
     list-style: none;
-    padding-left: 15px;
+    padding-left: 8px;
 }
 
 .striped-list li {
     font-size: var(--text-m);
     padding: 2px 15px;
     margin-bottom: 2px;
-    width: 80%;
+    width: 100%;
     color: var(--color-text);
     font-weight: var(--fw-bold);
     background: rgba(255,255,255,.03);
@@ -63,6 +63,20 @@
 
 .striped-list li:nth-child(even) {
     border-left-color: var(--color-accent);
+}
+
+@media (min-width:992px) {
+    .striped-list li {
+        font-size: var(--text-m);
+        padding: 2px 15px;
+        margin-bottom: 2px;
+        width: 80%;
+        color: var(--color-text);
+        font-weight: var(--fw-bold);
+        background: rgba(255,255,255,.03);
+        border-left: 3px solid var(--color-primary);
+        text-shadow: 0 2px 4px rgba(0,0,0,.95), 0 4px 12px rgba(0,0,0,.85);
+    }
 }
 
 /*-----------------DOCKER--------------------------------------*/
@@ -92,23 +106,6 @@
     filter: drop-shadow(0 0 0px #00ffff) drop-shadow(0 0 0px #00ffff);
 }
 
-@media (min-width:992px) {
-    .containers {
-        flex-direction: row;
-        align-items: center;
-    }
-
-    .laser {
-        width: 100%;
-        height: auto;
-    }
-
-    .laser::before {
-        width: 100%;
-        height: 3px;
-    }
-}
-
 .container-1,
 .container-2 {
     text-align: center;
@@ -133,4 +130,21 @@
     padding: 20px;
     width: 100%;
     background-color: var(--color-bg);
+}
+
+@media (min-width:992px) {
+    .containers {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .laser {
+        width: 100%;
+        height: auto;
+    }
+
+        .laser::before {
+            width: 100%;
+            height: 3px;
+        }
 }

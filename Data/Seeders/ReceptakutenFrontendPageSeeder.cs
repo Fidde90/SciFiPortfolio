@@ -54,6 +54,7 @@ namespace SciFiPortfolio.Data.Seeders
                                 new HeroSection
                                 {
                                     Heading = "Receptakuten",
+                                    SubHeading = "Frontend",
                                     TextColor = "sci-fi-glow",
                                 },
                                 new TextSection
@@ -373,7 +374,8 @@ namespace SciFiPortfolio.Data.Seeders
                                         },
                                     },
                                     BackgroundColorCss = "section-bg",
-                                    BordersCss = "border-all border-primary"
+                                    BordersCss = "border-all border-primary",
+                                    SpaceBottom = false,
                                 },
                             }
                         }

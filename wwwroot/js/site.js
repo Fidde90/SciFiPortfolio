@@ -52,7 +52,7 @@ cookieSettings.addEventListener('click', () => {
 })
 
 function drawStars() {
-    for (let i = 0; i < 380; i++) {
+    for (let i = 0; i < 100; i++) {
         const x = Math.random() * canvas.width;
         const y = Math.random() * canvas.height;
 

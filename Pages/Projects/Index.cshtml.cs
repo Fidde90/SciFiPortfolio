@@ -19,8 +19,12 @@ namespace SciFiPortfolio.Pages.Projects
         public async Task OnGet()
         {
             var cards = await _pageService.GetProjectCardsAsync();
-
+            
             Vm.CardsSection.Cards = cards;
+            Vm.CardsSection.PaddingsCss = "pt-2 pb-2";
+            Vm.CardsSection.SpaceBottom = false;
+
+
         }
     }
 }
