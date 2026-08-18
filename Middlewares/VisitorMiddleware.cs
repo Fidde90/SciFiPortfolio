@@ -30,7 +30,7 @@ namespace SciFiPortfolio.Middlewares
                     if (visitResult > 0)
                     {
                         context.Response.Cookies.Append(settings.Visitor, "true",
-                            analyticsService.CreateCookie(DateTimeOffset.UtcNow.AddSeconds(10), SameSiteMode.Lax, true, true));
+                            analyticsService.CreateCookie(DateTimeOffset.UtcNow.AddHours(1), SameSiteMode.Lax, true, true));
                     }
                 }
             }
