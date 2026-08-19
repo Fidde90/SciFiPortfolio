@@ -1,11 +1,11 @@
 ﻿.container {
     margin: 0 auto;
-    width: calc(100vw - 70px);
+    width: calc(100vw - 40px);
 }
 
-@media (min-width:576px) {
-   .container {
-       
+@media (min-width:500px) {
+    .container {
+        width: calc(100vw - 100px);
     }
 }
 
