@@ -22,9 +22,10 @@ namespace SciFiPortfolio.Services
             {
                 var time = DateTime.UtcNow.ToShortDateString();
                 _logger.LogInformation(":::::::::::::::::::::::::::: New Visitor at: {0} :::::::::::::::::::::::", time);
+
             }
 
-            return -1;
+            return result;
         }
 
         public CookieOptions CreateCookie(DateTimeOffset duration, SameSiteMode sameSiteMode, bool secure, bool httpOnly)
