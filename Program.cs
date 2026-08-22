@@ -36,14 +36,14 @@ namespace SciFiPortfolio
             ));
             builder.Services.Configure<CookieSettings>(
                 builder.Configuration.GetSection("Cookies"));
-            builder.Services.AddOutputCache(options =>
-            {
-                options.AddBasePolicy(policy =>
-                {
-                    policy.Cache();
-                    policy.Expire(TimeSpan.FromDays(30));
-                });
-            });
+            //builder.Services.AddOutputCache(options =>
+            //{
+            //    options.AddBasePolicy(policy =>
+            //    {
+            //        policy.Cache();
+            //        policy.Expire(TimeSpan.FromDays(30));
+            //    });
+            //});
             var app = builder.Build();
 
             using (var scope = app.Services.CreateScope())
@@ -66,7 +66,7 @@ namespace SciFiPortfolio
 
             app.UseMiddleware<VisitorMiddleware>();
 
-            app.UseOutputCache();
+            //app.UseOutputCache();
             app.UseAuthorization();
             app.MapControllers();
             app.MapStaticAssets();
