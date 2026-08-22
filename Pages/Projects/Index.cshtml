@@ -8,13 +8,13 @@
 
 <div class="text-hero container">
     <div class="hero-text">
-    <h1 class="text-sci-fi-glow">Läs om projekten</h1>
+        <h1 class="">Projekt</h1>
     </div>
 </div>
 <div class="section-space"></div>
 @if (Model.Vm.CardsSection.Cards.Any())
 {
-    <div class="section-full  ">
+    <div class="section-full">
         <partial name="/Pages/Shared/SectionPartials/_CardSectionPartial.cshtml" model="Model.Vm.CardsSection" />
     </div>
 }
