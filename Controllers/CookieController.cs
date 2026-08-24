@@ -16,8 +16,9 @@ namespace SciFiPortfolio.Controllers
 
         [Route("/cookie-consent")]
         [ValidateAntiForgeryToken]
-        public IActionResult CookieConsent(string consent)
+        public IActionResult CookieConsent(string consent, string returnUrl)
         {
+            
             if (string.IsNullOrWhiteSpace(consent) || consent is not (CookieConsentOptions.Accepted or CookieConsentOptions.Declined))
                 return BadRequest();
 
@@ -34,7 +35,7 @@ namespace SciFiPortfolio.Controllers
 
             Response.Cookies.Append(cookieSettings.Consent, consent, options);
 
-            return RedirectToPage("/Index");
+            return LocalRedirect($"{returnUrl}");
         }
     }
 }

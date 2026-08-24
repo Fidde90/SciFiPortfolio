@@ -1,7 +1,5 @@
-﻿@inject IOptions<CookieSettings> Cookies
+﻿@{
 
-@{
-    var currentTheme = Context.Request.Cookies[Cookies.Value.Theme] ?? "sci-fi";
 }
 
 <div class="theme-selector-box">
@@ -9,9 +7,11 @@
     <select class="theme-select" onchange="setTheme(this.value)">
         @foreach (var theme in ColorThemes.All)
         {
-            <option value="@theme" selected="@(theme == currentTheme)">
+            <option value="@theme">
                 <p class="text-glow-@theme">@theme</p>  
             </option>
         }
     </select>
 </div>
+
+
