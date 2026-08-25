@@ -23,14 +23,14 @@ namespace SciFiPortfolio.Repositories
                 .FirstOrDefaultAsync(page => page.Slug == slug);
         }
 
-        public async Task<List<ProjectCardEntity>?> GetProjcetCardsAsync()
+        public async Task<List<ProjectCardEntity>> GetProjcetCardsAsync()
         {
             return await _context.ProjectCards
                 .Include(p => p.Tags)
                 .ToListAsync();
         }
 
-        public async Task<List<ProjectCardEntity>?> GetProjcetCardsAsync(int cardCount)
+        public async Task<List<ProjectCardEntity>> GetProjcetCardsAsync(int cardCount)
         {
             return await _context.ProjectCards
                 .Include(p => p.Tags)
@@ -39,7 +39,7 @@ namespace SciFiPortfolio.Repositories
                 .ToListAsync();
         }
 
-        public async Task<List<ProjectCardEntity>?> GetProjcetCardsAsync(List<string> cardIds)
+        public async Task<List<ProjectCardEntity>> GetProjcetCardsAsync(List<string> cardIds)
         {
             return await _context.ProjectCards
                 .Include(p => p.Tags)

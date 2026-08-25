@@ -481,7 +481,7 @@ namespace SciFiPortfolio.Data.Seeders
                                     Paragraphs =
                                     [
                                         new() { Text = "Eftersom att innehållet är identiskt för alla besökare lämpar sig systemet väl för caching." },
-                                        new() { Text = "Output cache används för innehåll som sällan förändras, exempelvis: " },
+                                        new() { Text = "In-memory caching används för innehåll som sällan förändras, exempelvis:" },
                                     ],
                                     ListItems =
                                     {
@@ -493,11 +493,22 @@ namespace SciFiPortfolio.Data.Seeders
                                     SpaceBottom = false,
                                     PaddingsCss = "pt-3",
                                 },
+                                new ImageSection
+                                {
+                                    DesktopImages = new()
+                                    { 
+                                        new() { ImageUrl = "images/cache-example.png" } 
+                                    },
+                                    SpaceBottom = false,
+                                    PaddingsCss = ""
+                                },
                                 new TextSection
                                 {
                                     Paragraphs =
                                     {
                                         new() { Text = "Detta minskar antalet databasförfrågningar och förbättrar laddningstiderna för besökaren." },
+                                         new() { Text = "Hemsidan är relativt liten och hade sannolikt inte behövt denna optimering, men caching " +
+                                         "används här främst som ett sätt att testa tekniken och fördjupa förståelsen för hur den kan användas i praktiken." },
                                     },
                                     PaddingsCss = "pb-3",
                                     SpaceBottom = false,
@@ -568,3 +579,4 @@ namespace SciFiPortfolio.Data.Seeders
         }
     }
 }
+

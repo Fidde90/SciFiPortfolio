@@ -1,4 +1,5 @@
-﻿using SciFiPortfolio.Entities;
+﻿using Microsoft.Extensions.Caching.Memory;
+using SciFiPortfolio.Entities;
 using SciFiPortfolio.Interfaces.Repositories;
 using SciFiPortfolio.Interfaces.Services;
 using SciFiPortfolio.Models;
@@ -9,10 +10,12 @@ namespace SciFiPortfolio.Services
     public class PageService : IPageService
     {
         private readonly IPageRepository _pageRepo;
+        private readonly IMemoryCache _memoryCache;
 
-        public PageService(IPageRepository pageRepo)
+        public PageService(IPageRepository pageRepo, IMemoryCache memoryCache)
         {
             _pageRepo = pageRepo;
+            _memoryCache = memoryCache;
         }
 
         public async Task<Page?> GetPageAsync(string slug)
@@ -20,9 +23,16 @@ namespace SciFiPortfolio.Services
             if (string.IsNullOrWhiteSpace(slug))
                 return null!;
 
-            var dbPage = await _pageRepo.GetPageBySlugAsync(slug);
+            var cacheKey = $"page-{slug}";
 
-            if(dbPage is null)
+            var dbPage = await _memoryCache.GetOrCreateAsync(cacheKey, async entry =>
+                {
+                    entry.AbsoluteExpirationRelativeToNow = TimeSpan.FromDays(7);
+                    Console.WriteLine($"##################################### DATABASE QUERY FOR PAGE -- {slug}");
+                    return await _pageRepo.GetPageBySlugAsync(slug);
+                });
+
+            if (dbPage is null)
                 return null!;
 
             var pageContentSections = dbPage.PageContent?.Content.Sections;
@@ -32,11 +42,7 @@ namespace SciFiPortfolio.Services
                 var cardSection = pageContentSections.OfType<CardSection>().FirstOrDefault();
 
                 if (cardSection is not null)
-                {
-                    var cardIds = cardSection.CardIds;
-                    var cards = await GetProjectCardsAsync(cardIds);
-                    cardSection.Cards = cards;
-                }
+                    cardSection.Cards = await GetProjectCardsAsync(cardSection.CardIds);
             }
 
             var page = ToPageModel(dbPage);
@@ -46,9 +52,14 @@ namespace SciFiPortfolio.Services
 
         public async Task<List<ProjectCard>> GetProjectCardsAsync()
         {
-            var cards_db = await _pageRepo.GetProjcetCardsAsync();
+            var cards_db = await _memoryCache.GetOrCreateAsync("project-card-entities", async entry =>
+            {
+                entry.AbsoluteExpirationRelativeToNow = TimeSpan.FromDays(7);
+                Console.WriteLine("########################## DATABASE QUERY FOR ALL CARDS");
+                return await _pageRepo.GetProjcetCardsAsync();
+            }); 
 
-            if (cards_db is null || !cards_db.Any())
+            if (cards_db is null)
                 return [];
 
             var cards = new List<ProjectCard>();
@@ -96,7 +107,14 @@ namespace SciFiPortfolio.Services
 
         public async Task<List<ProjectCard>> GetProjectCardsAsync(int cardCount)
         {
-            var cards_db = await _pageRepo.GetProjcetCardsAsync(cardCount);
+            string cacheKey = $"project-card-entities-count-{cardCount}";
+
+            var cards_db = await _memoryCache.GetOrCreateAsync(cacheKey, async entry =>
+            {
+                entry.AbsoluteExpirationRelativeToNow = TimeSpan.FromDays(7);
+                Console.WriteLine($"########################## DATABASE QUERY FOR CARDCOUNT -- {cacheKey}");
+                return await _pageRepo.GetProjcetCardsAsync(cardCount);
+            });
 
             if (cards_db is null || !cards_db.Any())
                 return [];
@@ -146,7 +164,19 @@ namespace SciFiPortfolio.Services
 
         public async Task<List<ProjectCard>> GetProjectCardsAsync(List<string> cardIds)
         {
-            var cards_db = await _pageRepo.GetProjcetCardsAsync(cardIds);
+            string idsForCacheKey = "";
+
+            foreach (var cardId in cardIds)
+                idsForCacheKey += cardId;
+
+            string cacheKey = $"project-card-entities-by-ids-{idsForCacheKey}";
+
+            var cards_db = await _memoryCache.GetOrCreateAsync(cacheKey, async entry =>
+            {
+                entry.AbsoluteExpirationRelativeToNow = TimeSpan.FromDays(7);
+                Console.WriteLine($"########################## DATABASE QUERY FOR CARDS BY IDS -- {cacheKey}");
+                return await _pageRepo.GetProjcetCardsAsync(cardIds);
+            });
 
             if (cards_db is null || !cards_db.Any())
                 return [];

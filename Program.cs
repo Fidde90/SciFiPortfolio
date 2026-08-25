@@ -26,6 +26,7 @@ namespace SciFiPortfolio
             builder.Services.AddScoped<DbSeeder>();
             builder.Services.AddRazorPages();
             builder.Services.AddControllers();
+            builder.Services.AddMemoryCache();
             builder.Services.Configure<RouteOptions>(options =>
             {
                 options.LowercaseQueryStrings = true;
@@ -36,7 +37,7 @@ namespace SciFiPortfolio
             ));
             builder.Services.Configure<CookieSettings>(
                 builder.Configuration.GetSection("Cookies"));
-            builder.Services.AddMemoryCache();
+
             var app = builder.Build();
 
             using (var scope = app.Services.CreateScope())

@@ -19,12 +19,14 @@ namespace SciFiPortfolio.Pages.Projects
 
         public async Task OnGet([FromRoute] string slug)
         {
-            ViewData["Title"] = $"{slug}";
+            ViewData["Title"] = slug;
 
             var page = await _pageService.GetPageAsync(slug);
 
             if (page is null)
+            {
                 return;
+            }
 
             Vm.Hero = PageHelper.GetHeroSection(page);
             page.Sections = PageHelper.FilterHero(page);

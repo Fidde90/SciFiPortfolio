@@ -1,5 +1,4 @@
-﻿using SciFiPortfolio.Models;
-using SciFiPortfolio.Models.ContentSections;
+﻿using SciFiPortfolio.Models.ContentSections;
 
 namespace SciFiPortfolio.ViewModels
 {
@@ -11,7 +10,7 @@ namespace SciFiPortfolio.ViewModels
 
         public CarouselSection? Carousel { get; set; }
 
-        public CardSection? Cards { get; set; }
+        public CardSection Cards { get; set; } = new();
 
         public bool ShowTitle { get; set; } = true;
     }

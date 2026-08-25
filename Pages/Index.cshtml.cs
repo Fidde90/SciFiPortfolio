@@ -43,11 +43,8 @@ namespace SciFiPortfolio.Pages
                 },
             };
 
-            Vm.Cards = new CardSection()
-            {
-                Cards = await _pageService.GetProjectCardsAsync(3)
-            };
-
+            var cards = await _pageService.GetProjectCardsAsync(3);
+            Vm.Cards?.Cards = cards ?? [];
             Vm.ShowTitle = false;
         }
     }

@@ -19,6 +19,7 @@ window.addEventListener('resize', () => {
     }
 
     redrawStars();
+    setThemeSelectInput();
 });
 
 function renderSpaceCanvas(){
@@ -76,4 +77,10 @@ function redrawStars() {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
     drawStars();
+}
+
+function setThemeSelectInput() {
+    document.querySelectorAll(".theme-select").forEach(themeSelect => {
+        themeSelect.value = getTheme();
+    })
 }

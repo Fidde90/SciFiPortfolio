@@ -18,7 +18,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
     <script defer src="~/js/site.js" asp-append-version="true"></script>
-    <script src="~/js/theme.js" asp-append-version="true"></script>
+    <script src="~/js/theme.js"></script>
     <script type="importmap"></script>
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 </head>
@@ -43,9 +43,10 @@
 
     <partial name="_CookieConsentPartial" model="@consentCookieName" />
 
-    @await RenderSectionAsync("Scripts", required: false)
     <script>
-            document.querySelector(".theme-select").value = getTheme();
+            document.querySelectorAll(".theme-select").forEach(themeSelect => {
+                themeSelect.value = getTheme();
+            })
     </script>
 </body>
 
