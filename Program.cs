@@ -36,14 +36,7 @@ namespace SciFiPortfolio
             ));
             builder.Services.Configure<CookieSettings>(
                 builder.Configuration.GetSection("Cookies"));
-            builder.Services.AddOutputCache(options =>
-            {
-                options.AddBasePolicy(policy =>
-                {
-                    policy.Cache();
-                    policy.Expire(TimeSpan.FromDays(30));
-                });
-            });
+            builder.Services.AddMemoryCache();
             var app = builder.Build();
 
             using (var scope = app.Services.CreateScope())
@@ -65,8 +58,6 @@ namespace SciFiPortfolio
             app.UseRouting();
 
             app.UseMiddleware<VisitorMiddleware>();
-
-            app.UseOutputCache();
             app.UseAuthorization();
             app.MapControllers();
             app.MapStaticAssets();

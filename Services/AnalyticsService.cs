@@ -22,7 +22,6 @@ namespace SciFiPortfolio.Services
             {
                 var time = DateTime.UtcNow.ToShortDateString();
                 _logger.LogInformation(":::::::::::::::::::::::::::: New Visitor at: {0} :::::::::::::::::::::::", time);
-
             }
 
             return result;

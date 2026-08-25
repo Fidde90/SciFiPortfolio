@@ -13,7 +13,7 @@
         </p>
 
         <form method="post" action="/cookie-consent">
-@*             @Html.AntiForgeryToken() *@
+            @Html.AntiForgeryToken()
             <input type="hidden" name="returnUrl" value="@(Context.Request.Path + Context.Request.QueryString)" />
             <button id="cookie-accept" class="btn" type="submit" name="consent" value="accepted">Acceptera</button>
             <button id="cookie-decline" class="btn" type="submit" name="consent" value="declined">Neka</button>
