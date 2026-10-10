@@ -39,6 +39,7 @@ namespace SciFiPortfolio
                 builder.Configuration.GetSection("Cookies"));
 
             var app = builder.Build();
+Console.WriteLine("Trams");
 
             using (var scope = app.Services.CreateScope())
             {
